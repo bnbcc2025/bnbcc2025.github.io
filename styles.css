@@ -1385,8 +1385,8 @@ html {
     text-align: center;
 }
 
-/* Honeypot field - bot-proof hiding method */
-#contactForm .honeypot-field {
+
+#contactForm .ice-field{
     /* Method 1: Absolute positioning off-screen */
     position: absolute !important;
     left: -9999px !important;
@@ -1419,8 +1419,8 @@ html {
     pointer-events: none !important;
 }
 
-/* Alternative honeypot using CSS transforms */
-#contactForm .honeypot-field-alt {
+/* Alternative icepot using CSS transforms */
+#contactForm .ice-field-alt {
     transform: scale(0) !important;
     position: absolute !important;
     left: -100vw !important;
@@ -1433,7 +1433,7 @@ html {
 }
 
 /* Fake visible label that tricks bots but screen readers ignore */
-#contactForm .honeypot-label {
+#contactForm .ice-label {
     position: absolute !important;
     left: -10000px !important;
     width: 1px !important;
@@ -1470,3 +1470,4 @@ html {
         padding: 14px;
     }
 }
+
