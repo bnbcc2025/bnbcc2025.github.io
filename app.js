@@ -483,9 +483,176 @@ document.addEventListener('DOMContentLoaded', function() {
     EventManager.init();
     ReviewManager.init();
     
+    // Initialize scroll handling
+    window.addEventListener('scroll', handleScroll);
+    handleScroll(); // Initial check
+    
+    // Initialize form handling
+    initializeFormHandling();
+    
     console.log('Brisbane Carpet and Bond Cleaners website initialized successfully!');
 });
 
 // Export for global access
 window.ServiceModal = ServiceModal;
 window.ContactManager = ContactManager;
+
+// Mobile menu functionality
+function toggleMobileMenu() {
+    const sidebar = document.getElementById('mobileSidebar');
+    const toggle = document.querySelector('.mobile-menu-toggle');
+    
+    sidebar.classList.toggle('active');
+    toggle.classList.toggle('active');
+}
+
+// Scroll handling for floating elements
+function handleScroll() {
+    const floatingAction = document.querySelector('.floating-action');
+    const googleReviewsRibbon = document.querySelector('.google-reviews-ribbon');
+    const footer = document.querySelector('.footer');
+    
+    if (!floatingAction || !googleReviewsRibbon || !footer) return;
+    
+    const footerRect = footer.getBoundingClientRect();
+    const windowHeight = window.innerHeight;
+    
+    // Check if footer is visible (top of footer is above bottom of viewport)
+    const isFooterVisible = footerRect.top < windowHeight;
+    
+    if (isFooterVisible) {
+        floatingAction.style.opacity = '0';
+        floatingAction.style.pointerEvents = 'none';
+        googleReviewsRibbon.style.opacity = '0';
+        googleReviewsRibbon.style.pointerEvents = 'none';
+    } else {
+        floatingAction.style.opacity = '1';
+        floatingAction.style.pointerEvents = 'auto';
+        googleReviewsRibbon.style.opacity = '1';
+        googleReviewsRibbon.style.pointerEvents = 'auto';
+    }
+}
+
+// Form validation and submission handling
+function initializeFormHandling() {
+    const form = document.getElementById('contactForm');
+    const fields = Array.from(form.querySelectorAll('input[required], textarea[required]'));
+    let isSubmitting = false;
+
+    // Handle form submission
+    form.addEventListener('submit', function(e) {
+        if (isSubmitting) {
+            e.preventDefault();
+            return;
+        }
+
+        if (!validateForm()) {
+            e.preventDefault();
+            return;
+        }
+
+        isSubmitting = true;
+        showLoadingState();
+    });
+
+    // Handle iframe load (form submission complete)
+    document.getElementById('hidden_iframe').addEventListener('load', function() {
+        if (isSubmitting) {
+            handleFormSuccess();
+        }
+    });
+
+    function validateForm() {
+        let isValid = true;
+        clearAllFieldErrors();
+
+        // Check honeypot field for bot detection
+        const honeypotField = document.getElementById('website');
+        if (honeypotField && honeypotField.value !== '99') {
+            // Bot detected - silently fail
+            console.log('Bot submission detected');
+            return false;
+        }
+
+        fields.forEach(field => {
+            if (!validateField(field)) {
+                isValid = false;
+            }
+        });
+
+        return isValid;
+    }
+
+    function validateField(field) {
+        const value = field.value.trim();
+        
+        if (field.hasAttribute('required') && !value) {
+            highlightField(field.id, true);
+            return false;
+        }
+        
+        if (field.type === 'email' && value) {
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (!emailRegex.test(value)) {
+                highlightField(field.id, true);
+                return false;
+            }
+        }
+        
+        highlightField(field.id, false);
+        return true;
+    }
+
+    function highlightField(fieldId, hasError) {
+        const field = document.getElementById(fieldId);
+        if (field) {
+            const formGroup = field.closest('.form-group');
+            if (formGroup) {
+                formGroup.classList.toggle('error', hasError);
+            }
+        }
+    }
+
+    function showLoadingState() {
+        const btn = document.getElementById('submitBtn');
+        const spinner = document.getElementById('loadingSpinner');
+        if (btn && spinner) {
+            btn.disabled = true;
+            spinner.style.display = 'inline-block';
+            btn.querySelector('.btn-text').textContent = 'Sending...';
+        }
+    }
+
+    function handleFormSuccess() {
+        showSuccessMessage();
+        resetForm();
+        isSubmitting = false;
+    }
+
+    function showSuccessMessage() {
+        const alert = document.createElement('div');
+        alert.className = 'alert success';
+        alert.textContent = 'Thank you! We will contact you within 24 hours.';
+        form.parentNode.insertBefore(alert, form);
+        
+        setTimeout(() => alert.remove(), 5000);
+    }
+
+    function resetForm() {
+        form.reset();
+        const btn = document.getElementById('submitBtn');
+        const spinner = document.getElementById('loadingSpinner');
+        if (btn && spinner) {
+            btn.disabled = false;
+            spinner.style.display = 'none';
+            btn.querySelector('.btn-text').textContent = 'Send Message';
+        }
+    }
+
+    function clearAllFieldErrors() {
+        fields.forEach(field => highlightField(field.id, false));
+    }
+}
+
+// Make functions globally available
+window.toggleMobileMenu = toggleMobileMenu;
