@@ -1385,6 +1385,62 @@ html {
     text-align: center;
 }
 
+/* Honeypot field - bot-proof hiding method */
+#contactForm .honeypot-field {
+    /* Method 1: Absolute positioning off-screen */
+    position: absolute !important;
+    left: -9999px !important;
+    top: -9999px !important;
+    
+    /* Method 2: Zero dimensions */
+    width: 0 !important;
+    height: 0 !important;
+    
+    /* Method 3: Opacity and visibility */
+    opacity: 0 !important;
+    visibility: hidden !important;
+    
+    /* Method 4: Display none backup */
+    display: none !important;
+    
+    /* Method 5: Clip path to hide */
+    clip: rect(0, 0, 0, 0) !important;
+    
+    /* Method 6: Overflow hidden with negative margins */
+    overflow: hidden !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    border: 0 !important;
+    
+    /* Method 7: Z-index below everything */
+    z-index: -9999 !important;
+    
+    /* Method 8: Pointer events disabled */
+    pointer-events: none !important;
+}
+
+/* Alternative honeypot using CSS transforms */
+#contactForm .honeypot-field-alt {
+    transform: scale(0) !important;
+    position: absolute !important;
+    left: -100vw !important;
+    opacity: 0.001 !important; /* Very low opacity instead of 0 */
+    height: 1px !important;
+    width: 1px !important;
+    overflow: hidden !important;
+    clip: rect(1px, 1px, 1px, 1px) !important;
+    white-space: nowrap !important;
+}
+
+/* Fake visible label that tricks bots but screen readers ignore */
+#contactForm .honeypot-label {
+    position: absolute !important;
+    left: -10000px !important;
+    width: 1px !important;
+    height: 1px !important;
+    overflow: hidden !important;
+}
+
 /* Responsive adjustments for contact form */
 @media (max-width: 768px) {
     #contact.section {
