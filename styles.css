@@ -12,6 +12,7 @@ body {
     background: #f5f5f7;
     overflow-x: hidden;
     padding-bottom: 60px; /* Adjust this value based on your ribbon height */
+    padding-top: 100px; /* Account for header height */
 }
 
 .container {
@@ -22,7 +23,7 @@ body {
 
 /* Header */
 header {
-    background: rgba(255, 255, 255, 0.8);
+    background: #ffffff;
     backdrop-filter: blur(20px);
     -webkit-backdrop-filter: blur(20px);
     border-bottom: 1px solid rgba(0, 0, 0, 0.1);
@@ -36,9 +37,8 @@ header {
 
 .header-content {
     display: flex;
-    justify-content: space-between;
     align-items: center;
-    height: 44px;
+    height: 100px;
     max-width: 1200px;
     margin: 0 auto;
     padding: 0 20px;
@@ -50,9 +50,28 @@ header {
     color: #1d1d1f;
     text-decoration: none;
     letter-spacing: -0.022em;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-right: auto;
 }
 
-nav ul {
+.logo-image {
+    height: 80px;
+    width: auto;
+    object-fit: contain;
+    display: block;
+    max-width: 100%;
+}
+
+.logo-text {
+    font-size: 28px;
+    font-weight: 600;
+    color: #1d1d1f;
+    letter-spacing: -0.022em;
+}
+
+nav ul.desktop-nav {
     list-style: none;
     display: flex;
     gap: 40px;
@@ -71,6 +90,102 @@ nav a:hover {
     opacity: 1;
 }
 
+/* Mobile Menu Toggle Button */
+.mobile-menu-toggle {
+    display: none;
+    flex-direction: column;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 8px;
+    gap: 4px;
+}
+
+.mobile-menu-toggle span {
+    width: 24px;
+    height: 2px;
+    background: #1d1d1f;
+    transition: all 0.3s ease;
+}
+
+.mobile-menu-toggle.active span:nth-child(1) {
+    transform: rotate(45deg) translate(6px, 6px);
+}
+
+.mobile-menu-toggle.active span:nth-child(2) {
+    opacity: 0;
+}
+
+.mobile-menu-toggle.active span:nth-child(3) {
+    transform: rotate(-45deg) translate(6px, -6px);
+}
+
+/* Mobile Sidebar */
+.mobile-sidebar {
+    position: fixed;
+    top: 0;
+    right: -300px;
+    width: 300px;
+    height: 100vh;
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    z-index: 2000;
+    transition: right 0.3s ease;
+    box-shadow: -5px 0 20px rgba(0, 0, 0, 0.1);
+}
+
+.mobile-sidebar.active {
+    right: 0;
+}
+
+.sidebar-header {
+    padding: 20px;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+    display: flex;
+    justify-content: flex-end;
+}
+
+.sidebar-close {
+    background: none;
+    border: none;
+    font-size: 24px;
+    cursor: pointer;
+    color: #1d1d1f;
+    padding: 8px;
+    border-radius: 50%;
+    transition: background 0.3s ease;
+}
+
+.sidebar-close:hover {
+    background: rgba(0, 0, 0, 0.1);
+}
+
+.mobile-nav {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.mobile-nav li {
+    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.mobile-nav a {
+    display: block;
+    padding: 20px;
+    text-decoration: none;
+    color: #1d1d1f;
+    font-size: 18px;
+    font-weight: 500;
+    transition: background 0.3s ease;
+}
+
+.mobile-nav a:hover {
+    background: rgba(0, 122, 255, 0.1);
+    color: #007aff;
+}
+
 /* Hero Section */
 .hero {
     min-height: 100vh;
@@ -82,8 +197,10 @@ nav a:hover {
     overflow: hidden;
     background-image: url('assets/1.png');
     background-size: cover;
-    background-position: center;
+    background-position: top center;
     background-repeat: no-repeat;
+    background-attachment: fixed; /* Parallax effect for desktop */
+    z-index: 1; /* Lower z-index than header */
 }
 
 .hero::before {
@@ -93,13 +210,13 @@ nav a:hover {
     left: 0;
     right: 0;
     bottom: 0;
-    background: rgba(0, 0, 0, 0.4); /* Dark overlay for better text visibility */
-    z-index: 1;
+    background: rgba(0, 0, 0, 0.3); /* Reduced overlay opacity for better image visibility */
+    z-index: 2; /* Above the background image */
 }
 
 .hero-content {
     position: relative;
-    z-index: 2; /* Ensure content stays above the overlay */
+    z-index: 3; /* Above the overlay and header */
 }
 
 .hero h1 {
@@ -779,7 +896,7 @@ nav a:hover {
     text-decoration: none;
     box-shadow: 0 8px 24px rgba(0, 122, 255, 0.3);
     z-index: 1000;
-    transition: all 0.3s ease;
+    transition: all 0.3s ease, opacity 0.3s ease;
 }
 
 .floating-action:hover {
@@ -790,10 +907,11 @@ nav a:hover {
 
 /* Footer */
 .footer {
-    background: #1d1d1f;
-    color: #ffffff;
-    padding: 60px 0 40px;
+    background: #f5f5f7;
+    color: #1d1d1f;
+    padding: 80px 0 40px;
     margin-top: 80px;
+    border-top: 1px solid rgba(0, 0, 0, 0.05);
 }
 
 .footer-content {
@@ -808,32 +926,34 @@ nav a:hover {
 }
 
 .footer-section h4 {
-    font-size: 17px;
+    font-size: 21px;
     font-weight: 600;
-    margin-bottom: 20px;
-    color: #ffffff;
+    margin-bottom: 24px;
+    color: #1d1d1f;
+    letter-spacing: -0.022em;
 }
 
 .footer-section p, 
 .footer-section a {
-    color: rgba(255, 255, 255, 0.8);
-    font-size: 15px;
+    color: #86868b;
+    font-size: 17px;
     line-height: 1.6;
     margin-bottom: 12px;
     text-decoration: none;
     display: block;
+    transition: color 0.3s ease;
 }
 
 .footer-section a:hover {
-    color: #ffffff;
+    color: #007aff;
 }
 
 .footer-bottom {
     text-align: center;
     padding-top: 40px;
-    border-top: 1px solid rgba(255, 255, 255, 0.1);
-    color: rgba(255, 255, 255, 0.6);
-    font-size: 14px;
+    border-top: 1px solid rgba(0, 0, 0, 0.1);
+    color: #86868b;
+    font-size: 15px;
 }
 
 /* Google Reviews Ribbon */
@@ -849,6 +969,7 @@ nav a:hover {
     box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.1);
     backdrop-filter: blur(10px);
     -webkit-backdrop-filter: blur(10px);
+    transition: opacity 0.3s ease;
 }
 
 .stars {
@@ -933,6 +1054,14 @@ nav a:hover {
 
 /* Responsive adjustments */
 @media (max-width: 768px) {
+    .hero {
+        background-attachment: scroll; /* Remove parallax on mobile for better performance */
+    }
+    
+    .hero::before {
+        background: rgba(0, 0, 0, 0.4); /* Slightly darker overlay for mobile text readability */
+    }
+    
     .hero h1 {
         font-size: 48px;
     }
@@ -978,8 +1107,44 @@ nav a:hover {
         padding: 24px;
     }
 
-    nav ul {
+    nav ul.desktop-nav {
         display: none;
+    }
+    
+    .mobile-menu-toggle {
+        display: flex;
+    }
+    
+    .logo {
+        gap: 12px;
+        padding: 0;
+        background: rgba(255, 255, 255, 0.8);
+        border-radius: 0;
+        transition: all 0.3s ease;
+        width: 100%;
+        height: 100%;
+        justify-content: flex-start;
+        align-items: center;
+        display: flex;
+    }
+    
+    .logo:hover {
+        background: rgba(255, 255, 255, 0.95);
+        transform: scale(1.02);
+    }
+    
+    .logo-image {
+        height: 54px;
+    }
+    
+    .logo-text {
+        font-size: 24px;
+        font-weight: 600;
+    }
+    
+    .header-content {
+        justify-content: space-between;
+        height: 120px;
     }
 
     .section-title {
@@ -991,16 +1156,17 @@ nav a:hover {
     }
 
     .footer {
-        padding: 40px 0 30px;
+        padding: 60px 0 40px;
     }
 
     .footer-content {
         grid-template-columns: 1fr;
-        gap: 30px;
+        gap: 40px;
     }
 
     .footer-section {
         text-align: center;
+        padding: 0 20px;
     }
 
     .ribbon-content {
@@ -1010,6 +1176,7 @@ nav a:hover {
     
     body {
         padding-bottom: 100px; /* Increase padding for mobile view */
+        padding-top: 120px; /* Account for increased mobile header height */
     }
     
     .floating-action {
