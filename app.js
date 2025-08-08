@@ -566,9 +566,9 @@ function initializeFormHandling() {
         let isValid = true;
         clearAllFieldErrors();
 
-        // Check honeypot field for bot detection
-        const honeypotField = document.getElementById('website');
-        if (honeypotField && honeypotField.value !== '99') {
+        // Check icepot field for bot detection
+        const icepotField = document.getElementById('website');
+        if (icepotField && icepotField.value !== '99') {
             // Bot detected - silently fail
             console.log('Bot submission detected');
             return false;
