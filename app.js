@@ -5,14 +5,14 @@
 const AppConfig = {
     company: {
         name: "Brisbane North Bond & Carpet Cleaners",
-        phone: "0460 958 603",
+        phone: "0721436064",
         email: "info@bnbcc.com.au",
         address: "Servicing Brisbane North Side",
         hours: "Mon-Fri 7AM-7PM, Sat 8AM-5PM",
-        abn: "123 456 789"
+        abn: "14 132 271 327"
     },
     contactInfo: [
-        { icon: "📞", title: "Phone", content: "0460 958 603" },
+        { icon: "📞", title: "Phone", content: "0721436064" },
         { icon: "📧", title: "Email", content: "info@bnbcc.com.au" },
         { icon: "📍", title: "Location", content: "Servicing Brisbane North Side" },
         { icon: "🕒", title: "Business Hours", content: "Mon-Fri 7AM-7PM, Sat 8AM-5PM" },
@@ -385,14 +385,24 @@ class EventManager {
         // Smooth scroll for navigation
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    target.scrollIntoView({
-                        behavior: 'smooth',
-                        block: 'start'
-                    });
+                const href = this.getAttribute('href');
+                
+                // Only process valid hash fragments (must start with # and be longer than 1 char)
+                if (href && href.startsWith('#') && href.length > 1) {
+                    e.preventDefault();
+                    try {
+                        const target = document.querySelector(href);
+                        if (target) {
+                            target.scrollIntoView({
+                                behavior: 'smooth',
+                                block: 'start'
+                            });
+                        }
+                    } catch (error) {
+                        console.warn('Invalid selector for smooth scroll:', href, error);
+                    }
                 }
+                // If it's not a hash fragment, let the browser handle it normally (don't preventDefault)
             });
         });
     }
@@ -412,6 +422,53 @@ class EventManager {
     }
 }
 
+// Review Manager Class
+class ReviewManager {
+    static init() {
+        console.log('ReviewManager initializing...');
+        console.log('window.ReviewConfig:', window.ReviewConfig);
+        
+        const reviewElements = {
+            rating: document.getElementById('googleRating'),
+            totalReviews: document.getElementById('totalReviews'),
+            reviewLink: document.getElementById('googleReviewLink'),
+            stars: document.querySelector('.google-reviews-ribbon .stars')
+        };
+
+        console.log('Review elements found:', reviewElements);
+
+        if (window.ReviewConfig) {
+            if (reviewElements.rating) {
+                reviewElements.rating.textContent = ReviewConfig.rating;
+            }
+            if (reviewElements.totalReviews) {
+                reviewElements.totalReviews.textContent = ReviewConfig.totalReviews;
+            }
+            if (reviewElements.reviewLink) {
+                reviewElements.reviewLink.href = ReviewConfig.googlePageUrl;
+            }
+            if (reviewElements.stars) {
+                // Generate stars based on rating
+                const rating = parseFloat(ReviewConfig.rating);
+                const fullStars = Math.floor(rating);
+                const hasHalfStar = rating % 1 >= 0.5;
+                const emptyStars = 5 - fullStars - (hasHalfStar ? 1 : 0);
+                
+                let starsHTML = '★'.repeat(fullStars);
+                if (hasHalfStar) {
+                    starsHTML += '☆'; // Half star (or you could use a different character)
+                }
+                starsHTML += '☆'.repeat(emptyStars);
+                
+                reviewElements.stars.textContent = starsHTML;
+            }
+            console.log('ReviewManager initialized successfully');
+        } else {
+            console.error('ReviewConfig not found on window object');
+        }
+    }
+}
+
 // Initialize application
 document.addEventListener('DOMContentLoaded', function() {
     // Initialize service manager
@@ -424,45 +481,11 @@ document.addEventListener('DOMContentLoaded', function() {
     ContentManager.init();
     FormHandler.init();
     EventManager.init();
-    
-    console.log('Brisbane Carpet and Bond Cleaners website initialized successfully!');
-});
-
-// Review Manager Class
-class ReviewManager {
-    static init() {
-        const reviewElements = {
-            rating: document.getElementById('googleRating'),
-            totalReviews: document.getElementById('totalReviews'),
-            reviewLink: document.getElementById('googleReviewLink')
-        };
-
-        if (window.ReviewConfig) {
-            reviewElements.rating.textContent = ReviewConfig.rating;
-            reviewElements.totalReviews.textContent = ReviewConfig.totalReviews;
-            reviewElements.reviewLink.href = ReviewConfig.googlePageUrl;
-        }
-    }
-}
-
-// Add to your DOMContentLoaded event
-document.addEventListener('DOMContentLoaded', function() {
-    // Initialize service manager
-    const serviceManager = new ServiceManager();
-    serviceManager.init();
-    window.serviceManager = serviceManager; // Make it globally available
-
-    // Initialize other managers
-    ContactManager.init();
-    ContentManager.init();
-    FormHandler.init();
-    EventManager.init();
-    
-    console.log('Brisbane Carpet and Bond Cleaners website initialized successfully!');
     ReviewManager.init();
+    
+    console.log('Brisbane Carpet and Bond Cleaners website initialized successfully!');
 });
 
 // Export for global access
-window.serviceManager = serviceManager;
 window.ServiceModal = ServiceModal;
 window.ContactManager = ContactManager;
