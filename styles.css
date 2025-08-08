@@ -1385,8 +1385,8 @@ html {
     text-align: center;
 }
 
-
-#contactForm .ice-field{
+/* Icepot field - bot-proof hiding method */
+#contactForm .icepot-field {
     /* Method 1: Absolute positioning off-screen */
     position: absolute !important;
     left: -9999px !important;
@@ -1420,7 +1420,7 @@ html {
 }
 
 /* Alternative icepot using CSS transforms */
-#contactForm .ice-field-alt {
+#contactForm .icepot-field-alt {
     transform: scale(0) !important;
     position: absolute !important;
     left: -100vw !important;
@@ -1433,7 +1433,7 @@ html {
 }
 
 /* Fake visible label that tricks bots but screen readers ignore */
-#contactForm .ice-label {
+#contactForm .icepot-label {
     position: absolute !important;
     left: -10000px !important;
     width: 1px !important;
@@ -1470,4 +1470,3 @@ html {
         padding: 14px;
     }
 }
-
