@@ -1,303 +1,491 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Brisbane North Bond & Carpet Cleaners - Professional Cleaning Services</title>
-    <link rel="stylesheet" href="styles.css">
-</head>
-<body>
-    <header>
-        <div class="header-content">
-            <a href="#" class="logo">Brisbane North Bond & Carpet Cleaners</a>
-            <nav>
-                <ul>
-                    <li><a href="#home">Home</a></li>
-                    <li><a href="#services">Services</a></li>
-                    <li><a href="#contact">Contact</a></li>
-                </ul>
-            </nav>
-        </div>
-    </header>
+// app.js
+// Main application logic for Brisbane North Bond & Carpet Cleaners website
 
-    <section id="home" class="hero">
-        <div class="hero-content">
-            <h1>Professional Cleaning.<br>Simply Done.</h1>
-            <p class="hero-subtitle">Transforming spaces with precision, care, and the highest standards of cleanliness across Brisbane's North Side.</p>
-        </div>
-    </section>
+// Application Configuration
+const AppConfig = {
+    company: {
+        name: "Brisbane North Bond & Carpet Cleaners",
+        phone: "0721436064",
+        email: "info@bnbcc.com.au",
+        address: "Servicing Brisbane North Side",
+        hours: "Mon-Fri 7AM-7PM, Sat 8AM-5PM",
+        abn: "14 132 271 327"
+    },
+    contactInfo: [
+        { icon: "📞", title: "Phone", content: "0721436064" },
+        { icon: "📧", title: "Email", content: "info@bnbcc.com.au" },
+        { icon: "📍", title: "Location", content: "Servicing Brisbane North Side" },
+        { icon: "🕒", title: "Business Hours", content: "Mon-Fri 7AM-7PM, Sat 8AM-5PM" },
+        { icon: "⚡", title: "Response Time", content: "Within 24 hours" }
+    ],
+    whyUsData: [
+        { 
+            icon: "⭐", 
+            title: "10+ Years Experience", 
+            description: "Over a decade of professional cleaning expertise serving Brisbane's North Side communities." 
+        },
+        { 
+            icon: "🏢", 
+            title: "Real Estate Trusted", 
+            description: "Preferred cleaning partner for leading real estate agencies across Brisbane North." 
+        },
+        { 
+            icon: "⚡", 
+            title: "Same Day Service", 
+            description: "Fast response times with same-day service available for urgent cleaning needs." 
+        },
+        { 
+            icon: "✔️", 
+            title: "Satisfaction Guaranteed", 
+            description: "Our work comes with a satisfaction guarantee and warranty for your peace of mind." 
+        }
+    
+        
+    ]
+};
 
-    <div class="google-reviews-ribbon">
-        <div class="container">
-            <div class="ribbon-content">
-                <div class="stars">★★★★★</div>
-                <p><span id="googleRating"></span> out of 5 based on <span id="totalReviews"></span> Google Reviews</p>
-                <a id="googleReviewLink" href="#" target="_blank" class="review-link">Check Our Google Reviews</a>
-            </div>
-        </div>
-    </div>
+// Service Manager Class
+class ServiceManager {
+    constructor() {
+        this.services = window.ServicesConfig || {};
+    }
 
-    <section id="why-us" class="why-us">
-        <div class="container">
-            <div class="section-header">
-                <h2 class="section-title">Why Choose Us</h2>
-                <p class="section-subtitle">Experience the difference of working with Brisbane's most trusted cleaning professionals.</p>
-            </div>
-            <div class="why-us-grid" id="whyUsGrid">
-                <!-- Populated by JavaScript -->
-            </div>
-             <p class="section-paragraph">We understand that finding a reliable cleaning service 
-                    can be challenging. That's why we've spent over a decade building our reputation 
-                    as Brisbane North's most dependable cleaning partner. Our fully insured and 
-                    police-checked professionals combine industry-leading techniques with eco-friendly 
-                    solutions to deliver exceptional results every time. From end-of-lease cleaning to 
-                    carpet restoration, we handle each project with meticulous attention to detail and 
-                    a commitment to exceeding expectations. Our proven track record, responsive 
-                    customer service, and satisfaction guarantee make us the preferred choice for 
-                    homeowners, real estate agents, and property managers across Brisbane's 
-                    North Side.</p>
-            </div>
-        </div>
-    </section>
+    init() {
+        console.log('ServiceManager initializing...', this.services); // Debug line
+        this.renderServices();
+        this.renderServiceOptions();
+    }
 
-    <section id="services" class="services">
-        <div class="container">
-            <div class="section-header">
-                <h2 class="section-title">Our Services</h2>
-                <p class="section-subtitle">Comprehensive cleaning solutions designed to meet your every need with exceptional attention to detail.</p>
-            </div>
-            <div class="services-grid" id="servicesGrid">
-                <!-- Populated by JavaScript -->
-            </div>
-        </div>
-    </section>
-
-    <!-- Replace or update the form section -->
-    <section id="contact" class="section">
-        <div class="container">
-            <div class="form-container">
-                <h2>Contact Us</h2>
-                <p>Get in touch for a free quote or any questions about our services.</p>
-                
-                <form id="contactForm" 
-                      action="https://script.google.com/macros/s/AKfycbwaWZdtmhkrJ9wLqOECG8xJfecim5cBt6IxU4sLZ7uZ9vnaGfTQRj6Xuu3XL-fovYMGxg/exec" 
-                      method="POST" 
-                      target="hidden_iframe">
-                    
-                    <div class="form-group name-group">
-                        <div class="form-field-half">
-                            <label for="firstName">First Name <span class="required">*</span></label>
-                            <input type="text" id="firstName" name="firstName" required>
-                        </div>
-                        <div class="form-field-half">
-                            <label for="lastName">Last Name <span class="required">*</span></label>
-                            <input type="text" id="lastName" name="lastName" required>
-                        </div>
-                    </div>
-
-                    <div class="form-group">
-                        <label for="emailAddress">Email Address <span class="required">*</span></label>
-                        <input type="email" id="emailAddress" name="emailAddress" required>
-                    </div>
-
-                    <div class="form-group">
-                        <label for="phoneNumber">Phone Number</label>
-                        <input type="tel" id="phoneNumber" name="phoneNumber">
-                    </div>
-
-                    <div class="form-group">
-                        <label for="serviceType">Service Type</label>
-                        <select id="serviceType" name="serviceType">
-                            <option value="">Select a service...</option>
-                        </select>
-                    </div>
-
-                    <div class="form-group">
-                        <label for="propertyAddress">Property Address</label>
-                        <input type="text" id="propertyAddress" name="propertyAddress">
-                    </div>
-
-                    <div class="form-group">
-                        <label for="messageContent">Message <span class="required">*</span></label>
-                        <textarea id="messageContent" name="messageContent" required></textarea>
-                    </div>
-
-                    <button type="submit" class="submit-btn" id="submitBtn">
-                        <span class="loading-spinner" id="loadingSpinner"></span>
-                        <span class="btn-text">Send Message</span>
-                    </button>
-                </form>
-            </div>
-        </div>
-    </section>
-
-    <!-- Hidden iframe for form submission -->
-    <iframe name="hidden_iframe" id="hidden_iframe" style="display:none;"></iframe>
-
-    <!-- Service Modal -->
-    <div id="serviceModal" class="service-modal">
-        <div class="service-modal-content">
-            <div class="service-modal-header">
-                <button class="service-modal-close" onclick="ServiceModal.close()">&times;</button>
-                <h3 id="serviceModalTitle">Service Title</h3>
-                <div class="price-display" id="serviceModalPrice">From $XXX</div>
-            </div>
-            <div class="service-modal-body">
-                <p class="service-description" id="serviceModalDescription">Service description will go here...</p>
-                <div class="service-features">
-                    <h4>What's Included:</h4>
-                    <ul id="serviceModalFeatures">
-                        <!-- Features will be populated by JavaScript -->
-                    </ul>
-                </div>
-                <button class="modal-quote-btn" onclick="ServiceModal.openQuote()">Get Free Quote</button>
-            </div>
-        </div>
-    </div>
-
-    <!-- Floating Action Button -->
-    <a href="tel:0460958603" class="floating-action">📞</a>
-
-    <!-- Footer -->
-    <footer class="footer">
-        <div class="container">
-            <div class="footer-content" id="footerContent">
-                <!-- Populated by JavaScript -->
-            </div>
-            <div class="footer-bottom">
-                <p>&copy; 2025 Brisbane North Bond & Carpet Cleaners. All rights reserved.</p>
-            </div>
-        </div>
-    </footer>
-
-    <!-- Success Screen -->
-<div class="success-screen" id="successScreen" style="display: none;">
-    <div class="success-icon">🎉</div>
-    <div class="success-message">Thank You!</div>
-    <div class="success-details">
-        Your message has been sent successfully! We will contact you within 24 hours during business hours.
-        <br><br>
-        For urgent requests, please call us directly at <strong>0460 958 603</strong>
-    </div>
-    <button class="back-btn" onclick="FormHandler.resetForm()">Send Another Message</button>
-</div>
-
-    <!-- JavaScript Files -->
-    <script src="services-config.js"></script>
-    <script src="app.js"></script>
-    <script>
-// Form handling
-document.addEventListener('DOMContentLoaded', function() {
-    const form = document.getElementById('contactForm');
-    const fields = Array.from(form.querySelectorAll('input[required], textarea[required]'));
-    let isSubmitting = false;
-
-    // Handle form submission
-    form.addEventListener('submit', function(e) {
-        if (isSubmitting) {
-            e.preventDefault();
+    renderServices() {
+        const servicesGrid = document.getElementById('servicesGrid');
+        if (!servicesGrid) {
+            console.error('Services grid element not found');
             return;
         }
 
-        if (!validateForm()) {
-            e.preventDefault();
-            return;
-        }
+        const serviceCards = Object.entries(this.services).map(([id, service]) => `
+            <div class="service-card" onclick="ServiceModal.open('${id}')">
+                <div class="service-card-tooltip">Click for full details</div>
+                <div class="price-tag">${service.price}</div>
+                <span class="service-icon">${service.icon}</span>
+                <h3>${service.title}</h3>
+                <p>${service.description}</p>
+                <button class="quote-btn" onclick="event.stopPropagation(); ContactManager.openQuote('${service.title}')">Get Quote</button>
+            </div>
+        `).join('');
 
-        isSubmitting = true;
-        showLoadingState();
-    });
+        servicesGrid.innerHTML = serviceCards;
+    }
 
-    // Handle iframe load (form submission complete)
-    document.getElementById('hidden_iframe').addEventListener('load', function() {
-        if (isSubmitting) {
-            handleFormSuccess();
-        }
-    });
+    renderServiceOptions() {
+        const serviceSelect = document.getElementById('serviceType');
+        if (!serviceSelect) return;
 
-    function validateForm() {
-        let isValid = true;
-        clearAllFieldErrors();
+        serviceSelect.innerHTML = `
+            <option value="">Select a service...</option>
+            ${Object.entries(this.services).map(([id, service]) => 
+                `<option value="${id}">${service.title}</option>`
+            ).join('')}
+            <option value="other">Other</option>
+        `;
+    }
 
-        fields.forEach(field => {
-            if (!validateField(field)) {
-                isValid = false;
+    getService(serviceId) {
+        return this.services[serviceId];
+    }
+
+    getAllServices() {
+        return this.services;
+    }
+
+    searchServices(query) {
+        const searchTerm = query.toLowerCase();
+        return Object.entries(this.services)
+            .filter(([id, service]) => 
+                service.title.toLowerCase().includes(searchTerm) ||
+                service.description.toLowerCase().includes(searchTerm) ||
+                service.features.some(feature => feature.toLowerCase().includes(searchTerm))
+            );
+    }
+}
+
+// Service Modal Manager Class
+class ServiceModal {
+    static open(serviceId) {
+        const service = serviceManager.getService(serviceId);
+        if (!service) return;
+
+        const modal = document.getElementById('serviceModal');
+        const title = document.getElementById('serviceModalTitle');
+        const price = document.getElementById('serviceModalPrice');
+        const description = document.getElementById('serviceModalDescription');
+        const features = document.getElementById('serviceModalFeatures');
+
+        title.textContent = service.title;
+        price.textContent = service.price;
+        description.textContent = service.description;
+
+        features.innerHTML = service.features.map(feature => `<li>${feature}</li>`).join('');
+
+        serviceManager.currentService = service.title;
+        modal.classList.add('active');
+        
+        // Prevent body scrolling
+        document.body.style.overflow = 'hidden';
+    }
+
+    static close() {
+        const modal = document.getElementById('serviceModal');
+        modal.classList.remove('active');
+        
+        // Restore body scrolling
+        document.body.style.overflow = 'auto';
+    }
+
+    static openQuote() {
+        this.close();
+        ContactManager.openQuote(serviceManager.currentService);
+    }
+}
+
+// Contact Manager Class
+class ContactManager {
+    static showContactPage() {
+        const contactPage = document.getElementById('contactPage');
+        contactPage.classList.add('active');
+        window.scrollTo(0, 0);
+        this.hideMainSections();
+        
+        // Prevent body scrolling
+        document.body.style.overflow = 'hidden';
+    }
+
+    static hideContactPage() {
+        const contactPage = document.getElementById('contactPage');
+        contactPage.classList.remove('active');
+        window.scrollTo(0, 0);
+        this.showMainSections();
+        
+        // Restore body scrolling
+        document.body.style.overflow = 'auto';
+    }
+
+    static hideMainSections() {
+        const sections = ['hero', 'services', 'contact', 'why-us'];
+        sections.forEach(section => {
+            const element = document.querySelector(`.${section}`);
+            if (element) element.style.display = 'none';
+        });
+    }
+
+    static showMainSections() {
+        const sections = {
+            'hero': 'flex',
+            'services': 'block', 
+            'contact': 'block',
+            'why-us': 'block'
+        };
+        
+        Object.entries(sections).forEach(([section, display]) => {
+            const element = document.querySelector(`.${section}`);
+            if (element) element.style.display = display;
+        });
+    }
+
+    static openQuote(serviceName) {
+        const serviceSelect = document.getElementById('serviceType');
+        const contactSection = document.getElementById('contact');
+        
+        // Find and select the matching service
+        Array.from(serviceSelect.options).forEach(option => {
+            if (option.text === serviceName) {
+                option.selected = true;
             }
         });
 
-        return isValid;
+        // Close any open modals
+        ServiceModal.close();
+
+        // Scroll to contact form
+        contactSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
     }
 
-    function validateField(field) {
-        const value = field.value.trim();
-        
-        if (field.hasAttribute('required') && !value) {
-            highlightField(field.id, true);
-            return false;
+    static init() {
+        this.renderContactInfo();
+    }
+
+    static renderContactInfo() {
+        const contactInfoItems = document.getElementById('contactInfoItems');
+        if (!contactInfoItems) return;
+
+        contactInfoItems.innerHTML = AppConfig.contactInfo.map(item => `
+            <div class="contact-info-item">
+                <div class="contact-info-icon">${item.icon}</div>
+                <div class="contact-info-text">
+                    <h3>${item.title}</h3>
+                    <p>${item.content}</p>
+                </div>
+            </div>
+        `).join('');
+    }
+}
+
+// Content Manager Class
+class ContentManager {
+    static init() {
+        this.renderWhyUs();
+        this.renderFooter();
+    }
+
+    static renderWhyUs() {
+        const whyUsGrid = document.getElementById('whyUsGrid');
+        if (!whyUsGrid) return;
+
+        whyUsGrid.innerHTML = AppConfig.whyUsData.map(item => `
+            <div class="why-us-card">
+                <div class="why-us-icon">${item.icon}</div>
+                <h3>${item.title}</h3>
+                <p>${item.description}</p>
+            </div>
+        `).join('');
+    }
+
+    static renderFooter() {
+        const footerContent = document.getElementById('footerContent');
+        if (!footerContent) return;
+
+        footerContent.innerHTML = `
+            <div class="footer-section">
+                <h4>${AppConfig.company.name}</h4>
+                <p>Professional cleaning services across Brisbane's North Side. Committed to quality, reliability, and customer satisfaction.</p>
+            </div>
+            
+            <div class="footer-section">
+                <h4>Contact Info</h4>
+                <p>📞 ${AppConfig.company.phone}</p>
+                <p>📧 ${AppConfig.company.email}</p>
+                <p>📍 ${AppConfig.company.address}</p>
+                <p>🕒 ${AppConfig.company.hours}</p>
+                <p>📌 ABN ${AppConfig.company.abn}</p>
+            </div>
+            
+            <div class="footer-section">
+                <h4>Quick Links</h4>
+                <a href="#home">Home</a>
+                <a href="#services">Services</a>
+                <a href="#why-us">Why Choose Us</a>
+                <a href="#contact">Contact</a>
+            </div>
+        `;
+    }
+}
+
+// Form Manager Class
+class FormHandler {
+    static init() {
+        const form = document.getElementById('contactForm');
+        if (!form) return;
+
+        // Create hidden iframe
+        let iframe = document.getElementById('hidden_iframe');
+        if (!iframe) {
+            iframe = document.createElement('iframe');
+            iframe.name = 'hidden_iframe';
+            iframe.id = 'hidden_iframe';
+            iframe.style.display = 'none';
+            document.body.appendChild(iframe);
         }
-        
-        if (field.type === 'email' && value) {
-            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-            if (!emailRegex.test(value)) {
-                highlightField(field.id, true);
-                return false;
+
+        let submitted = false;
+
+        // Handle iframe load
+        iframe.addEventListener('load', () => {
+            if (submitted) {
+                const successScreen = document.getElementById('successScreen');
+                const formContainer = document.querySelector('.form-container');
+                
+                // Hide form and show success screen
+                if (formContainer && successScreen) {
+                    formContainer.style.display = 'none';
+                    successScreen.style.display = 'block';
+                }
+
+                // Reset form and state
+                form.reset();
+                submitted = false;
+                this.resetSubmitButton();
             }
+        });
+
+        // Handle form submit
+        form.addEventListener('submit', (e) => {
+            this.showLoadingState();
+            submitted = true;
+        });
+
+        // Handle "Send Another Message" button
+        const backBtn = document.querySelector('.back-btn');
+        if (backBtn) {
+            backBtn.addEventListener('click', () => this.resetForm());
         }
-        
-        highlightField(field.id, false);
-        return true;
     }
 
-    function highlightField(fieldId, hasError) {
-        const field = document.getElementById(fieldId);
-        if (field) {
-            const formGroup = field.closest('.form-group');
-            if (formGroup) {
-                formGroup.classList.toggle('error', hasError);
-            }
-        }
-    }
-
-    function showLoadingState() {
-        const btn = document.getElementById('submitBtn');
+    static showLoadingState() {
+        const submitBtn = document.getElementById('submitBtn');
         const spinner = document.getElementById('loadingSpinner');
-        if (btn && spinner) {
-            btn.disabled = true;
+        if (submitBtn && spinner) {
+            submitBtn.disabled = true;
             spinner.style.display = 'inline-block';
-            btn.querySelector('.btn-text').textContent = 'Sending...';
+            submitBtn.querySelector('.btn-text').textContent = 'Sending...';
         }
     }
 
-    function handleFormSuccess() {
-        showSuccessMessage();
-        resetForm();
-        isSubmitting = false;
-    }
-
-    function showSuccessMessage() {
-        const alert = document.createElement('div');
-        alert.className = 'alert success';
-        alert.textContent = 'Thank you! We will contact you within 24 hours.';
-        form.parentNode.insertBefore(alert, form);
-        
-        setTimeout(() => alert.remove(), 5000);
-    }
-
-    function resetForm() {
-        form.reset();
-        const btn = document.getElementById('submitBtn');
+    static resetSubmitButton() {
+        const submitBtn = document.getElementById('submitBtn');
         const spinner = document.getElementById('loadingSpinner');
-        if (btn && spinner) {
-            btn.disabled = false;
+        if (submitBtn && spinner) {
+            submitBtn.disabled = false;
             spinner.style.display = 'none';
-            btn.querySelector('.btn-text').textContent = 'Send Message';
+            submitBtn.querySelector('.btn-text').textContent = 'Send Message';
         }
     }
 
-    function clearAllFieldErrors() {
-        fields.forEach(field => highlightField(field.id, false));
+    static resetForm() {
+        const successScreen = document.getElementById('successScreen');
+        const formContainer = document.querySelector('.form-container');
+        
+        if (formContainer && successScreen) {
+            successScreen.style.display = 'none';
+            formContainer.style.display = 'block';
+        }
+
+        const form = document.getElementById('contactForm');
+        if (form) {
+            form.reset();
+        }
     }
+}
+
+// Event Manager Class
+class EventManager {
+    static init() {
+        this.bindGlobalEvents();
+        this.bindKeyboardEvents();
+    }
+
+    static bindGlobalEvents() {
+        // Close modals when clicking outside
+        window.addEventListener('click', (event) => {
+            const serviceModal = document.getElementById('serviceModal');
+            if (event.target === serviceModal) {
+                ServiceModal.close();
+            }
+        });
+
+        // Smooth scroll for navigation
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                const href = this.getAttribute('href');
+                
+                // Only process valid hash fragments (must start with # and be longer than 1 char)
+                if (href && href.startsWith('#') && href.length > 1) {
+                    e.preventDefault();
+                    try {
+                        const target = document.querySelector(href);
+                        if (target) {
+                            target.scrollIntoView({
+                                behavior: 'smooth',
+                                block: 'start'
+                            });
+                        }
+                    } catch (error) {
+                        console.warn('Invalid selector for smooth scroll:', href, error);
+                    }
+                }
+                // If it's not a hash fragment, let the browser handle it normally (don't preventDefault)
+            });
+        });
+    }
+
+    static bindKeyboardEvents() {
+        // Close modal with Escape key
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') {
+                ServiceModal.close();
+                
+                const contactPage = document.getElementById('contactPage');
+                if (contactPage && contactPage.classList.contains('active')) {
+                    ContactManager.hideContactPage();
+                }
+            }
+        });
+    }
+}
+
+// Review Manager Class
+class ReviewManager {
+    static init() {
+        console.log('ReviewManager initializing...');
+        console.log('window.ReviewConfig:', window.ReviewConfig);
+        
+        const reviewElements = {
+            rating: document.getElementById('googleRating'),
+            totalReviews: document.getElementById('totalReviews'),
+            reviewLink: document.getElementById('googleReviewLink'),
+            stars: document.querySelector('.google-reviews-ribbon .stars')
+        };
+
+        console.log('Review elements found:', reviewElements);
+
+        if (window.ReviewConfig) {
+            if (reviewElements.rating) {
+                reviewElements.rating.textContent = ReviewConfig.rating;
+            }
+            if (reviewElements.totalReviews) {
+                reviewElements.totalReviews.textContent = ReviewConfig.totalReviews;
+            }
+            if (reviewElements.reviewLink) {
+                reviewElements.reviewLink.href = ReviewConfig.googlePageUrl;
+            }
+            if (reviewElements.stars) {
+                // Generate stars based on rating
+                const rating = parseFloat(ReviewConfig.rating);
+                const fullStars = Math.floor(rating);
+                const hasHalfStar = rating % 1 >= 0.5;
+                const emptyStars = 5 - fullStars - (hasHalfStar ? 1 : 0);
+                
+                let starsHTML = '★'.repeat(fullStars);
+                if (hasHalfStar) {
+                    starsHTML += '☆'; // Half star (or you could use a different character)
+                }
+                starsHTML += '☆'.repeat(emptyStars);
+                
+                reviewElements.stars.textContent = starsHTML;
+            }
+            console.log('ReviewManager initialized successfully');
+        } else {
+            console.error('ReviewConfig not found on window object');
+        }
+    }
+}
+
+// Initialize application
+document.addEventListener('DOMContentLoaded', function() {
+    // Initialize service manager
+    const serviceManager = new ServiceManager();
+    serviceManager.init();
+    window.serviceManager = serviceManager; // Make it globally available
+
+    // Initialize other managers
+    ContactManager.init();
+    ContentManager.init();
+    FormHandler.init();
+    EventManager.init();
+    ReviewManager.init();
+    
+    console.log('Brisbane Carpet and Bond Cleaners website initialized successfully!');
 });
-</script>
-</body>
-</html>
+
+// Export for global access
+window.ServiceModal = ServiceModal;
+window.ContactManager = ContactManager;
