@@ -1,4 +1,36 @@
-/* Reset and Base Styles */
+/* Performance Optimizations */
+html {
+    scroll-behavior: smooth;
+}
+
+/* GPU acceleration for smooth animations */
+.hero-phone-btn,
+.hero-quote-btn,
+.nav-phone,
+.mobile-phone,
+.floating-action,
+.service-modal {
+    will-change: transform;
+    transform: translateZ(0);
+    backface-visibility: hidden;
+}
+
+/* Optimize animations */
+@media (prefers-reduced-motion: reduce) {
+    * {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+    }
+}
+
+/* Critical performance CSS */
+.container {
+    contain: layout style;
+}
+
+/* Reset and Base Styles - Optimized */
 * {
     margin: 0;
     padding: 0;
@@ -11,8 +43,415 @@ body {
     color: #1d1d1f;
     background: #f5f5f7;
     overflow-x: hidden;
-    padding-bottom: 60px; /* Adjust this value based on your ribbon height */
-    padding-top: 100px; /* Account for header height */
+    padding-bottom: 60px;
+    margin: 0;
+    padding-top: 0;
+    /* Performance optimizations */
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+}
+
+/* Critical performance hint */
+img, video {
+    height: auto;
+    max-width: 100%;
+    /* Improve image loading performance */
+    image-rendering: -webkit-optimize-contrast;
+}
+
+/* Accessibility and SEO Enhancements */
+.sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+}
+
+/* Focus styles for better accessibility */
+a:focus,
+button:focus,
+input:focus,
+textarea:focus,
+select:focus {
+    outline: 2px solid #007aff;
+    outline-offset: 2px;
+}
+
+/* Skip to main content link for screen readers */
+.skip-link {
+    position: absolute;
+    top: -40px;
+    left: 6px;
+    background: #007aff;
+    color: white;
+    padding: 8px;
+    text-decoration: none;
+    z-index: 9999;
+    border-radius: 4px;
+}
+
+.skip-link:focus {
+    top: 6px;
+}
+
+/* Enhanced semantic elements */
+main {
+    min-height: 100vh;
+    position: relative;
+}
+
+/* Structured data and meta elements - hidden but accessible */
+script[type="application/ld+json"] {
+    display: none;
+}
+
+/* Enhanced form accessibility */
+.form-error-message {
+    color: #ff3b30;
+    font-size: 14px;
+    margin-top: 4px;
+    display: none;
+}
+
+.form-group.error .form-error-message {
+    display: block;
+}
+
+.form-group.error input,
+.form-group.error textarea,
+.form-group.error select {
+    border-color: #ff3b30 !important;
+    background-color: rgba(255, 59, 48, 0.05) !important;
+}
+
+/* ARIA live regions for dynamic content */
+.live-region {
+    position: absolute;
+    left: -10000px;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+}
+
+/* Enhanced button states */
+button[aria-expanded="true"] .mobile-menu-toggle span:nth-child(1) {
+    transform: rotate(45deg) translate(6px, 6px);
+}
+
+button[aria-expanded="true"] .mobile-menu-toggle span:nth-child(2) {
+    opacity: 0;
+}
+
+button[aria-expanded="true"] .mobile-menu-toggle span:nth-child(3) {
+    transform: rotate(-45deg) translate(6px, -6px);
+}
+
+/* Enhanced semantic section styling */
+section[aria-labelledby] {
+    scroll-margin-top: 120px; /* Account for fixed header */
+}
+
+/* Role-based styling improvements */
+[role="banner"] {
+    position: relative;
+    z-index: 1000;
+}
+
+[role="main"] {
+    position: relative;
+    z-index: 1;
+}
+
+[role="contentinfo"] {
+    margin-top: auto;
+}
+
+[role="complementary"] {
+    position: relative;
+}
+
+/* Enhanced navigation accessibility */
+nav[role="navigation"] ul {
+    list-style: none;
+}
+
+nav[role="navigation"] a {
+    position: relative;
+    transition: all 0.3s ease;
+}
+
+nav[role="navigation"] a::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: #007aff;
+    transition: width 0.3s ease;
+}
+
+nav[role="navigation"] a:hover::after,
+nav[role="navigation"] a:focus::after {
+    width: 100%;
+}
+
+/* Mobile dialog accessibility */
+[role="dialog"] {
+    position: fixed;
+    top: 0;
+    right: -100%;
+    width: 300px;
+    height: 100vh;
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(20px);
+    transition: right 0.3s ease;
+    z-index: 2000;
+}
+
+[role="dialog"].active {
+    right: 0;
+}
+
+/* Menu accessibility */
+[role="menu"] {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+[role="menuitem"] {
+    display: block;
+}
+
+[role="menuitem"] a {
+    display: block;
+    padding: 20px;
+    text-decoration: none;
+    color: #1d1d1f;
+    font-size: 18px;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+[role="menuitem"] a:hover,
+[role="menuitem"] a:focus {
+    background: rgba(0, 122, 255, 0.1);
+    color: #007aff;
+}
+
+/* Enhanced form validation styling */
+input:valid,
+textarea:valid,
+select:valid {
+    border-color: rgba(40, 167, 69, 0.3);
+}
+
+input:invalid:not(:placeholder-shown),
+textarea:invalid:not(:placeholder-shown),
+select:invalid:not(:placeholder-shown) {
+    border-color: rgba(255, 59, 48, 0.5);
+}
+
+/* Required field indicators */
+.required {
+    color: #007aff;
+    font-weight: 600;
+    margin-left: 2px;
+}
+
+/* Enhanced heading hierarchy */
+h1 {
+    font-size: clamp(48px, 6vw, 80px);
+    font-weight: 600;
+    line-height: 1.1;
+    letter-spacing: -0.003em;
+}
+
+h2 {
+    font-size: clamp(32px, 4vw, 48px);
+    font-weight: 600;
+    line-height: 1.2;
+    letter-spacing: -0.003em;
+}
+
+h3 {
+    font-size: clamp(24px, 3vw, 32px);
+    font-weight: 600;
+    line-height: 1.3;
+}
+
+/* Enhanced structured content */
+.section-header {
+    position: relative;
+    z-index: 2;
+}
+
+/* Improved content readability */
+p {
+    max-width: 65ch; /* Optimal reading width */
+    margin: 0 auto 1em;
+}
+
+.section-paragraph {
+    max-width: 75ch;
+    margin: 2em auto;
+    text-align: left;
+}
+
+/* Enhanced list semantics */
+ul, ol {
+    margin: 1em 0;
+    padding-left: 2em;
+}
+
+li {
+    margin: 0.5em 0;
+}
+
+/* Better link styling */
+a {
+    color: #007aff;
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+a:hover,
+a:focus {
+    color: #0056b3;
+}
+
+/* Consolidated Print Styles */
+@media print {
+    /* Base print reset */
+    * {
+        background: transparent !important;
+        color: black !important;
+        box-shadow: none !important;
+        text-shadow: none !important;
+    }
+    
+    /* Link styles for print */
+    a,
+    a:visited {
+        color: #000;
+    }
+    
+    a[href]:after {
+        content: " (" attr(href) ")";
+    }
+    
+    /* Hide interactive elements */
+    .floating-action,
+    .google-reviews-ribbon,
+    #contactForm,
+    .nav-phone,
+    .mobile-phone,
+    .hero-phone-btn {
+        display: none !important;
+    }
+    
+    /* Phone number print styling */
+    .inline-phone,
+    .phone-number-large {
+        background: none !important;
+        color: #000 !important;
+        padding: 0 !important;
+        border: none !important;
+        box-shadow: none !important;
+    }
+    
+    .inline-phone:after,
+    .phone-number-large:after {
+        content: " (0721 436 064)" !important;
+        font-weight: normal !important;
+    }
+    
+    /* Contact section for print */
+    .contact-header {
+        page-break-inside: avoid;
+    }
+    
+    .contact-phone-primary {
+        background: none !important;
+        color: #000 !important;
+        border: 1px solid #000 !important;
+        box-shadow: none !important;
+    }
+    
+    /* Show SEO content in print */
+    .seo-services-content {
+        position: static;
+        left: auto;
+        top: auto;
+        width: auto;
+        height: auto;
+        overflow: visible;
+        clip: auto;
+        white-space: normal;
+    }
+    
+    .seo-services-content .container {
+        max-width: 100%;
+        margin: 20px 0;
+    }
+    
+    .seo-services-content h2,
+    .seo-services-content h3 {
+        color: #000;
+        margin: 15px 0 10px 0;
+    }
+    
+    .seo-services-content p {
+        color: #333;
+        margin: 10px 0;
+    }
+    
+    .seo-services-content ul {
+        margin: 10px 0 10px 20px;
+    }
+    
+    .seo-services-content li {
+        color: #333;
+        margin: 5px 0;
+    }
+    
+    /* Hide non-essential elements in print */
+    .google-reviews-ribbon,
+    .mobile-menu-toggle,
+    .mobile-sidebar {
+        display: none !important;
+    }
+    
+    /* Page break controls */
+    header,
+    footer,
+    nav {
+        page-break-inside: avoid;
+    }
+    
+    h1, h2, h3 {
+        page-break-after: avoid;
+    }
+}
+
+/* Reduced motion accessibility */
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+    }
 }
 
 .container {
@@ -21,18 +460,22 @@ body {
     padding: 0 20px;
 }
 
-/* Header */
+/* Header - Performance Optimized */
 header {
-    background: #ffffff;
+    background: rgba(255, 255, 255, 0.95);
     backdrop-filter: blur(20px);
     -webkit-backdrop-filter: blur(20px);
     border-bottom: 1px solid rgba(0, 0, 0, 0.1);
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    z-index: 1000;
+    position: fixed !important;
+    top: 0 !important;
+    left: 0 !important;
+    right: 0 !important;
+    width: 100% !important;
+    z-index: 1000 !important;
     transition: all 0.3s ease;
+    /* Performance optimization */
+    will-change: transform;
+    contain: layout style;
 }
 
 .header-content {
@@ -186,7 +629,7 @@ nav a:hover {
     color: #007aff;
 }
 
-/* Hero Section */
+/* Hero Section - Performance Optimized */
 .hero {
     min-height: 100vh;
     display: flex;
@@ -201,6 +644,12 @@ nav a:hover {
     background-repeat: no-repeat;
     background-attachment: fixed; /* Parallax effect for desktop */
     z-index: 1; /* Lower z-index than header */
+    padding-top: 100px; /* Account for fixed header height */
+    /* Performance optimizations */
+    will-change: transform;
+    contain: layout style;
+    /* Optimize background image */
+    image-rendering: -webkit-optimize-contrast;
 }
 
 .hero::before {
@@ -611,199 +1060,11 @@ nav a:hover {
     transform: scale(1.02);
 }
 
-/* Contact Section */
-.contact {
-    padding: 80px 0;
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-    color: white;
-}
+/* Legacy contact section classes removed - not used in current HTML */
 
-.contact-content {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 3rem;
-}
+/* Legacy contact page classes removed - not used in current HTML */
 
-.contact-info {
-    text-align: center;
-}
-
-.contact-info h3 {
-    margin-bottom: 1.5rem;
-    font-size: 1.5rem;
-}
-
-.contact-info p {
-    margin-bottom: 1rem;
-    opacity: 0.9;
-}
-
-.cta-button {
-    display: inline-block;
-    background: #ff6b6b;
-    color: white;
-    padding: 15px 30px;
-    text-decoration: none;
-    border-radius: 50px;
-    font-weight: bold;
-    transition: all 0.3s ease;
-    box-shadow: 0 4px 15px rgba(255, 107, 107, 0.4);
-    border: none;
-    cursor: pointer;
-    font-size: 17px;
-}
-
-.cta-button:hover {
-    background: #ff5252;
-    transform: translateY(-2px);
-    box-shadow: 0 6px 20px rgba(255, 107, 107, 0.6);
-}
-
-/* Contact Page */
-.contact-page {
-    display: none;
-    min-height: 100vh;
-    background: linear-gradient(135deg, #f5f5f7 0%, #ffffff 100%);
-    padding: 80px 0;
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    overflow-y: auto;
-    z-index: 1500;
-}
-
-.contact-page.active {
-    display: block;
-}
-
-.contact-page-header {
-    text-align: center;
-    margin-bottom: 60px;
-}
-
-.contact-page h1 {
-    font-size: 48px;
-    font-weight: 600;
-    color: #1d1d1f;
-    margin-bottom: 16px;
-    letter-spacing: -0.003em;
-}
-
-.contact-page-subtitle {
-    font-size: 21px;
-    color: #86868b;
-    font-weight: 400;
-    max-width: 600px;
-    margin: 0 auto;
-}
-
-.contact-page-content {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 80px;
-    align-items: start;
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 20px;
-}
-
-.contact-info-section {
-    background: white;
-    padding: 40px;
-    border-radius: 20px;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.03);
-    border: 1px solid rgba(0, 0, 0, 0.05);
-}
-
-.contact-info-section h2 {
-    font-size: 32px;
-    font-weight: 600;
-    color: #1d1d1f;
-    margin-bottom: 24px;
-    letter-spacing: -0.003em;
-}
-
-.contact-info-item {
-    display: flex;
-    align-items: center;
-    margin-bottom: 20px;
-    padding: 16px;
-    background: #f5f5f7;
-    border-radius: 12px;
-    transition: all 0.3s ease;
-}
-
-.contact-info-item:hover {
-    background: #e8e8ed;
-    transform: translateY(-2px);
-}
-
-.contact-info-icon {
-    font-size: 24px;
-    margin-right: 16px;
-    width: 40px;
-    text-align: center;
-}
-
-.contact-info-text {
-    flex: 1;
-}
-
-.contact-info-text h3 {
-    font-size: 17px;
-    font-weight: 600;
-    color: #1d1d1f;
-    margin-bottom: 4px;
-}
-
-.contact-info-text p {
-    font-size: 15px;
-    color: #86868b;
-    margin: 0;
-}
-
-.contact-form-section {
-    background: white;
-    padding: 40px;
-    border-radius: 20px;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.03);
-    border: 1px solid rgba(0, 0, 0, 0.05);
-}
-
-.contact-form-section h2 {
-    font-size: 32px;
-    font-weight: 600;
-    color: #1d1d1f;
-    margin-bottom: 24px;
-    letter-spacing: -0.003em;
-}
-
-.back-button {
-    background: #f5f5f7;
-    color: #007aff;
-    padding: 12px 24px;
-    border: none;
-    border-radius: 980px;
-    font-size: 17px;
-    font-weight: 400;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    margin-bottom: 40px;
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-}
-
-.back-button:hover {
-    background: #e8e8ed;
-    transform: scale(1.02);
-}
-
-.back-button::before {
-    content: '←';
-    font-size: 20px;
-}
+/* Contact page content and info section classes removed */
 
 /* Form Styles */
 .form-group {
@@ -863,16 +1124,7 @@ nav a:hover {
     transform: scale(1.02);
 }
 
-.form-error {
-    color: #ff3b30;
-    font-size: 14px;
-    margin-top: 4px;
-    display: none;
-}
-
-.form-field-error {
-    border-color: #ff3b30 !important;
-}
+/* Unused form error classes removed */
 
 .submit-btn:disabled {
     opacity: 0.7;
@@ -1014,9 +1266,32 @@ nav a:hover {
 
 /* Mobile Google Reviews Ribbon Styles */
 @media (max-width: 768px) {
+    /* Remove any body padding that might create empty space */
+    body {
+        padding-top: 0 !important;
+        margin: 0 !important;
+    }
+    
+    /* Ensure header stays fixed at top on mobile */
+    header {
+        position: fixed !important;
+        top: 0 !important;
+        left: 0 !important;
+        right: 0 !important;
+        z-index: 1000 !important;
+    }
+    
+    /* Adjust hero section for mobile */
+    .hero {
+        padding-top: 100px !important; /* Account for fixed header */
+        min-height: 100vh;
+        background-attachment: scroll; /* Remove parallax on mobile for better performance */
+        background-position: top center; /* Ensure top portion is visible on mobile */
+    }
+    
     .google-reviews-ribbon {
         padding: 8px 0;
-        background: rgba(248, 249, 250, 0.7);
+        background: rgba(248, 249, 250, 0.8);
         backdrop-filter: blur(15px);
         -webkit-backdrop-filter: blur(15px);
     }
@@ -1066,6 +1341,84 @@ nav a:hover {
         padding-bottom: 60px; /* Reduce bottom padding for mobile */
     }
 }
+
+/* Enhanced Accessibility for Google Reviews Ribbon */
+.google-reviews-ribbon:focus-within {
+    outline: 2px solid #007aff;
+    outline-offset: -2px;
+}
+
+.review-link:focus {
+    outline: 2px solid #007aff;
+    outline-offset: 2px;
+    box-shadow: 0 0 0 4px rgba(0, 122, 255, 0.2);
+}
+
+/* High contrast mode for ribbon */
+@media (prefers-contrast: high) {
+    .google-reviews-ribbon {
+        background: #fff !important;
+        border: 2px solid #000 !important;
+    }
+    
+    .ribbon-content p,
+    .review-link {
+        color: #000 !important;
+    }
+    
+    .review-link {
+        border: 1px solid #000 !important;
+        background: #fff !important;
+    }
+    
+    .review-link:hover,
+    .review-link:focus {
+        background: #000 !important;
+        color: #fff !important;
+    }
+}
+
+/* Reduced motion for ribbon */
+@media (prefers-reduced-motion: reduce) {
+    .google-reviews-ribbon {
+        transition: none !important;
+    }
+    
+    .review-link {
+        transition: none !important;
+    }
+    
+    .review-link:hover {
+        transform: none !important;
+    }
+}
+
+/* Screen reader enhancements */
+.stars[aria-label] {
+    position: relative;
+}
+
+.stars::before {
+    content: attr(aria-label);
+    position: absolute;
+    left: -10000px;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+}
+
+/* Touch target improvements for ribbon */
+@media (max-width: 768px) {
+    .review-link {
+        min-height: 44px;
+        min-width: 44px;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+    }
+}
+
+/* Print styles already consolidated above */
 
 /* Success screen styles */
 .success-screen {
@@ -1123,10 +1476,6 @@ nav a:hover {
 
 /* Responsive adjustments */
 @media (max-width: 768px) {
-    .hero {
-        background-attachment: scroll; /* Remove parallax on mobile for better performance */
-    }
-    
     .hero::before {
         background: rgba(0, 0, 0, 0.4); /* Slightly darker overlay for mobile text readability */
     }
@@ -1148,23 +1497,7 @@ nav a:hover {
         gap: 40px;
     }
 
-    .contact-page-content {
-        grid-template-columns: 1fr;
-        gap: 40px;
-    }
-
-    .contact-info-section,
-    .contact-form-section {
-        padding: 24px;
-    }
-
-    .contact-page h1 {
-        font-size: 32px;
-    }
-
-    .contact-page-subtitle {
-        font-size: 17px;
-    }
+    /* Contact page references removed - classes no longer exist */
 
     .service-modal-content {
         margin: 10% auto;
@@ -1241,10 +1574,6 @@ nav a:hover {
     .ribbon-content {
         flex-direction: column;
         gap: 8px;
-    }
-    
-    body {
-        padding-top: 120px; /* Account for increased mobile header height */
     }
 
     .name-group {
@@ -1531,43 +1860,56 @@ html {
     }
 }
 
-/* Phone Number Styling */
+/* Phone Number Styling - Consolidated Base Classes */
+
+/* Base phone button styling */
+.phone-btn-base {
+    background: #007aff;
+    color: white !important;
+    padding: 12px 24px;
+    border-radius: 30px;
+    font-weight: 700;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(0, 122, 255, 0.4);
+    border: 2px solid #007aff;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.phone-btn-base:hover,
+.phone-btn-base:focus {
+    background: #0056b3;
+    border-color: #0056b3;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(0, 122, 255, 0.5);
+    color: white !important;
+    text-decoration: none;
+}
 
 /* Navigation Phone Link */
 .nav-phone {
-    background: #007aff !important;
-    color: white !important;
-    padding: 8px 16px !important;
-    border-radius: 20px !important;
-    font-weight: 600 !important;
-    text-decoration: none !important;
-    transition: all 0.3s ease !important;
-    font-size: 14px !important;
+    font-size: 16px;
 }
 
-.nav-phone:hover {
-    background: #0056b3 !important;
-    transform: translateY(-1px) !important;
-    box-shadow: 0 4px 12px rgba(0, 122, 255, 0.3) !important;
+.nav-phone:focus {
+    outline: 2px solid #ffffff;
+    outline-offset: 2px;
 }
 
-/* Mobile Navigation Phone */
+/* Mobile Navigation Phone - extends base phone button */
 .mobile-phone {
-    background: #007aff !important;
-    color: white !important;
-    padding: 12px 20px !important;
-    border-radius: 8px !important;
-    font-weight: 600 !important;
-    text-decoration: none !important;
-    margin-top: 10px !important;
-    display: block !important;
-    text-align: center !important;
-    transition: all 0.3s ease !important;
+    font-size: 18px;
+    padding: 16px 32px;
+    display: block;
+    text-align: center;
+    margin: 20px;
 }
 
-.mobile-phone:hover {
-    background: #0056b3 !important;
-    transform: scale(1.02) !important;
+.mobile-phone:focus {
+    outline: 2px solid #ffffff;
+    outline-offset: 2px;
 }
 
 /* Hero Section Phone Buttons */
@@ -1579,43 +1921,11 @@ html {
     margin-top: 30px;
 }
 
-.hero-phone-btn {
-    background: #007aff;
-    color: white;
-    padding: 16px 32px;
-    border-radius: 30px;
-    font-weight: 700;
-    font-size: 18px;
-    text-decoration: none;
-    transition: all 0.3s ease;
-    box-shadow: 0 4px 15px rgba(0, 122, 255, 0.4);
-    border: 2px solid #007aff;
-}
-
-.hero-phone-btn:hover {
-    background: #0056b3;
-    border-color: #0056b3;
-    transform: translateY(-2px);
-    box-shadow: 0 8px 25px rgba(0, 122, 255, 0.5);
-}
-
+/* Hero Section Phone Buttons - both use base styling */
+.hero-phone-btn,
 .hero-quote-btn {
-    background: transparent;
-    color: #007aff;
-    padding: 16px 32px;
-    border-radius: 30px;
-    font-weight: 700;
     font-size: 18px;
-    text-decoration: none;
-    transition: all 0.3s ease;
-    border: 2px solid #007aff;
-}
-
-.hero-quote-btn:hover {
-    background: #007aff;
-    color: white;
-    transform: translateY(-2px);
-    box-shadow: 0 8px 25px rgba(0, 122, 255, 0.3);
+    padding: 16px 32px;
 }
 
 /* Section Phone Links */
@@ -1788,3 +2098,316 @@ html {
         padding: 12px 24px;
     }
 }
+
+/* Enhanced Accessibility for Phone Elements */
+.phone-btn-base:focus,
+.inline-phone:focus,
+.contact-phone-primary:focus,
+.phone-number-large:focus {
+    outline: 3px solid #007aff;
+    outline-offset: 2px;
+    box-shadow: 0 0 0 6px rgba(0, 122, 255, 0.2);
+}
+
+/* High contrast mode support for phones */
+@media (prefers-contrast: high) {
+    .nav-phone,
+    .mobile-phone,
+    .hero-phone-btn,
+    .inline-phone,
+    .contact-phone-primary {
+        border: 2px solid;
+        background: #000 !important;
+        color: #fff !important;
+    }
+    
+    .hero-quote-btn {
+        background: #fff !important;
+        color: #000 !important;
+        border: 2px solid #000;
+    }
+}
+
+/* Reduced motion preferences for phone elements */
+@media (prefers-reduced-motion: reduce) {
+    .nav-phone,
+    .mobile-phone,
+    .hero-phone-btn,
+    .hero-quote-btn,
+    .inline-phone,
+    .contact-phone-primary,
+    .phone-number-large {
+        transition: none !important;
+        animation: none !important;
+    }
+    
+    .nav-phone:hover,
+    .mobile-phone:hover,
+    .hero-phone-btn:hover,
+    .hero-quote-btn:hover,
+    .inline-phone:hover,
+    .contact-phone-primary:hover {
+        transform: none !important;
+        color: white !important; /* Ensure text stays visible in reduced motion */
+    }
+    
+    .phone-icon {
+        animation: none !important;
+    }
+}
+
+/* Touch target improvements for mobile */
+@media (max-width: 768px) {
+    .nav-phone,
+    .mobile-phone,
+    .hero-phone-btn,
+    .hero-quote-btn,
+    .inline-phone {
+        min-height: 44px; /* WCAG AA minimum touch target */
+        min-width: 44px;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+    }
+    
+    .contact-phone-primary {
+        min-height: 64px; /* Larger touch target for primary CTA */
+    }
+}
+
+/* Print styles already consolidated above */
+
+/* Enhanced Form Accessibility */
+.form-group {
+    position: relative;
+}
+
+/* Better error styling */
+.form-group.error label {
+    color: #d32f2f;
+}
+
+.form-group.error input,
+.form-group.error textarea,
+.form-group.error select {
+    border-color: #d32f2f !important;
+    background-color: rgba(211, 47, 47, 0.05) !important;
+    animation: shake 0.3s ease-in-out;
+}
+
+@keyframes shake {
+    0%, 100% { transform: translateX(0); }
+    25% { transform: translateX(-5px); }
+    75% { transform: translateX(5px); }
+}
+
+/* Enhanced focus states for form elements */
+.form-group input:focus,
+.form-group textarea:focus,
+.form-group select:focus {
+    outline: 3px solid #007aff;
+    outline-offset: 2px;
+    box-shadow: 0 0 0 6px rgba(0, 122, 255, 0.1);
+}
+
+/* Submit button accessibility */
+.submit-btn:focus {
+    outline: 3px solid #007aff;
+    outline-offset: 2px;
+    box-shadow: 0 0 0 6px rgba(0, 122, 255, 0.2);
+}
+
+/* Loading state accessibility */
+.submit-btn:disabled {
+    cursor: not-allowed;
+    opacity: 0.7;
+}
+
+.submit-btn[aria-busy="true"] {
+    position: relative;
+}
+
+.submit-btn[aria-busy="true"] .btn-text {
+    opacity: 0.5;
+}
+
+.loading-spinner {
+    display: none;
+    width: 20px;
+    height: 20px;
+    border: 2px solid transparent;
+    border-top: 2px solid currentColor;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+    margin-right: 8px;
+}
+
+.submit-btn[aria-busy="true"] .loading-spinner {
+    display: inline-block;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* High contrast mode for forms */
+@media (prefers-contrast: high) {
+    .form-group input,
+    .form-group textarea,
+    .form-group select {
+        border: 2px solid #000 !important;
+        background: #fff !important;
+        color: #000 !important;
+    }
+    
+    .submit-btn {
+        border: 2px solid #000 !important;
+        background: #000 !important;
+        color: #fff !important;
+    }
+    
+    .form-group label {
+        color: #000 !important;
+        font-weight: bold !important;
+    }
+}
+
+/* Reduced motion for forms */
+@media (prefers-reduced-motion: reduce) {
+    .form-group input,
+    .form-group textarea,
+    .form-group select,
+    .submit-btn {
+        transition: none !important;
+        animation: none !important;
+    }
+    
+    .loading-spinner {
+        animation: none !important;
+    }
+    
+    .form-group.error input,
+    .form-group.error textarea,
+    .form-group.error select {
+        animation: none !important;
+    }
+}
+
+/* Touch target improvements for form elements */
+@media (max-width: 768px) {
+    .form-group input,
+    .form-group textarea,
+    .form-group select,
+    .submit-btn {
+        min-height: 44px; /* WCAG AA minimum touch target */
+    }
+    
+    .form-group label {
+        font-size: 16px; /* Prevent zoom on iOS */
+        margin-bottom: 8px;
+        display: block;
+    }
+}
+
+/* Print styles already consolidated above */
+
+/* Screen reader improvements */
+.form-description {
+    font-size: 14px;
+    color: #666;
+    margin-bottom: 20px;
+}
+
+.required-note {
+    font-size: 14px;
+    color: #666;
+    margin-bottom: 20px;
+    font-style: italic;
+}
+
+/* Success/Error message accessibility */
+.form-message {
+    padding: 15px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    font-weight: 500;
+    position: relative;
+}
+
+.form-message.success {
+    background: #e8f5e8;
+    color: #2e7d32;
+    border: 1px solid #4caf50;
+}
+
+.form-message.error {
+    background: #ffeaea;
+    color: #d32f2f;
+    border: 1px solid #f44336;
+}
+
+.form-message[role="alert"] {
+    /* Ensures screen readers announce the message */
+    position: relative;
+}
+
+/* Floating action button accessibility */
+.floating-action:focus {
+    outline: 3px solid #007aff;
+    outline-offset: 2px;
+    box-shadow: 0 0 0 6px rgba(0, 122, 255, 0.2);
+}
+
+/* Enhanced mobile menu accessibility */
+.mobile-menu-toggle:focus {
+    outline: 3px solid #007aff;
+    outline-offset: 2px;
+    box-shadow: 0 0 0 6px rgba(0, 122, 255, 0.2);
+}
+
+.mobile-sidebar[role="dialog"]:focus-within {
+    outline: 2px solid #007aff;
+    outline-offset: -2px;
+}
+
+/* Service modal accessibility */
+.service-modal:focus-within {
+    outline: 2px solid #007aff;
+    outline-offset: -2px;
+}
+
+.service-modal-close:focus {
+    outline: 3px solid #007aff;
+    outline-offset: 2px;
+    box-shadow: 0 0 0 6px rgba(0, 122, 255, 0.2);
+}
+
+/* Hidden SEO Services Content */
+.seo-services-content {
+    position: absolute;
+    left: -10000px;
+    top: auto;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip: rect(1px, 1px, 1px, 1px);
+    white-space: nowrap;
+}
+
+/* Alternative method for SEO content hiding - choose one */
+.seo-services-content-alt {
+    display: none;
+    visibility: hidden;
+}
+
+/* If you want the content indexed but not visible, use this instead */
+.seo-services-content-visible {
+    position: absolute;
+    left: -9999px;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+}
+
+/* Print styles already consolidated above */
