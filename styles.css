@@ -386,41 +386,28 @@ a:focus {
         box-shadow: none !important;
     }
     
-    /* Show SEO content in print */
+    /* Keep SEO content hidden even in print */
     .seo-services-content {
-        position: static;
-        left: auto;
-        top: auto;
-        width: auto;
-        height: auto;
-        overflow: visible;
-        clip: auto;
-        white-space: normal;
+        display: none !important;
+        visibility: hidden !important;
+        position: absolute !important;
+        left: -10000px !important;
+        top: -10000px !important;
+        width: 0 !important;
+        height: 0 !important;
+        overflow: hidden !important;
+        clip: rect(0, 0, 0, 0) !important;
     }
     
-    .seo-services-content .container {
-        max-width: 100%;
-        margin: 20px 0;
-    }
-    
+    /* SEO content remains hidden in print */
+    .seo-services-content .container,
     .seo-services-content h2,
-    .seo-services-content h3 {
-        color: #000;
-        margin: 15px 0 10px 0;
-    }
-    
-    .seo-services-content p {
-        color: #333;
-        margin: 10px 0;
-    }
-    
-    .seo-services-content ul {
-        margin: 10px 0 10px 20px;
-    }
-    
+    .seo-services-content h3,
+    .seo-services-content p,
+    .seo-services-content ul,
     .seo-services-content li {
-        color: #333;
-        margin: 5px 0;
+        display: none !important;
+        visibility: hidden !important;
     }
     
     /* Hide non-essential elements in print */
@@ -2383,25 +2370,41 @@ html {
     box-shadow: 0 0 0 6px rgba(0, 122, 255, 0.2);
 }
 
-/* Hidden SEO Services Content */
+/* Hidden SEO Services Content - Enhanced hiding for better compatibility */
 .seo-services-content {
-    position: absolute;
-    left: -10000px;
-    top: auto;
-    width: 1px;
-    height: 1px;
-    overflow: hidden;
-    clip: rect(1px, 1px, 1px, 1px);
-    white-space: nowrap;
+    display: none !important;
+    visibility: hidden !important;
+    position: absolute !important;
+    left: -10000px !important;
+    top: -10000px !important;
+    width: 0 !important;
+    height: 0 !important;
+    overflow: hidden !important;
+    clip: rect(0, 0, 0, 0) !important;
+    clip-path: inset(50%) !important;
+    white-space: nowrap !important;
+    opacity: 0 !important;
+    z-index: -9999 !important;
+    pointer-events: none !important;
+    user-select: none !important;
+    -webkit-user-select: none !important;
+    -moz-user-select: none !important;
+    -ms-user-select: none !important;
 }
 
-/* Alternative method for SEO content hiding - choose one */
+/* Ensure all child elements are also hidden */
+.seo-services-content * {
+    display: none !important;
+    visibility: hidden !important;
+}
+
+/* Alternative method for SEO content hiding - not used */
 .seo-services-content-alt {
     display: none;
     visibility: hidden;
 }
 
-/* If you want the content indexed but not visible, use this instead */
+/* Alternative visible method - not used */
 .seo-services-content-visible {
     position: absolute;
     left: -9999px;
