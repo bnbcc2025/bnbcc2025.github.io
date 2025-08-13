@@ -1,0 +1,27 @@
+User-agent: *
+Allow: /
+
+# Important pages
+Sitemap: https://www.bnbcc.com.au/sitemap.xml
+
+# Optimize crawling
+Crawl-delay: 1
+
+# Block unnecessary files
+Disallow: /assets/
+Disallow: *.js$
+Disallow: *.css$
+Disallow: /manifest.json
+Disallow: /browserconfig.xml
+
+# Allow images for image search
+Allow: /assets/*.png
+Allow: /assets/*.jpg
+Allow: /assets/*.jpeg
+Allow: /assets/*.gif
+Allow: /assets/*.webp
+
+# Block common bot files
+Disallow: /cgi-bin/
+Disallow: /tmp/
+Disallow: /logs/
