@@ -71,6 +71,34 @@
     <link rel="preload" href="styles.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
     <noscript><link rel="stylesheet" href="styles.css"></noscript>
     
+    <!-- Additional CSS to ensure SEO content stays hidden -->
+    <style>
+        .seo-services-content {
+            display: none !important;
+            visibility: hidden !important;
+            position: absolute !important;
+            left: -10000px !important;
+            top: -10000px !important;
+            width: 0 !important;
+            height: 0 !important;
+            overflow: hidden !important;
+            clip: rect(0, 0, 0, 0) !important;
+            opacity: 0 !important;
+            z-index: -9999 !important;
+        }
+        .seo-services-content * {
+            display: none !important;
+            visibility: hidden !important;
+        }
+        @media print {
+            .seo-services-content,
+            .seo-services-content * {
+                display: none !important;
+                visibility: hidden !important;
+            }
+        }
+    </style>
+    
     <!-- Enhanced Structured Data (JSON-LD) -->
     <script type="application/ld+json">
     {
@@ -261,8 +289,8 @@
         </div>
     </section>
 
-    <!-- Hidden SEO Services Content -->
-    <section class="seo-services-content" aria-hidden="true">
+    <!-- Hidden SEO Services Content - Multiple hiding methods for better compatibility -->
+    <section class="seo-services-content" aria-hidden="true" style="display: none !important; visibility: hidden !important; position: absolute !important; left: -9999px !important; top: -9999px !important; width: 0 !important; height: 0 !important; overflow: hidden !important; clip: rect(0, 0, 0, 0) !important;">
         <div class="container">
             <h2>Brisbane North Professional Cleaning Services</h2>
             
