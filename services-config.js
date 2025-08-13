@@ -34,21 +34,6 @@ window.ServicesConfig = {
         category: 'cleaning',
         popular: true
     },
-    'dead-animal': {
-        title: 'Dead Animal Removal',
-        icon: '🐀',
-        price: 'From $150',
-        description: 'Safe and discreet removal service with complete sanitation to eliminate health hazards and odors.',
-        features: [
-            'Safe removal from ceilings, crawl spaces, walls, or underfloor areas',
-            'Hospital-grade disinfectants eliminate harmful bacteria and parasites',
-            'Complete deodorisation treatments to neutralise foul smells',
-            'Prevention measures and sealing of entry points',
-            'Emergency same-day response available'
-        ],
-        category: 'emergency',
-        emergency: true
-    },
     'upholstery-cleaning': {
         title: 'Upholstery Cleaning',
         icon: '🛋️',
@@ -105,21 +90,7 @@ window.ServicesConfig = {
         ],
         category: 'specialized'
     },
-    'car-detailing': {
-        title: 'Car Detailing',
-        icon: '🚗',
-        price: 'From $85',
-        description: 'Complete interior and exterior vehicle cleaning service to restore your car\'s cleanliness and presentation.',
-        features: [
-            'Exterior: wash, wax, paint protection, tyre shine, window polishing',
-            'Interior: vacuuming, seat shampooing, stain removal, leather treatment',
-            'Dashboard wipe-down and complete deodorising',
-            'Pet hair and sand removal for family vehicles',
-            'Suitable for regular upkeep or pre-sale preparation'
-        ],
-        category: 'automotive'
-    },
-    'spring-cleaning': {
+       'spring-cleaning': {
         title: 'Spring Cleaning',
         icon: '🌼',
         price: 'From $180',
@@ -248,8 +219,8 @@ window.ServiceUtils = {
 };
 
 const ReviewConfig = {
-    rating: "4.9",
-    totalReviews: "150+",
+    rating: "5",
+    totalReviews: "50+",
     googlePageUrl: "https://share.google/VRiGicBHjjF5K3luT"
 };
 
@@ -292,3 +263,4 @@ window.ServiceUtils.updateService('carpet-cleaning', {
 window.ServiceUtils.removeService('dead-animal');
 
 */
+
