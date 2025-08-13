@@ -250,7 +250,7 @@ window.ServiceUtils = {
 const ReviewConfig = {
     rating: "4.9",
     totalReviews: "150+",
-    googlePageUrl: "https://www.google.com"
+    googlePageUrl: "https://share.google/VRiGicBHjjF5K3luT"
 };
 
 // Make it available globally
@@ -290,4 +290,5 @@ window.ServiceUtils.updateService('carpet-cleaning', {
 
 // Example of how to remove a service:
 window.ServiceUtils.removeService('dead-animal');
+
 */
