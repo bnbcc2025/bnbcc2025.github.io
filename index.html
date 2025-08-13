@@ -18,6 +18,7 @@
                     <li><a href="#home">Home</a></li>
                     <li><a href="#services">Services</a></li>
                     <li><a href="#contact">Contact</a></li>
+                    <li><a href="tel:0721436064" class="nav-phone">📞 0721 436 064</a></li>
                 </ul>
                 <button class="mobile-menu-toggle" onclick="toggleMobileMenu()">
                     <span></span>
@@ -35,6 +36,7 @@
                     <li><a href="#home" onclick="toggleMobileMenu()">Home</a></li>
                     <li><a href="#services" onclick="toggleMobileMenu()">Services</a></li>
                     <li><a href="#contact" onclick="toggleMobileMenu()">Contact</a></li>
+                    <li><a href="tel:0721436064" class="mobile-phone" onclick="toggleMobileMenu()">📞 Call: 0721 436 064</a></li>
                 </ul>
             </div>
         </div>
@@ -44,6 +46,10 @@
         <div class="hero-content">
             <h1>Professional Cleaning.<br>Simply Done.</h1>
             <p class="hero-subtitle">Transforming spaces with precision, care, and the highest standards of cleanliness across Brisbane's North Side.</p>
+            <div class="hero-cta">
+                <a href="tel:0721436064" class="hero-phone-btn">📞 Call Now: 0721 436 064</a>
+                <a href="#contact" class="hero-quote-btn">Get Free Quote</a>
+            </div>
         </div>
     </section>
 
@@ -62,6 +68,7 @@
             <div class="section-header">
                 <h2 class="section-title">Why Choose Us</h2>
                 <p class="section-subtitle">Experience the difference of working with Brisbane's most trusted cleaning professionals.</p>
+                <p class="section-phone">Ready to book? Call us now: <a href="tel:0721436064" class="inline-phone">0721 436 064</a></p>
             </div>
             <div class="why-us-grid" id="whyUsGrid">
                 <!-- Populated by JavaScript -->
@@ -85,6 +92,7 @@
             <div class="section-header">
                 <h2 class="section-title">Our Services</h2>
                 <p class="section-subtitle">Comprehensive cleaning solutions designed to meet your every need with exceptional attention to detail.</p>
+                <p class="section-phone">Questions about our services? Call <a href="tel:0721436064" class="inline-phone">0721 436 064</a> for expert advice!</p>
             </div>
             <div class="services-grid" id="servicesGrid">
                 <!-- Populated by JavaScript -->
@@ -95,9 +103,21 @@
     <!-- Replace or update the form section -->
     <section id="contact" class="section">
         <div class="container">
-            <div class="form-container">
+            <div class="contact-header">
                 <h2>Contact Us</h2>
                 <p>Get in touch for a free quote or any questions about our services.</p>
+                <div class="contact-options">
+                    <div class="contact-phone-primary">
+                        <span class="phone-icon">📞</span>
+                        <div class="phone-info">
+                            <span class="phone-label">Call us now for immediate assistance:</span>
+                            <a href="tel:0721436064" class="phone-number-large">0721 436 064</a>
+                        </div>
+                    </div>
+                    <div class="contact-divider">OR</div>
+                </div>
+            </div>
+            <div class="form-container">
                 
                 <form id="contactForm" 
                       action="https://script.google.com/macros/s/AKfycbwaWZdtmhkrJ9wLqOECG8xJfecim5cBt6IxU4sLZ7uZ9vnaGfTQRj6Xuu3XL-fovYMGxg/exec" 
@@ -213,5 +233,3 @@
     <script src="app.js"></script>
 </body>
 </html>
-
-
