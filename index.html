@@ -101,91 +101,105 @@
     
     <!-- Enhanced Structured Data (JSON-LD) -->
     <script type="application/ld+json">
-    {
-        "@context": "https://schema.org",
-        "@type": "LocalBusiness",
-        "name": "Brisbane North Bond & Carpet Cleaners",
-        "alternateName": "BNBCC",
-        "description": "Professional bond cleaning, carpet cleaning and end of lease cleaning services in Brisbane North Side with over 10 years experience.",
-        "url": "https://www.bnbcc.com.au",
-        "logo": "https://www.bnbcc.com.au/assets/logo.png",
-        "image": "https://www.bnbcc.com.au/assets/logo.png",
-        "telephone": "0721436064",
-        "email": "info@bnbcc.com.au",
-        "currenciesAccepted": "AUD",
-        "paymentAccepted": "Cash, Credit Card, Bank Transfer",
-        "address": {
-            "@type": "PostalAddress",
-            "addressRegion": "Queensland",
-            "addressCountry": "Australia",
-            "addressLocality": "Brisbane North Side"
-        },
-        "geo": {
-            "@type": "GeoCoordinates",
-            "latitude": "-27.4698",
-            "longitude": "153.0251"
-        },
-        "areaServed": {
-            "@type": "GeoCircle",
-            "geoMidpoint": {
-                "@type": "GeoCoordinates",
-                "latitude": "-27.4698",
-                "longitude": "153.0251"
-            },
-            "geoRadius": "25000"
-        },
-        "serviceType": ["Bond Cleaning", "Carpet Cleaning", "End of Lease Cleaning", "Steam Cleaning", "Commercial Cleaning"],
-        "priceRange": "$$",
-        "openingHours": "Mo-Fr 07:00-19:00, Sa 08:00-17:00",
-        "aggregateRating": {
-            "@type": "AggregateRating",
-            "ratingValue": "4.9",
-            "reviewCount": "127",
-            "bestRating": "5",
-            "worstRating": "1"
-        },
-        "hasOfferCatalog": {
-            "@type": "OfferCatalog",
-            "name": "Cleaning Services",
-            "itemListElement": [
-                {
-                    "@type": "Offer",
-                    "itemOffered": {
-                        "@type": "Service",
-                        "name": "Bond Cleaning",
-                        "description": "Complete end of lease cleaning service with bond back guarantee",
-                        "provider": {
-                            "@type": "LocalBusiness",
-                            "name": "Brisbane North Bond & Carpet Cleaners"
-                        }
-                    }
-                },
-                {
-                    "@type": "Offer",
-                    "itemOffered": {
-                        "@type": "Service",
-                        "name": "Carpet Steam Cleaning",
-                        "description": "Professional carpet cleaning using advanced steam cleaning technology",
-                        "provider": {
-                            "@type": "LocalBusiness",
-                            "name": "Brisbane North Bond & Carpet Cleaners"
-                        }
-                    }
-                }
-            ]
-        },
-        "contactPoint": {
-            "@type": "ContactPoint",
-            "telephone": "0721436064",
-            "contactType": "customer service",
-            "areaServed": "AU",
-            "availableLanguage": "English"
-        },
-        "sameAs": [
-            "https://www.google.com/maps/place/Brisbane+QLD"
-        ]
-    }
-    </script>
+{
+  "@context": "https://schema.org",
+  "@type": "LocalBusiness",
+  "name": "Brisbane North Bond & Carpet Cleaners",
+  "alternateName": "BNBCC",
+  "description": "Professional bond cleaning, carpet cleaning and end of lease cleaning services in Brisbane North Side with over 10 years experience. We provide same day and urgent services from the Sunshine Coast to the Gold Coast.",
+  "url": "https://www.bnbcc.com.au",
+  "logo": "https://www.bnbcc.com.au/assets/logo.png",
+  "image": "https://www.bnbcc.com.au/assets/logo.png",
+  "telephone": "+61721436064",
+  "email": "info@bnbcc.com.au",
+  "currenciesAccepted": "AUD",
+  "paymentAccepted": ["Cash", "Credit Card", "Bank Transfer"],
+  "address": {
+    "@type": "PostalAddress",
+    "addressRegion": "Queensland",
+    "addressCountry": "Australia",
+    "addressLocality": "Brisbane North Side"
+  },
+  "geo": {
+    "@type": "GeoCoordinates",
+    "latitude": "-27.4698",
+    "longitude": "153.0251"
+  },
+  "areaServed": ["Sunshine Coast", "Brisbane", "Gold Coast"],
+  "priceRange": "$$",
+  "openingHours": "Mo-Fr 07:00-19:00, Sa 08:00-17:00",
+  "aggregateRating": {
+    "@type": "AggregateRating",
+    "ratingValue": "4.9",
+    "reviewCount": "127",
+    "bestRating": "5",
+    "worstRating": "1"
+  },
+  "hasOfferCatalog": {
+    "@type": "OfferCatalog",
+    "name": "Cleaning Services",
+    "itemListElement": [
+      {
+        "@type": "Offer",
+        "itemOffered": {
+          "@type": "Service",
+          "name": "Bond Cleaning",
+          "description": "Complete end of lease cleaning service with bond back guarantee",
+          "provider": {
+            "@type": "LocalBusiness",
+            "name": "Brisbane North Bond & Carpet Cleaners"
+          }
+        }
+      },
+      {
+        "@type": "Offer",
+        "itemOffered": {
+          "@type": "Service",
+          "name": "Carpet Steam Cleaning",
+          "description": "Professional carpet cleaning using advanced steam cleaning technology",
+          "provider": {
+            "@type": "LocalBusiness",
+            "name": "Brisbane North Bond & Carpet Cleaners"
+          }
+        }
+      },
+      {
+        "@type": "Offer",
+        "itemOffered": {
+          "@type": "Service",
+          "name": "Sofa & Upholstery Cleaning",
+          "description": "Deep cleaning services for sofas and upholstery.",
+          "provider": {
+            "@type": "LocalBusiness",
+            "name": "Brisbane North Bond & Carpet Cleaners"
+          }
+        }
+      },
+      {
+        "@type": "Offer",
+        "itemOffered": {
+          "@type": "Service",
+          "name": "Urgent Flooded Carpet Cleaning",
+          "description": "Emergency service for flooded carpets and water damage restoration.",
+          "provider": {
+            "@type": "LocalBusiness",
+            "name": "Brisbane North Bond & Carpet Cleaners"
+          }
+        }
+      }
+    ]
+  },
+  "contactPoint": {
+    "@type": "ContactPoint",
+    "telephone": "+61721436064",
+    "contactType": "customer service",
+    "availableLanguage": "English"
+  },
+  "sameAs": [
+    "https://www.google.com/maps/place/Brisbane+QLD"
+  ]
+}
+</script>
 <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=AW-17414580633"></script>
 <script>
