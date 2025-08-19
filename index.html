@@ -210,6 +210,8 @@
   gtag('config', 'AW-17414580633');
 </script>
 <!-- Event snippet for conversions -->
+<!-- Event snippet for Contact (1) conversion page
+In your html page, add the snippet and call gtag_report_conversion when someone clicks on the chosen link or button. -->
 <script>
 function gtag_report_conversion(url) {
   var callback = function () {
@@ -218,12 +220,13 @@ function gtag_report_conversion(url) {
     }
   };
   gtag('event', 'conversion', {
-      'send_to': 'AW-17414580633/XXHKCP3NwIgbEJnT9e9A',
+      'send_to': 'AW-17414580633/75eTCJTBxIkbEJnT9e9A',
       'event_callback': callback
   });
   return false;
 }
 </script>
+
 
 </head>
 <body>
