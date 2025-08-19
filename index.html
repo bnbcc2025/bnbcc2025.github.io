@@ -242,12 +242,31 @@
                 <div class="sidebar-header">
                     <button class="sidebar-close" onclick="toggleMobileMenu()" aria-label="Close mobile menu">&times;</button>
                 </div>
-                <ul class="mobile-nav" role="menu">
-                    <li role="menuitem"><a href="#home" onclick="toggleMobileMenu()" aria-label="Go to home section">Home</a></li>
-                    <li role="menuitem"><a href="#services" onclick="toggleMobileMenu()" aria-label="View our cleaning services">Services</a></li>
-                    <li role="menuitem"><a href="#contact" onclick="toggleMobileMenu()" aria-label="Contact us for a quote">Contact</a></li>
-                    <li role="menuitem"><a href="tel:0721436064" class="mobile-phone phone-btn-base" onclick="toggleMobileMenu()" aria-label="Call us now at 0721 436 064">📞 Call: 0721 436 064</a></li>
-                </ul>
+<ul class="mobile-nav" role="menu">
+    <li role="menuitem">
+        <a href="#home" onclick="toggleMobileMenu()" aria-label="Go to home section">Home</a>
+    </li>
+    <li role="menuitem">
+        <a href="#services" onclick="toggleMobileMenu()" aria-label="View our cleaning services">Services</a>
+    </li>
+    <li role="menuitem">
+        <!-- Contact link with conversion tracking -->
+        <a href="#contact" 
+           onclick="toggleMobileMenu(); return gtag_report_conversion('https://bnbcc.com.au/contact');" 
+           aria-label="Contact us for a quote">
+           Contact
+        </a>
+    </li>
+    <li role="menuitem">
+        <!-- Call button with conversion tracking -->
+        <a href="tel:0721436064" 
+           class="mobile-phone phone-btn-base" 
+           onclick="toggleMobileMenu(); return gtag_report_conversion('tel:0721436064');" 
+           aria-label="Call us now at 0721 436 064">
+           📞 Call: 0721 436 064
+        </a>
+    </li>
+</ul>
             </div>
         </div>
     </header>
