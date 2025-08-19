@@ -209,6 +209,22 @@
 
   gtag('config', 'AW-17414580633');
 </script>
+<!-- Event snippet for conversions -->
+<script>
+function gtag_report_conversion(url) {
+  var callback = function () {
+    if (typeof(url) != 'undefined') {
+      window.location = url;
+    }
+  };
+  gtag('event', 'conversion', {
+      'send_to': 'AW-17414580633/XXHKCP3NwIgbEJnT9e9A',
+      'event_callback': callback
+  });
+  return false;
+}
+</script>
+
 </head>
 <body>
     <header role="banner">
