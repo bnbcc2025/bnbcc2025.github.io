@@ -73,10 +73,17 @@
 /* ===================================================================
    2. BASE STYLES & TYPOGRAPHY
    =================================================================== */
+html {
+	overflow-x: hidden;
+	width: 100%;
+	max-width: 100%;
+}
+
 body {
 	font-family: var(--font-primary);
 	line-height: 1.6;
 	overflow-x: hidden;
+	margin: 0;
 	background-color: var(--bs-body-bg);
 	color: var(--bs-body-color);
 }
@@ -242,13 +249,53 @@ h6,
 
 /* --- Hero Section --- */
 #hero {
-	color: var(--white);
-	background-color: var(--text-dark);
-	/* Added for contrast */
+    position: relative;
+    height: 80vh; /* 80% of viewport height */
+    width: 100vw; /* full width of screen */
+    overflow: hidden; /* prevent dust or vacuum overflow */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    background: url('assets/background.jpg') no-repeat center center;
+    background-size: cover;
+    color: var(--white);
 }
 
-#hero .btn-primary {
-	border-color: var(--green-light);
+#hero .lead {
+	color: var(--text-dark);
+}
+.dust {
+    position: absolute;
+    opacity: 0; /* Starts invisible */
+    transition: opacity 0.5s ease-in-out;
+    z-index: 0;
+}
+
+/* Add pseudo cracks for irregular effect */
+.dust::before,
+.dust::after {
+    content: '';
+    position: absolute;
+    height: 210px;
+    background-color: #f0f0f0; /* Color of the crack */
+}
+
+.dust::before {
+  transform: rotate(25deg) translate(-50%, -50%);
+}
+.dust::after {
+  transform: rotate(-25deg) translate(-50%, -50%);
+}
+
+
+#vacuum {
+    position: absolute;
+    width: 80px;
+    height: auto;
+    top: 0;
+    left: 0;
+    pointer-events: none;
 }
 
 /* --- About Section --- */
