@@ -1,0 +1,973 @@
+/*
+ * Brisbane North Bond & Carpet Cleaners - Optimized Stylesheet
+ * Author: Your Name/Company
+ * Version: 2.1.0 (Optimized)
+ */
+
+/* ===================================================================
+   1. CSS CUSTOM PROPERTIES & THEME SETUP
+   =================================================================== */
+:root {
+  /* Color Palette - Ultra Balanced & Even */
+  --green-primary: rgb(3, 78, 7);
+  --green-secondary: #4D7A5A;
+  --green-light: #7BA585;
+  --neutral-bg: #F8F8F6;
+  --neutral-alt: #F2F2F0;
+  --text-dark: #2A4A34;
+  --text-muted: #6B6B6B;
+  --white: #ffffff;
+  --text-body: #555555;
+  --border-color: #DEDEDE;
+
+  /* Bootstrap Overrides - Ultra Even Distribution */
+  --bs-primary: #3A6B47;
+  --bs-secondary: #6B6B6B;
+  --bs-light: #F8F8F6;
+  --bs-dark: #2A4A34;
+  --bs-body-bg: #FDFDFD;
+  --bs-body-color: #555555;
+  --bs-link-color: #3A6B47;
+  --bs-link-hover-color: #2A4A34;
+
+  /* Spacing & Layout */
+  --section-padding: 6rem 0;
+  --card-border-radius: 1.5rem;
+  --btn-border-radius: 0.5rem;
+
+  /* Typography */
+  --font-primary: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  --font-display: 'Playfair Display', "Times New Roman", Times, serif;
+
+  /* Shadows - Ultra Even & Subtle */
+  --shadow-sm: 0 4px 15px rgba(42, 74, 52, 0.06);
+  --shadow-md: 0 8px 25px rgba(42, 74, 52, 0.08);
+  --shadow-lg: 0 15px 40px rgba(42, 74, 52, 0.10);
+  --shadow-xl: 0 20px 50px rgba(42, 74, 52, 0.12);
+
+  /* Transitions */
+  --transition-fast: 0.3s ease;
+  --transition-smooth: 0.6s cubic-bezier(0.25, 0.8, 0.25, 1);
+
+  --green-dark: #386641;
+  --green-accent: #6A994E;
+  --beige-bg: #F2E8CF;
+  --muted-brown: #8A817C;
+  --white: #ffffff;
+  --border-color: #e5e2d9;
+}
+
+/* ===================================================================
+   2. BASE STYLES & TYPOGRAPHY
+   =================================================================== */
+body {
+  font-family: var(--font-primary);
+  line-height: 1.6;
+  overflow-x: hidden;
+}
+
+h1, h2, h3, h4, h5, h6,
+.display-1, .display-2, .display-3, .display-4 {
+  font-family: var(--font-display);
+  font-weight: 700;
+  color: var(--text-dark);
+}
+
+.icepot-field {
+  display: none !important;
+}
+
+.lead {
+  font-weight: 400;
+}
+
+.highlight-green {
+  color: var(--green-secondary);
+}
+
+/* ===================================================================
+   3. REUSABLE COMPONENTS
+   =================================================================== */
+
+/* --- Buttons --- */
+.btn {
+  padding: 0.75rem 1.5rem;
+  border-radius: var(--btn-border-radius);
+  font-weight: 600;
+  transition: all var(--transition-fast);
+  letter-spacing: 0.5px;
+}
+
+.btn-primary {
+  background-color: var(--green-primary);
+  border-color: var(--green-primary);
+  color: var(--white);
+}
+
+.btn-primary:hover, 
+.btn-primary:focus {
+  background-color: var(--green-secondary);
+  border-color: var(--green-secondary);
+  box-shadow: 0 4px 15px rgba(77, 122, 90, 0.3);
+  transform: translateY(-2px);
+}
+
+.btn-gradient {
+  background-image: linear-gradient(95deg, var(--green-secondary) 0%, var(--green-light) 100%);
+  color: var(--white);
+  border: 0;
+  padding: 0.9rem 1.8rem;
+  border-radius: var(--btn-border-radius);
+  transition: all var(--transition-fast);
+}
+
+.btn-gradient:hover {
+  color: var(--white);
+  box-shadow: 0 8px 25px rgba(77, 122, 90, 0.3);
+  transform: translateY(-3px);
+}
+
+.btn-outline-light {
+  border: 2px solid rgba(255, 255, 255, 0.5);
+  color: var(--white);
+  padding: 0.9rem 1.8rem;
+  border-radius: var(--btn-border-radius);
+  transition: all var(--transition-fast);
+}
+
+.btn-outline-light:hover {
+  background-color: var(--white);
+  color: var(--text-dark);
+  border-color: var(--white);
+}
+
+/* --- Cards --- */
+.card {
+  border: 1px solid var(--border-color);
+  border-radius: 0.75rem;
+  transition: transform var(--transition-fast), box-shadow var(--transition-fast);
+  background-color: var(--white);
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: var(--shadow-md);
+}
+
+/* --- Accordion --- */
+.accordion-button {
+  font-weight: 600;
+  color: var(--text-dark);
+}
+
+.accordion-button:not(.collapsed) {
+  background-color: var(--bs-light);
+  color: var(--green-primary);
+  box-shadow: inset 0 -1px 0 rgba(0,0,0,.125);
+}
+
+.accordion-button:focus {
+  box-shadow: 0 0 0 0.25rem rgba(58, 107, 71, 0.25);
+}
+
+/* ===================================================================
+   4. NAVIGATION
+   =================================================================== */
+.navbar {
+  background-color: var(--white) !important;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+  padding: 0.75rem 0;
+}
+
+.navbar-brand .brand-line-1 {
+  font-family: var(--font-display);
+  font-size: 1rem;
+  display: block;
+  line-height: 1;
+  color: var(--text-muted);
+}
+
+.navbar-brand .brand-line-2 {
+  font-family: var(--font-display);
+  font-size: 1.1rem;
+  display: block;
+  line-height: 1.1;
+  color: var(--text-dark);
+}
+
+.nav-link {
+  font-weight: 600;
+  color: var(--text-dark);
+  transition: color var(--transition-fast);
+}
+
+.nav-link:hover, 
+.nav-link:focus {
+  color: var(--green-secondary);
+}
+
+.nav-link.active, 
+.nav-item.active > .nav-link {
+  color: var(--green-primary) !important;
+  font-weight: 700;
+}
+
+/* ===================================================================
+   5. SECTIONS
+   =================================================================== */
+
+/* --- Hero Section --- */
+#hero {
+  color: var(--white);
+
+}
+
+#hero .btn-primary {
+  border-color: var(--green-secondary);
+}
+
+/* --- About Section --- */
+.about-section {
+  padding: var(--section-padding);
+  overflow: hidden;
+}
+
+.about-section h2 {
+  line-height: 1.3;
+}
+
+.image-container {
+  position: relative;
+  border-radius: var(--card-border-radius);
+  overflow: hidden;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3);
+}
+
+.experience-badge {
+  position: absolute;
+  top: 0;
+  right: 0;
+  background-color: var(--green-primary);
+  color: var(--white);
+  padding: 1rem;
+  text-align: center;
+  line-height: 1.2;
+  border-radius: 0 0 0 var(--card-border-radius);
+}
+
+.experience-badge span {
+  display: block;
+}
+
+/* --- Stats Section --- */
+.stats-section {
+  background-color: var(--bs-body-bg);
+  padding: var(--section-padding);
+  position: relative;
+}
+
+.stat-card {
+  width: 190px;
+  height: 190px;
+  border-radius: 50%;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--green-primary);
+  padding: 1rem;
+  border: 4px solid var(--white);
+  transition: all var(--transition-fast);
+  box-shadow: 0 10px 30px rgba(42, 74, 52, 0.12), 
+              0 4px 8px rgba(42, 74, 52, 0.15), 
+              inset 0 2px 3px rgba(255, 255, 255, 0.1);
+  opacity: 0;
+  transform: translateY(30px);
+  position: relative;
+}
+
+.stat-card::before {
+  content: '';
+  position: absolute;
+  top: -10px;
+  left: -10px;
+  right: -10px;
+  bottom: -10px;
+  border-radius: 50%;
+  border: 3px dashed var(--green-secondary);
+  opacity: 0.5;
+  animation: spin 30s linear infinite;
+}
+
+.stat-card:hover {
+  transform: translateY(-12px) scale(1.05);
+  box-shadow: 0 15px 40px rgba(42, 74, 52, 0.15), 
+              0 6px 12px rgba(42, 74, 52, 0.18), 
+              inset 0 2px 3px rgba(255, 255, 255, 0.1);
+}
+
+.stat-card:hover::before {
+  animation-play-state: paused;
+}
+
+.stats-section.is-visible .stat-card {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Staggered animation delays */
+.stats-section.is-visible .col-lg-3:nth-child(2) .stat-card { transition-delay: 0.1s; }
+.stats-section.is-visible .col-lg-3:nth-child(3) .stat-card { transition-delay: 0.2s; }
+.stats-section.is-visible .col-lg-3:nth-child(4) .stat-card { transition-delay: 0.3s; }
+
+.stat-icon {
+  font-size: 1.75rem;
+  color: var(--white);
+  margin-bottom: 0.5rem;
+  display: inline-block;
+}
+
+.stat-number {
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 5vw, 2.8rem);
+  font-weight: 700;
+  line-height: 1.1;
+  margin-bottom: 0.25rem;
+  color: var(--green-light);
+}
+
+.stat-label {
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.8);
+  margin: 0;
+  text-align: center;
+}
+
+/* --- Services Section --- */
+.services-section {
+  background-color: var(--bs-body-bg);
+  padding: var(--section-padding);
+}
+
+.service-card {
+  background-color: var(--white);
+  padding: 2rem;
+  border-radius: var(--card-border-radius);
+  border: 1px solid var(--border-color);
+  box-shadow: var(--shadow-sm);
+  transition: all var(--transition-fast);
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  text-align: left;
+}
+
+.service-card:hover {
+  transform: translateY(-10px);
+  box-shadow: var(--shadow-lg);
+  border-color: transparent;
+  background-image: 
+    linear-gradient(var(--white), var(--white)),
+    linear-gradient(125deg, var(--green-accent) 0%, var(--green-dark) 100%);
+  background-origin: border-box;
+  background-clip: padding-box, border-box;
+}
+
+.service-icon {
+  margin-bottom: 1.5rem;
+  width: 60px;
+  height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2.5rem;
+  color: var(--green-primary);
+}
+
+.service-icon img {
+  max-width: 100%;
+  height: auto;
+}
+
+.service-card h3 {
+  color: var(--text-dark);
+  margin-bottom: 1rem;
+}
+
+.service-card p {
+  color: var(--text-body);
+  line-height: 1.6;
+  margin-bottom: 1.5rem;
+}
+
+.service-link {
+  color: var(--green-primary);
+  font-weight: 700;
+  text-decoration: none;
+  transition: all var(--transition-fast);
+}
+
+.service-link i {
+  transition: transform var(--transition-fast);
+  display: inline-block;
+}
+
+.service-card:hover .service-link {
+  color: var(--green-accent);
+}
+
+.service-card:hover .service-link i {
+  transform: translateX(5px);
+}
+
+/* --- CTA Reveal Section --- */
+.cta-reveal-section {
+  background-color: var(--neutral-bg);
+  padding: var(--section-padding);
+  overflow: hidden;
+}
+
+.client-counter-wrapper {
+  border-radius: 1rem;
+  padding: 1.5rem;
+  box-shadow: 0 10px 30px rgba(40, 54, 24, 0.08);
+  border: 1px solid var(--border-color);
+  margin: 1rem auto 0;
+  align-items: left;
+}
+
+.client-count {
+  font-family: 'Poppins', sans-serif;
+  font-size: clamp(3.5rem, 10vw, 5rem);
+  line-height: 1.1;
+  color: var(--green-primary);
+}
+
+.client-label {
+  font-weight: 600;
+  color: var(--text-dark);
+  margin-top: 0.5rem;
+}
+
+.image-reveal-container {
+  position: relative;
+  border-radius: var(--card-border-radius);
+  overflow: hidden;
+  box-shadow: var(--shadow-xl);
+}
+
+.image-sharp, 
+.image-blur {
+  transition: opacity var(--transition-smooth);
+}
+
+.image-blur {
+  position: absolute;
+  top: 0;
+  left: 0;
+  filter: blur(1px) saturate(1.2);
+  transform: scale(1.1);
+}
+
+.image-reveal-container:hover .image-blur {
+  opacity: 0;
+}
+
+/* --- FAQ Section --- */
+.faq-section {
+  background-color: var(--bs-body-bg);
+  padding: var(--section-padding);
+}
+
+.faq-question {
+  padding: 1rem 1.25rem;
+  margin-bottom: 0.75rem;
+  border-radius: 0.75rem;
+  border: 1px solid var(--border-color);
+  background-color: var(--white);
+  font-weight: 600;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+  display: flex;
+  align-items: center;
+}
+
+.faq-icon {
+  display: inline-flex;
+  margin-right: 0.75rem;
+  color: var(--green-primary);
+  transition: all var(--transition-fast);
+}
+
+.faq-question:hover {
+  border-color: var(--green-secondary);
+  transform: translateX(5px);
+}
+
+.faq-question.active {
+  background-color: var(--green-primary);
+  color: var(--white);
+  border-color: var(--green-primary);
+}
+
+.faq-question.active .faq-icon {
+  color: var(--white);
+}
+
+.faq-answers-panel {
+  position: relative;
+  padding: 2rem;
+  background-color: var(--white);
+  border-radius: var(--card-border-radius);
+  min-height: 300px;
+  box-shadow: 0 10px 30px rgba(42, 74, 52, 0.06);
+}
+
+.faq-answer {
+  position: absolute;
+  top: 2rem;
+  left: 2rem;
+  right: 2rem;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.4s ease-out, visibility 0.4s;
+}
+
+.faq-answer.active {
+  opacity: 1;
+  visibility: visible;
+}
+
+/* --- Testimonials Section --- */
+.testimonials-section {
+  padding: var(--section-padding);
+  background-color: var(--neutral-alt);
+}
+
+.testimonial-card {
+  background-color: var(--white);
+  border-radius: var(--card-border-radius);
+  border: 1px solid var(--border-color);
+  box-shadow: var(--shadow-sm);
+  transition: all var(--transition-fast);
+  text-align: center;
+  position: relative;
+  padding: 1.5rem;
+  padding-top: 4rem;
+}
+
+.testimonial-card:hover {
+  transform: translateY(-10px);
+  box-shadow: var(--shadow-lg);
+}
+
+.testimonial-customer {
+  position: absolute;
+  top: -35px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.customer-photo {
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 4px solid var(--white);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  margin-bottom: 0.5rem;
+}
+
+.customer-name {
+  font-weight: 700;
+  color: var(--text-dark);
+}
+
+.customer-location {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+}
+
+.testimonial-rating {
+  color: #FFC107;
+  font-size: 1rem;
+  margin-bottom: 1rem;
+}
+
+.testimonial-text {
+  font-size: 1rem;
+  font-style: italic;
+  color: var(--text-body);
+  margin-bottom: 0;
+}
+
+/* ===================================================================
+   6. FOOTER
+   =================================================================== */
+footer {
+  background-color: var(--text-dark);
+  color: #adb5bd;
+}
+
+footer h6 {
+  color: var(--white);
+  font-family: var(--font-primary);
+  font-weight: 600;
+}
+
+footer a:hover {
+  color: var(--white);
+  text-decoration: underline !important;
+}
+
+footer hr {
+  background-color: var(--green-secondary);
+  height: 2px;
+  opacity: 1;
+}
+
+footer .border-top {
+  border-top-color: var(--text-muted) !important;
+
+}
+/* ===================================================================
+   7. ANIMATIONS
+   =================================================================== */
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+/* How It Works Animation */
+.hiw-step {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+
+.hiw-step.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.hiw-step:nth-child(2) { transition-delay: 0.2s; }
+.hiw-step:nth-child(3) { transition-delay: 0.4s; }
+
+/* ===================================================================
+   8. UTILITY CLASSES & OVERRIDES
+   =================================================================== */
+
+/* Service/Content Cards - Shared Styles */
+#services .card,
+#why-choose-us .card,
+#testimonials .card {
+  background-color: var(--neutral-bg);
+}
+
+#services .card .h2,
+#why-choose-us .card .h2 i {
+  color: var(--green-primary);
+}
+
+#testimonials .card {
+  border-left: 4px solid var(--green-primary);
+  border-top: 0;
+  border-bottom: 0;
+  border-right: 0;
+}
+
+/* Gallery Filter Buttons */
+.filter-btn.btn-primary {
+  background-color: var(--green-primary);
+  border-color: var(--green-primary);
+}
+
+.filter-btn.btn-outline-primary {
+  color: var(--green-primary);
+  border-color: var(--green-primary);
+}
+
+.filter-btn.btn-outline-primary:hover {
+  background-color: var(--green-primary);
+  color: var(--white);
+}
+
+.gallery-item img:hover {
+  transform: scale(1.05);
+  opacity: 0.9;
+}
+
+/* ===================================================================
+   9. RESPONSIVE DESIGN
+   =================================================================== */
+@media (max-width: 991.98px) {
+  .faq-answers-panel {
+    display: none;
+  }
+
+  .faq-answer {
+    position: static;
+    height: 0;
+    overflow: hidden;
+    padding: 0;
+    transition: all 0.4s ease-out;
+  }
+  
+  .faq-answer.active {
+    height: auto;
+    padding: 1rem 0 0 2rem;
+    opacity: 1;
+    visibility: visible;
+  }
+}
+
+.quote-section {
+  background-color: var(--beige-bg);
+  padding: 6rem 0;
+}
+
+.form-container {
+  background: var(--white);
+  padding: 1.5rem;
+  border-radius: 1.5rem;
+  box-shadow: 0 15px 40px rgba(40, 54, 24, 0.1);
+}
+
+
+.form-title { color: var(--green-dark); text-align: center; }
+.form-title {
+  font-size: 1.25rem;      /* smaller title */
+  margin-bottom: 0.5rem;
+}
+.form-subtitle { color: var(--muted-brown); margin-bottom: 2rem; text-align: center; }
+
+/* Progress Bar */
+.progressbar { position: relative; display: flex; justify-content: space-between; counter-reset: step; margin-bottom: 3rem; }
+.progressbar::before, .progress { content: ""; position: absolute; top: 50%; transform: translateY(-50%); height: 4px; background-color: #dcdcdc; width: 100%; z-index: 0; }
+.progress { background-color: var(--green-accent); width: 0%; transition: 0.3s; }
+.progress-step { width: 30px; height: 30px; background-color: #dcdcdc; border-radius: 50%; display: flex; justify-content: center; align-items: center; z-index: 1; transition: 0.3s; }
+.progress-step.active { background-color: var(--green-accent); }
+.progress-step::before { counter-increment: step; content: counter(step); color: white; }
+.progress-step.active::before { content: "✔"; color: var(--white); }
+
+/* Form Steps & Inputs */
+.form-step { display: none; }
+.form-step.active { display: block; animation: fadeIn 0.5s ease-in-out; }
+@keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+.step-title { font-weight: bold; margin-bottom: 1.5rem; }
+.form-container label {
+  font-size: 0.875rem;     /* smaller labels */
+  margin-bottom: 0.25rem;
+}
+
+/* Review Step */
+#review-details { border: 1px solid var(--border-color); border-radius: 0.5rem; padding: 1.5rem; }
+#review-details p { margin-bottom: 0.5rem; }
+#review-details strong { color: var(--green-dark); }
+
+/* Form Navigation */
+.form-navigation { display: flex; justify-content: space-between; margin-top: 1.5rem; }
+.btn-prev { background-color: var(--muted-brown); border-color: var(--muted-brown); color: white; }
+.btn-primary { background-color: var(--green-accent); border-color: var(--green-accent); }
+.btn-submit { display: none; }
+
+/* Side Gallery & Mobile Accordion */
+.side-gallery { position: sticky; top: 120px; }
+.gallery-item { background: var(--white); padding: 1.5rem; border-radius: 1rem; margin-bottom: 1.5rem; box-shadow: 0 5px 20px rgba(40, 54, 24, 0.05); display: flex; align-items: center; gap: 1rem; }
+.gallery-item img { width: 60px; height: 60px; object-fit: cover; border-radius: 50%; }
+.accordion-item { border-radius: 1rem !important; border: 1px solid var(--border-color) !important; box-shadow: 0 5px 20px rgba(40, 54, 24, 0.05); }
+.accordion-button { font-weight: 700; color: var(--green-dark); }
+.gallery-item-mobile { display: flex; align-items: center; gap: 1rem; margin-bottom: 1rem; }
+.gallery-item-mobile img { width: 50px; height: 50px; border-radius: 50%; object-fit: cover; }
+
+/* OpenStreetMap Geosearch Styles */
+#address-container .geosearch form { display: block; }
+#address-container .geosearch input { width: 100%; padding: 0.8rem 1rem; margin-bottom: 1rem; border: 1px solid var(--border-color); border-radius: 0.5rem; }
+#address-container .geosearch .results { width: 100%; }
+
+
+/* --- Geoapify Autocomplete Styles --- */
+.autocomplete-container {
+  position: relative;
+}
+
+.autocomplete-items {
+  position: absolute;
+  border: 1px solid #d4d4d4;
+  border-top: none;
+  z-index: 99;
+  top: 100%;
+  left: 0;
+  right: 0;
+  background-color: #fff;
+  border-radius: 0 0 0.5rem 0.5rem;
+  box-shadow: 0 8px 15px rgba(0,0,0,0.1);
+}
+
+.autocomplete-items div {
+  padding: 10px;
+  cursor: pointer;
+  border-bottom: 1px solid #d4d4d4;
+}
+
+.autocomplete-items div:last-child {
+  border-bottom: none;
+}
+
+.autocomplete-items div:hover {
+  background-color: #e9e9e9;
+}
+
+.autocomplete-active {
+  background-color: var(--green-accent) !important;
+  color: #ffffff;
+}
+
+/* --- Form Success Message --- */
+.form-success-message {
+  display: none; /* Hidden by default */
+  text-align: center;
+  padding: 3rem 1rem;
+  animation: fadeIn 0.5s ease-in-out;
+}
+
+.success-icon {
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+  background-color: var(--green-accent);
+  color: var(--white);
+  font-size: 2.5rem;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 1.5rem auto;
+  box-shadow: 0 5px 20px rgba(106, 153, 78, 0.3);
+}
+
+.stat-plus-sign {
+  /* Matches the font, size, and color of the .stat-number */
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(2rem, 5vw, 2.8rem);
+  font-weight: 700;
+  line-height: 1.1;
+  color: var(--green-accent);
+
+  /* Adjusts vertical alignment slightly for a perfect match */
+  padding-bottom: 0.25rem; 
+}
+
+@media (max-width: 768px) {
+  .btn {
+    min-height: 44px;
+    min-width: 44px;
+  }
+  
+  /* Improve form spacing on mobile */
+  .form-control {
+    font-size: 16px; /* Prevents zoom on iOS */
+  }
+}
+
+/* ===================================================================
+   MOBILE OPTIMIZATIONS (For screens smaller than 992px)
+   =================================================================== */
+@media (max-width: 991.98px) {
+
+  /* --- 1. Better Spacing & Typography --- */
+  body {
+    line-height: 1.65; /* More readable line spacing */
+    font-size: 16px;
+  }
+  section {
+    padding: 3.5rem 0; /* More breathing room between sections */
+  }
+  h1, .display-3, .display-5 {
+    font-size: 2rem; /* More balanced heading sizes */
+    line-height: 1.3;
+  }
+  h2, .h1 {
+    font-size: 1.75rem;
+  }
+  .lead {
+    font-size: 1.1rem;
+  }
+
+  /* --- 2. Improved Form Design --- */
+  .form-container {
+    padding: 2rem 1.5rem; /* Adjust padding for smaller screens */
+  }
+  .form-container input,
+  .form-container select,
+  .form-container textarea {
+    padding: 1rem; /* Makes fields easier to tap */
+    font-size: 1rem;
+  }
+  .progressbar {
+    margin-bottom: 2rem;
+  }
+
+  /* --- 3. "Ugly" Accordion Fixed - Modern Card Layout --- */
+  .d-lg-none .accordion-item {
+    background-color: transparent;
+    border: none;
+  }
+  .d-lg-none .accordion-button {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--green-black);
+    background-color: var(--white);
+    border-radius: 1rem !important; /* Make the button fully rounded */
+    box-shadow: 0 5px 20px rgba(40, 54, 24, 0.07);
+  }
+  .d-lg-none .accordion-button:not(.collapsed) {
+    background-color: var(--green-dark);
+    color: var(--white);
+  }
+  .d-lg-none .accordion-button::after {
+    /* Hides the default Bootstrap arrow */
+    display: none;
+  }
+  .d-lg-none .accordion-body {
+    padding: 1rem 0.5rem 0 0.5rem; /* Space between button and cards */
+  }
+  
+  /* This is the key change: Style items as clean cards */
+  .gallery-item-mobile {
+    background: var(--white);
+    padding: 1.25rem;
+    border-radius: 1rem;
+    box-shadow: 0 5px 20px rgba(40, 54, 24, 0.05);
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 1rem;
+    border: 1px solid var(--border-color);
+  }
+  .gallery-item-mobile i {
+    font-size: 1.5rem;
+    color: var(--green-accent);
+  }
+  .gallery-item-mobile h5 {
+    font-size: 1rem;
+    margin-bottom: 0.1rem;
+  }
+  .gallery-item-mobile p {
+    font-size: 0.9rem;
+    color: var(--muted-brown);
+    margin-bottom: 0;
+  }
+}
+
+.navbar-toggler .close-icon {
+  font-size: 1.5rem;
+  line-height: 1;
+  color: #000; /* adjust to match your theme */
+}
