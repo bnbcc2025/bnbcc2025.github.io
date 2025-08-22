@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en-AU">
+
+<head>
+  <script>
+    fetch('components/head.html')
+      .then(response => response.text())
+      .then(data => document.head.innerHTML = data);
+  </script>
+</head>
+
+<body class="font-inter text-gray-900 bg-white">
+
+  <header class="sticky-top" id="navbar-placeholder"></header>
+
+  <main>
+    <section id="gallery" class="py-5">
+      <div class="container">
+        <div class="text-center mb-5">
+          <h1 class="display-4 fw-bold">Our Project Gallery</h1>
+          <p class="lead mx-auto" style="max-width: 50vw;">See the quality and attention to detail we bring to every job. Our results speak for themselves.</p>
+        </div>
+
+        <div class="d-flex justify-content-center mb-4">
+          <button class="btn btn-primary me-2 filter-btn" data-filter="all">All</button>
+          <button class="btn btn-outline-primary me-2 filter-btn" data-filter="bond">Bond Cleaning</button>
+          <button class="btn btn-outline-primary me-2 filter-btn" data-filter="carpet">Carpet Cleaning</button>
+          <button class="btn btn-outline-primary me-2 filter-btn" data-filter="kitchens">Kitchens & Ovens</button>
+          <button class="btn btn-outline-primary filter-btn" data-filter="others">Other Work</button>
+        </div>
+
+        <div class="row g-4" id="gallery-grid">
+            <div class="col-12 text-center">
+                <p>Loading gallery...</p>
+            </div>
+        </div>
+      </div>
+    </section>
+  </main>
+  
+  <footer id="footer-placeholder"></footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+    crossorigin="anonymous"></script>
+  <script src="./js/script.js"></script>
+
+    <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      const galleryGrid = document.getElementById('gallery-grid');
+      const filterButtons = document.querySelectorAll('.filter-btn');
+
+      // Function to build the gallery from the JSON data
+      async function buildGallery() {
+        try {
+          const response = await fetch('./gallery.json');
+          if (!response.ok) {
+              throw new Error(`HTTP error! Status: ${response.status}`);
+          }
+          const images = await response.json();
+
+          // Clear the loading message
+          galleryGrid.innerHTML = '';
+
+          // Create and append each gallery item
+          images.forEach(image => {
+            const itemHtml = `
+              <div class="col-lg-4 col-md-6 gallery-item ${image.category}">
+                <img src="${image.path}" class="img-fluid rounded shadow-sm" alt="${image.alt}" loading="lazy" width="600" height="400">
+              </div>
+            `;
+            galleryGrid.insertAdjacentHTML('beforeend', itemHtml);
+          });
+          
+          // Now that items are loaded, make the filters work
+          setupFilters();
+
+        } catch (error) {
+          galleryGrid.innerHTML = '<div class="col-12 text-center"><p class="text-danger">Could not load gallery. Please check that gallery.json exists and is correctly formatted.</p></div>';
+          console.error('Error fetching or parsing gallery data:', error);
+        }
+      }
+
+      // Function to set up the filter button logic
+      function setupFilters() {
+        const galleryItems = document.querySelectorAll('.gallery-item');
+
+        filterButtons.forEach(button => {
+          button.addEventListener('click', () => {
+            // Update active button style
+            filterButtons.forEach(btn => {
+              btn.classList.remove('btn-primary');
+              btn.classList.add('btn-outline-primary');
+            });
+            button.classList.remove('btn-outline-primary');
+            button.classList.add('btn-primary');
+            
+            const filter = button.getAttribute('data-filter');
+
+            // Show or hide items based on the filter
+            galleryItems.forEach(item => {
+              if (filter === 'all' || item.classList.contains(filter)) {
+                item.style.display = 'block';
+              } else {
+                item.style.display = 'none';
+              }
+            });
+          });
+        });
+      }
+
+      // Initial call to build the gallery
+      buildGallery();
+    });
+  </script>
+
+</body>
+</html>
