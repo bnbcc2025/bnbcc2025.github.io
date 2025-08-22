@@ -63,27 +63,90 @@ document.addEventListener('DOMContentLoaded', () => {
   // Get the necessary DOM elements
 
 
-const vacuum = document.getElementById('vacuum');
-const overlay = document.querySelector('.dirty-overlay');
+  const hero = document.getElementById('hero');
+  const vacuum = document.getElementById('vacuum');
+  const dusts = document.querySelectorAll('.dust');
 
-let vacuumX = 0;
-const vacuumSpeed = 1; // slower, smoother
-const overlayWidth = overlay.offsetWidth;
+  if (!hero || !vacuum || dusts.length === 0) return;
 
-function animateVacuum() {
-    vacuumX += vacuumSpeed;
-    if (vacuumX > overlayWidth) vacuumX = -vacuum.offsetWidth; // loop
+  // ------------------------------
+  // CONFIGURATION
+  // ------------------------------
+  const vacuumSpeed = 3000; // milliseconds for one movement
+  const dustFadeDuration = 500; // fade out/in duration
+  const dustUpperPercent = 0.7; // top 70% of hero
 
-    vacuum.style.left = vacuumX + 'px';
+  // Set vacuum transition
+  vacuum.style.transition = `transform ${vacuumSpeed}ms ease-in-out`;
 
-    // Reveal hero by clipping the overlay under vacuum
-    overlay.style.clipPath = `polygon(0 0, ${vacuumX + 40}px 0, ${vacuumX + 40}px 100%, 0 100%)`;
+  // Initialize dust sizes and rotation
+  dusts.forEach(dust => {
+    const w = Math.floor(Math.random() * 12) + 10; // width 10-22px
+    const h = Math.floor(Math.random() * 6) + 6;   // height 6-12px
+    const rotate = Math.floor(Math.random() * 360); // random rotation
+    dust.style.width = `${w}px`;
+    dust.style.height = `${h}px`;
+    dust.style.transform = `rotate(${rotate}deg)`;
+    dust.style.opacity = 1;
+    dust.style.position = 'absolute';
+  });
 
-    requestAnimationFrame(animateVacuum);
-}
+  // Function to get random position inside hero (upper 70%)
+  function getRandomPosition() {
+    const heroRect = hero.getBoundingClientRect();
+    const maxX = heroRect.width - vacuum.offsetWidth;
+    const maxY = heroRect.height * dustUpperPercent - vacuum.offsetHeight;
+    const x = Math.floor(Math.random() * maxX);
+    const y = Math.floor(Math.random() * maxY);
+    return { x, y };
+  }
 
-animateVacuum();
+  // Position dusts initially
+  dusts.forEach(dust => {
+    const { x, y } = getRandomPosition();
+    dust.style.transform += ` translate(${x}px, ${y}px)`;
+    dust.dataset.x = x;
+    dust.dataset.y = y;
+  });
 
+  // ------------------------------
+  // VACUUM ANIMATION LOOP
+  // ------------------------------
+  function moveVacuum() {
+    // Filter visible dust
+    const visibleDusts = Array.from(dusts).filter(d => window.getComputedStyle(d).opacity === '1');
+    if (visibleDusts.length === 0) return;
+
+    // Pick random dust
+    const dust = visibleDusts[Math.floor(Math.random() * visibleDusts.length)];
+    const dustRect = dust.getBoundingClientRect();
+    const heroRect = hero.getBoundingClientRect();
+
+    // Compute vacuum position (base aligned with dust)
+    const targetX = dustRect.left - heroRect.left + dustRect.width / 2 - vacuum.offsetWidth / 2;
+    const targetY = dustRect.top - heroRect.top - vacuum.offsetHeight + dustRect.height / 2;
+
+    // Move vacuum
+    vacuum.style.transform = `translate(${targetX}px, ${targetY}px)`;
+
+    // After vacuum arrives, fade out dust, reposition, fade in
+    setTimeout(() => {
+      dust.style.transition = `opacity ${dustFadeDuration}ms`;
+      dust.style.opacity = 0;
+
+      setTimeout(() => {
+        const { x, y } = getRandomPosition();
+        const rotate = Math.floor(Math.random() * 360);
+        dust.style.transform = `rotate(${rotate}deg) translate(${x}px, ${y}px)`;
+        dust.style.opacity = 1;
+        dust.dataset.x = x;
+        dust.dataset.y = y;
+      }, dustFadeDuration);
+    }, vacuumSpeed); // sync with vacuum arrival
+  }
+
+  // Start the vacuum loop
+  setInterval(moveVacuum, vacuumSpeed + 200); // small buffer between moves
 
 
   ////////////////////////
