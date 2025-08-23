@@ -1,0 +1,782 @@
+<!DOCTYPE html>
+<html lang="en-AU">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Professional bond cleaning services in Brisbane North. Get your bond back guaranteed with our eco-friendly, comprehensive end-of-lease cleaning solutions.">
+  <meta name="keywords" content="bond cleaning Brisbane North, end of lease cleaning, carpet cleaning, bond back guarantee, Brisbane cleaners">
+  <title>Bond Cleaning Brisbane North | Get Your Bond Back Guaranteed</title>
+  
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <!-- Custom CSS -->
+  <style>
+    :root {
+      --primary-color: #2a7f62;
+      --secondary-color: #f8f9fa;
+      --accent-color: #ff6b6b;
+      --text-color: #333;
+    }
+    
+    body {
+      font-family: 'Inter', sans-serif;
+      color: var(--text-color);
+      line-height: 1.6;
+    }
+    
+    .hero-section {
+      background: linear-gradient(rgba(42, 127, 98, 0.85), rgba(42, 127, 98, 0.85)), url('https://images.unsplash.com/photo-1581578431542-e99d89d07774?ixlib=rb-4.0.3') center/cover no-repeat;
+      color: white;
+      padding: 100px 0;
+      text-align: center;
+    }
+    
+    .hero-title {
+      font-size: 3rem;
+      font-weight: 700;
+      margin-bottom: 20px;
+    }
+    
+    .hero-subtitle {
+      font-size: 1.5rem;
+      margin-bottom: 30px;
+      max-width: 700px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    
+    .btn-primary-custom {
+      background-color: var(--accent-color);
+      border: none;
+      padding: 12px 30px;
+      font-weight: 600;
+      border-radius: 50px;
+      transition: all 0.3s ease;
+    }
+    
+    .btn-primary-custom:hover {
+      background-color: #e55555;
+      transform: translateY(-3px);
+    }
+    
+    .section-padding {
+      padding: 80px 0;
+    }
+    
+    .section-title {
+      font-size: 2.5rem;
+      font-weight: 700;
+      margin-bottom: 20px;
+      color: var(--primary-color);
+    }
+    
+    .service-card {
+      border: none;
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+      transition: transform 0.3s ease;
+      height: 100%;
+    }
+    
+    .service-card:hover {
+      transform: translateY(-10px);
+    }
+    
+    .service-card-img {
+      height: 200px;
+      object-fit: cover;
+    }
+    
+    .service-card-body {
+      padding: 25px;
+    }
+    
+    .process-step {
+      text-align: center;
+      margin-bottom: 40px;
+    }
+    
+    .step-number {
+      width: 60px;
+      height: 60px;
+      background-color: var(--primary-color);
+      color: white;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.5rem;
+      font-weight: 700;
+      margin: 0 auto 20px;
+    }
+    
+    .testimonial-card {
+      background-color: var(--secondary-color);
+      border-radius: 10px;
+      padding: 30px;
+      margin-bottom: 30px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+    }
+    
+    .testimonial-img {
+      width: 70px;
+      height: 70px;
+      border-radius: 50%;
+      object-fit: cover;
+      margin-right: 20px;
+    }
+    
+    .faq-item {
+      margin-bottom: 20px;
+      border-bottom: 1px solid #eee;
+      padding-bottom: 20px;
+    }
+    
+    .faq-question {
+      font-weight: 600;
+      margin-bottom: 10px;
+      cursor: pointer;
+      color: var(--primary-color);
+    }
+    
+    .suburb-card {
+      background-color: var(--secondary-color);
+      border-radius: 10px;
+      padding: 20px;
+      margin-bottom: 15px;
+      text-align: center;
+      transition: all 0.3s ease;
+    }
+    
+    .suburb-card:hover {
+      background-color: var(--primary-color);
+      color: white;
+    }
+    
+    .cta-section {
+      background-color: var(--primary-color);
+      color: white;
+      padding: 80px 0;
+      text-align: center;
+    }
+    
+    .footer {
+      background-color: #2c3e50;
+      color: white;
+      padding: 60px 0 30px;
+    }
+    
+    .footer-widget h4 {
+      font-size: 1.2rem;
+      margin-bottom: 20px;
+      position: relative;
+      padding-bottom: 10px;
+    }
+    
+    .footer-widget h4:after {
+      content: '';
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      width: 50px;
+      height: 2px;
+      background-color: var(--accent-color);
+    }
+    
+    .footer-links li {
+      margin-bottom: 10px;
+    }
+    
+    .footer-links a {
+      color: #bdc3c7;
+      text-decoration: none;
+      transition: color 0.3s ease;
+    }
+    
+    .footer-links a:hover {
+      color: white;
+    }
+    
+    .social-icons a {
+      display: inline-block;
+      width: 40px;
+      height: 40px;
+      background-color: rgba(255,255,255,0.1);
+      color: white;
+      text-align: center;
+      line-height: 40px;
+      border-radius: 50%;
+      margin-right: 10px;
+      transition: all 0.3s ease;
+    }
+    
+    .social-icons a:hover {
+      background-color: var(--accent-color);
+    }
+    
+    .copyright {
+      border-top: 1px solid rgba(255,255,255,0.1);
+      padding-top: 30px;
+      margin-top: 50px;
+      text-align: center;
+      color: #bdc3c7;
+    }
+  </style>
+</head>
+<body>
+  <!-- Header Placeholder -->
+  <header class="sticky-top" id="navbar-placeholder"></header>
+  
+  <!-- Hero Section -->
+  <section class="hero-section">
+    <div class="container">
+      <h1 class="hero-title">Professional Bond Cleaning in Brisbane North</h1>
+      <p class="hero-subtitle">Get Your Full Bond Back with Our Comprehensive End-of-Lease Cleaning Services</p>
+      <div class="hero-buttons">
+        <a href="#quote-form" class="btn btn-primary-custom btn-lg me-3">Get a Free Quote</a>
+        <a href="tel:0721436064" class="btn btn-outline-light btn-lg">Call Us Now: 07 2143 6064</a>
+      </div>
+    </div>
+  </section>
+  
+  <!-- Why Choose Us Section -->
+  <section class="section-padding">
+    <div class="container">
+      <div class="row align-items-center">
+        <div class="col-lg-6 mb-4 mb-lg-0">
+          <h2 class="section-title">Why Choose Our Bond Cleaning?</h2>
+          <p class="lead">We are Brisbane North's most trusted bond cleaning specialists with over 10 years of experience helping tenants secure their full bond refund.</p>
+          <div class="row mt-4">
+            <div class="col-md-6 mb-3">
+              <div class="d-flex align-items-start">
+                <div class="icon-box me-3">
+                  <i class="fas fa-check-circle fa-2x text-success"></i>
+                </div>
+                <div>
+                  <h5>Bond Back Guarantee</h5>
+                  <p>If your agent isn't satisfied, we'll return to fix any issues within 72 hours.</p>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-6 mb-3">
+              <div class="d-flex align-items-start">
+                <div class="icon-box me-3">
+                  <i class="fas fa-leaf fa-2x text-success"></i>
+                </div>
+                <div>
+                  <h5>Eco-Friendly Products</h5>
+                  <p>Safe for your family, pets, and the environment.</p>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-6 mb-3">
+              <div class="d-flex align-items-start">
+                <div class="icon-box me-3">
+                  <i class="fas fa-users fa-2x text-success"></i>
+                </div>
+                <div>
+                  <h5>Professional Team</h5>
+                  <p>Police-checked, insured, and highly trained cleaning specialists.</p>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-6 mb-3">
+              <div class="d-flex align-items-start">
+                <div class="icon-box me-3">
+                  <i class="fas fa-clock fa-2x text-success"></i>
+                </div>
+                <div>
+                  <h5>Flexible Scheduling</h5>
+                  <p>Same-day service available to fit your moving timeline.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-6">
+          <div class="position-relative">
+            <img src="https://images.unsplash.com/photo-1581578431542-e99d89d07774?ixlib=rb-4.0.3" alt="Professional bond cleaning" class="img-fluid rounded shadow">
+            <div class="position-absolute bottom-0 end-0 bg-white p-3 rounded shadow m-4">
+              <div class="d-flex align-items-center">
+                <div class="text-end me-3">
+                  <div class="fw-bold">1,857+</div>
+                  <div>Bonds Returned</div>
+                </div>
+                <div class="bg-success text-white rounded-circle d-flex align-items-center justify-content-center" style="width: 50px; height: 50px;">
+                  <i class="fas fa-trophy fa-lg"></i>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  <!-- Our Services Section -->
+  <section class="section-padding bg-light">
+    <div class="container">
+      <div class="text-center mb-5">
+        <h2 class="section-title">Our Comprehensive Bond Cleaning Services</h2>
+        <p class="lead">We follow a detailed, agency-approved checklist to ensure every inch of your property is spotless.</p>
+      </div>
+      
+      <div class="row g-4">
+        <div class="col-md-6 col-lg-4">
+          <div class="card service-card">
+            <img src="https://images.unsplash.com/photo-1584622650111-993a426fbf0a?ixlib=rb-4.0.3" class="card-img-top service-card-img" alt="Kitchen cleaning">
+            <div class="card-body service-card-body">
+              <h4 class="card-title">Kitchen Deep Clean</h4>
+              <ul class="list-unstyled">
+                <li><i class="fas fa-check text-success me-2"></i>Clean all cabinets inside/out</li>
+                <li><i class="fas fa-check text-success me-2"></i>Degrease stove & rangehood</li>
+                <li><i class="fas fa-check text-success me-2"></i>Scrub sink & polish taps</li>
+                <li><i class="fas fa-check text-success me-2"></i>Clean oven & microwave</li>
+                <li><i class="fas fa-check text-success me-2"></i>Wash walls & splashbacks</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        
+        <div class="col-md-6 col-lg-4">
+          <div class="card service-card">
+            <img src="https://images.unsplash.com/photo-1584622650111-993a426fbf0a?ixlib=rb-4.0.3" class="card-img-top service-card-img" alt="Bathroom cleaning">
+            <div class="card-body service-card-body">
+              <h4 class="card-title">Bathroom Sanitization</h4>
+              <ul class="list-unstyled">
+                <li><i class="fas fa-check text-success me-2"></i>Scrub tiles & grout</li>
+                <li><i class="fas fa-check text-success me-2"></i>Disinfect toilet & bidet</li>
+                <li><i class="fas fa-check text-success me-2"></i>Clean shower & bath</li>
+                <li><i class="fas fa-check text-success me-2"></i>Polish mirrors & fixtures</li>
+                <li><i class="fas fa-check text-success me-2"></i>Remove soap scum & mold</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        
+        <div class="col-md-6 col-lg-4">
+          <div class="card service-card">
+            <img src="https://images.unsplash.com/photo-1584622650111-993a426fbf0a?ixlib=rb-4.0.3" class="card-img-top service-card-img" alt="Living area cleaning">
+            <div class="card-body service-card-body">
+              <h4 class="card-title">Living Areas & Bedrooms</h4>
+              <ul class="list-unstyled">
+                <li><i class="fas fa-check text-success me-2"></i>Vacuum carpets & mop floors</li>
+                <li><i class="fas fa-check text-success me-2"></i>Dust all surfaces</li>
+                <li><i class="fas fa-check text-success me-2"></i>Clean windows & sills</li>
+                <li><i class="fas fa-check text-success me-2"></i>Wipe doors & handles</li>
+                <li><i class="fas fa-check text-success me-2"></i>Remove cobwebs</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <div class="text-center mt-5">
+        <a href="#quote-form" class="btn btn-primary-custom btn-lg">Get Your Free Quote Now</a>
+      </div>
+    </div>
+  </section>
+  
+  <!-- How It Works Section -->
+  <section class="section-padding">
+    <div class="container">
+      <div class="text-center mb-5">
+        <h2 class="section-title">Our Simple 3-Step Process</h2>
+        <p class="lead">Getting your bond back has never been easier</p>
+      </div>
+      
+      <div class="row">
+        <div class="col-md-4">
+          <div class="process-step">
+            <div class="step-number">1</div>
+            <h4>Get a Free Quote</h4>
+            <p>Fill out our quick form or call us. We'll provide a competitive, no-obligation quote tailored to your property.</p>
+          </div>
+        </div>
+        
+        <div class="col-md-4">
+          <div class="process-step">
+            <div class="step-number">2</div>
+            <h4>We Clean Your Property</h4>
+            <p>Our professional team arrives on time with all equipment. We follow our comprehensive checklist to leave your property spotless.</p>
+          </div>
+        </div>
+        
+        <div class="col-md-4">
+          <div class="process-step">
+            <div class="step-number">3</div>
+            <h4>Get Your Bond Back</h4>
+            <p>Enjoy a stress-free move knowing your property meets all agency standards. We guarantee you'll get your full bond back.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  <!-- Testimonials Section -->
+  <section class="section-padding bg-light">
+    <div class="container">
+      <div class="text-center mb-5">
+        <h2 class="section-title">What Our Clients Say</h2>
+        <p class="lead">Join hundreds of happy customers across Brisbane North</p>
+      </div>
+      
+      <div class="row">
+        <div class="col-lg-4 mb-4">
+          <div class="testimonial-card">
+            <div class="d-flex align-items-center mb-3">
+              <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="Sarah M." class="testimonial-img">
+              <div>
+                <h5>Sarah M.</h5>
+                <div class="text-warning">
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                </div>
+              </div>
+            </div>
+            <p>"The team was punctual, professional, and our apartment was spotless. We got our bond back in full without a single issue. Absolutely excellent service!"</p>
+            <p class="text-muted">Ascot</p>
+          </div>
+        </div>
+        
+        <div class="col-lg-4 mb-4">
+          <div class="testimonial-card">
+            <div class="d-flex align-items-center mb-3">
+              <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Michael T." class="testimonial-img">
+              <div>
+                <h5>Michael T.</h5>
+                <div class="text-warning">
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                </div>
+              </div>
+            </div>
+            <p>"Amazing carpet cleaning! I thought the stains were permanent, but they managed to get everything out. The carpets look brand new. Highly recommend."</p>
+            <p class="text-muted">Hamilton</p>
+          </div>
+        </div>
+        
+        <div class="col-lg-4 mb-4">
+          <div class="testimonial-card">
+            <div class="d-flex align-items-center mb-3">
+              <img src="https://randomuser.me/api/portraits/women/68.jpg" alt="Jennifer L." class="testimonial-img">
+              <div>
+                <h5>Jennifer L.</h5>
+                <div class="text-warning">
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                </div>
+              </div>
+            </div>
+            <p>"The end-of-lease cleaning exceeded all my expectations. The real estate agent was incredibly impressed. Worth every single cent for the peace of mind."</p>
+            <p class="text-muted">Clayfield</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  <!-- FAQ Section -->
+  <section class="section-padding">
+    <div class="container">
+      <div class="text-center mb-5">
+        <h2 class="section-title">Frequently Asked Questions</h2>
+        <p class="lead">Find answers to common questions about our bond cleaning services</p>
+      </div>
+      
+      <div class="row">
+        <div class="col-lg-6">
+          <div class="faq-item">
+            <h4 class="faq-question">Do you offer a bond back guarantee?</h4>
+            <p>Yes, absolutely. This is our commitment that our work meets the high standards of property managers. If your agent is not satisfied with the clean and provides a report within 72 hours, we will return to rectify any issues free of charge.</p>
+          </div>
+          
+          <div class="faq-item">
+            <h4 class="faq-question">Which suburbs do you service?</h4>
+            <p>We provide bond cleaning services across all North Brisbane suburbs including Chermside, Ascot, Hamilton, Clayfield, Nundah, North Lakes, Sandgate, Redcliffe, and surrounding areas.</p>
+          </div>
+          
+          <div class="faq-item">
+            <h4 class="faq-question">Are your products eco-friendly and safe?</h4>
+            <p>Yes, we are committed to using effective, non-toxic cleaning agents that are free from hazardous chemicals. Our products are safe for your family, pets, and the environment.</p>
+          </div>
+        </div>
+        
+        <div class="col-lg-6">
+          <div class="faq-item">
+            <h4 class="faq-question">What's the difference between a bond clean and a regular clean?</h4>
+            <p>A bond clean is a comprehensive deep clean that follows a detailed checklist designed to meet real estate standards. It covers areas often missed in regular cleans, such as inside ovens, windows, and high dusting.</p>
+          </div>
+          
+          <div class="faq-item">
+            <h4 class="faq-question">How long does a bond clean take?</h4>
+            <p>The time required depends on the size and condition of your property. Typically, a bond clean for a 2-bedroom apartment takes 4-6 hours, while a 3-bedroom house may take 6-8 hours.</p>
+          </div>
+          
+          <div class="faq-item">
+            <h4 class="faq-question">Do I need to be present during the clean?</h4>
+            <p>No, you don't need to be present. Many of our clients prefer to provide access and return after the clean is complete. We'll send you photos of the finished job for your peace of mind.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  <!-- Service Areas Section -->
+  <section class="section-padding bg-light">
+    <div class="container">
+      <div class="text-center mb-5">
+        <h2 class="section-title">Our Service Areas</h2>
+        <p class="lead">Professional bond cleaning across North Brisbane</p>
+      </div>
+      
+      <div class="row">
+        <div class="col-md-4 col-sm-6 mb-3">
+          <div class="suburb-card">
+            <h5>Chermside</h5>
+          </div>
+        </div>
+        <div class="col-md-4 col-sm-6 mb-3">
+          <div class="suburb-card">
+            <h5>Ascot</h5>
+          </div>
+        </div>
+        <div class="col-md-4 col-sm-6 mb-3">
+          <div class="suburb-card">
+            <h5>Hamilton</h5>
+          </div>
+        </div>
+        <div class="col-md-4 col-sm-6 mb-3">
+          <div class="suburb-card">
+            <h5>Clayfield</h5>
+          </div>
+        </div>
+        <div class="col-md-4 col-sm-6 mb-3">
+          <div class="suburb-card">
+            <h5>Nundah</h5>
+          </div>
+        </div>
+        <div class="col-md-4 col-sm-6 mb-3">
+          <div class="suburb-card">
+            <h5>North Lakes</h5>
+          </div>
+        </div>
+        <div class="col-md-4 col-sm-6 mb-3">
+          <div class="suburb-card">
+            <h5>Sandgate</h5>
+          </div>
+        </div>
+        <div class="col-md-4 col-sm-6 mb-3">
+          <div class="suburb-card">
+            <h5>Redcliffe</h5>
+          </div>
+        </div>
+        <div class="col-md-4 col-sm-6 mb-3">
+          <div class="suburb-card">
+            <h5>And More...</h5>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  <!-- Quote Form Section -->
+  <section id="quote-form" class="section-padding">
+    <div class="container">
+      <div class="row justify-content-center">
+        <div class="col-lg-8">
+          <div class="card shadow-lg">
+            <div class="card-body p-5">
+              <div class="text-center mb-4">
+                <h2 class="section-title">Get Your Free Quote</h2>
+                <p class="lead">Fill out the form below and we'll get back to you with a competitive price</p>
+              </div>
+              
+              <form id="quoteForm">
+                <div class="row g-3">
+                  <div class="col-md-6">
+                    <label for="firstName" class="form-label">First Name</label>
+                    <input type="text" class="form-control" id="firstName" required>
+                  </div>
+                  <div class="col-md-6">
+                    <label for="lastName" class="form-label">Last Name</label>
+                    <input type="text" class="form-control" id="lastName" required>
+                  </div>
+                  <div class="col-md-6">
+                    <label for="email" class="form-label">Email Address</label>
+                    <input type="email" class="form-control" id="email" required>
+                  </div>
+                  <div class="col-md-6">
+                    <label for="phone" class="form-label">Phone Number</label>
+                    <input type="tel" class="form-control" id="phone" placeholder="e.g., 0412 345 678" required>
+                  </div>
+                  <div class="col-md-6">
+                    <label for="propertyType" class="form-label">Property Type</label>
+                    <select class="form-select" id="propertyType" required>
+                      <option value="" selected disabled>Select property type</option>
+                      <option value="apartment">Apartment</option>
+                      <option value="house">House</option>
+                      <option value="townhouse">Townhouse</option>
+                      <option value="studio">Studio</option>
+                    </select>
+                  </div>
+                  <div class="col-md-6">
+                    <label for="bedrooms" class="form-label">Number of Bedrooms</label>
+                    <select class="form-select" id="bedrooms" required>
+                      <option value="" selected disabled>Select bedrooms</option>
+                      <option value="1">1 Bedroom</option>
+                      <option value="2">2 Bedrooms</option>
+                      <option value="3">3 Bedrooms</option>
+                      <option value="4">4+ Bedrooms</option>
+                    </select>
+                  </div>
+                  <div class="col-12">
+                    <label for="suburb" class="form-label">Suburb</label>
+                    <input type="text" class="form-control" id="suburb" required>
+                  </div>
+                  <div class="col-12">
+                    <label for="message" class="form-label">Additional Information</label>
+                    <textarea class="form-control" id="message" rows="3" placeholder="Tell us about your cleaning needs..."></textarea>
+                  </div>
+                  <div class="col-12 text-center">
+                    <button type="submit" class="btn btn-primary-custom btn-lg">Get My Free Quote</button>
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  <!-- CTA Section -->
+  <section class="cta-section">
+    <div class="container">
+      <h2 class="mb-4">Ready to Get Your Bond Back?</h2>
+      <p class="lead mb-4">Contact Brisbane's most trusted bond cleaning specialists today</p>
+      <div class="d-flex flex-column flex-md-row justify-content-center gap-3">
+        <a href="tel:0721436064" class="btn btn-light btn-lg">
+          <i class="fas fa-phone me-2"></i> Call Us: 07 2143 6064
+        </a>
+        <a href="mailto:info@bnbcc.com.au" class="btn btn-outline-light btn-lg">
+          <i class="fas fa-envelope me-2"></i> Email Us
+        </a>
+      </div>
+    </div>
+  </section>
+  
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-4 mb-4">
+          <div class="footer-widget">
+            <h4>About Us</h4>
+            <p>Brisbane North Bond & Carpet Cleaners are your local experts in providing top-quality, reliable, and affordable bond, carpet, and commercial cleaning services across Brisbane's Northside.</p>
+            <div class="social-icons mt-3">
+              <a href="#"><i class="fab fa-facebook-f"></i></a>
+              <a href="#"><i class="fab fa-instagram"></i></a>
+              <a href="#"><i class="fab fa-linkedin-in"></i></a>
+            </div>
+          </div>
+        </div>
+        
+        <div class="col-lg-4 mb-4">
+          <div class="footer-widget">
+            <h4>Our Services</h4>
+            <ul class="list-unstyled footer-links">
+              <li><a href="#">Bond Cleaning</a></li>
+              <li><a href="#">Carpet Cleaning</a></li>
+              <li><a href="#">End of Lease Cleaning</a></li>
+              <li><a href="#">Commercial Cleaning</a></li>
+            </ul>
+          </div>
+        </div>
+        
+        <div class="col-lg-4 mb-4">
+          <div class="footer-widget">
+            <h4>Contact Us</h4>
+            <ul class="list-unstyled footer-links">
+              <li><i class="fas fa-map-marker-alt me-2"></i> Brisbane Northside, QLD, Australia</li>
+              <li><i class="fas fa-phone me-2"></i> 07 2143 6064</li>
+              <li><i class="fas fa-envelope me-2"></i> info@bnbcc.com.au</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      
+      <div class="copyright">
+        <p>&copy; 2023 Brisbane North Bond & Carpet Cleaners. All Rights Reserved.</p>
+      </div>
+    </div>
+  </footer>
+  
+  <!-- Bootstrap JS Bundle -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  
+  <!-- Custom Scripts -->
+  <script>
+    // Load header
+    fetch('components/head.html')
+      .then(response => response.text())
+      .then(data => document.head.innerHTML = data);
+    
+    // Load header
+    fetch('components/header.html')
+      .then(response => response.text())
+      .then(data => document.getElementById('navbar-placeholder').innerHTML = data);
+    
+    // Load footer
+    fetch('components/footer.html')
+      .then(response => response.text())
+      .then(data => document.getElementById('footer-placeholder').innerHTML = data);
+    
+    // Form submission
+    document.getElementById('quoteForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+      
+      // Get form values
+      const formData = {
+        firstName: document.getElementById('firstName').value,
+        lastName: document.getElementById('lastName').value,
+        email: document.getElementById('email').value,
+        phone: document.getElementById('phone').value,
+        propertyType: document.getElementById('propertyType').value,
+        bedrooms: document.getElementById('bedrooms').value,
+        suburb: document.getElementById('suburb').value,
+        message: document.getElementById('message').value
+      };
+      
+      // Here you would normally send the data to a server
+      console.log('Form submitted:', formData);
+      
+      // Show success message
+      alert('Thank you for your inquiry! We will contact you shortly with your free quote.');
+      
+      // Reset form
+      this.reset();
+    });
+    
+    // FAQ accordion
+    document.querySelectorAll('.faq-question').forEach(question => {
+      question.addEventListener('click', () => {
+        const answer = question.nextElementSibling;
+        answer.style.display = answer.style.display === 'block' ? 'none' : 'block';
+      });
+    });
+  </script>
+</body>
+</html>

@@ -1,50 +1,40 @@
-  <!-- Google Tag Manager -->
-  <script>
-    (function (w, d, s, l, i) {
-      w[l] = w[l] || []; w[l].push({
-        'gtm.start':
-          new Date().getTime(), event: 'gtm.js'
-      }); var f = d.getElementsByTagName(s)[0],
-        j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : ''; j.async = true; j.src =
-          'https://www.googletagmanager.com/gtm.js?id=' + i + dl; f.parentNode.insertBefore(j, f);
-    })(window, document, 'script', 'dataLayer', 'GTM-5P3CRTVS');
-  </script>
-  <!-- Google tag (gtag.js) -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=AW-17414580633"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag() { dataLayer.push(arguments); }
-    gtag('js', new Date());
+<script>
+  (function (w, d, s, l, i) {
+    w[l] = w[l] || []; w[l].push({
+      'gtm.start':
+        new Date().getTime(), event: 'gtm.js'
+    }); var f = d.getElementsByTagName(s)[0],
+      j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : ''; j.async = true; j.src =
+        'https://www.googletagmanager.com/gtm.js?id=' + i + dl; f.parentNode.insertBefore(j, f);
+  })(window, document, 'script', 'dataLayer', 'GTM-5P3CRTVS');
+</script>
 
-    // Google Ads ID
-    gtag('config', 'AW-17414580633');
-  </script>
+<script async src="https://www.googletagmanager.com/gtag/js?id=AW-17414580633"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag() { dataLayer.push(arguments); }
+  gtag('js', new Date());
 
-  <script>
-    fetch('components/head.html')
-      .then(response => response.text())
-      .then(data => document.head.innerHTML = data);
-  </script>
+  gtag('config', 'AW-17414580633');
+</script>
 
-  <script>
-    function gtag_report_conversion(url) {
-      var callback = function () {
-        if (typeof (url) != 'undefined') {
-          window.location = url;
-        }
-      };
-      gtag('event', 'conversion', {
-        'send_to': 'AW-17414580633/75eTCJTBxIkbEJnT9e9A',
-        'event_callback': callback
-      });
-      return false;
-    }
-  </script>
+<script>
+  function gtag_report_conversion(url) {
+    var callback = function () {
+      if (typeof (url) != 'undefined') {
+        window.location = url;
+      }
+    };
+    gtag('event', 'conversion', {
+      'send_to': 'AW-17414580633/75eTCJTBxIkbEJnT9e9A',
+      'event_callback': callback
+    });
+    return false;
+  }
+</script>
 
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-
-<title>Brisbane North Bond & Carpet Cleaners - Professional End of Lease Cleaning</title>
 
 <meta name="description"
   content="Your trusted experts for professional bond cleaning, carpet cleaning, and end of lease cleaning services across Brisbane North. With over 10 years of experience, we offer a satisfaction guarantee. Call 0721 436 064 for a free quote.">
@@ -93,7 +83,9 @@
   rel="stylesheet">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Poppins:wght@600;700;800&display=swap" rel="stylesheet">
+<link
+  href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Poppins:wght@600;700;800&display=swap"
+  rel="stylesheet">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
@@ -103,10 +95,9 @@
 <!-- Add to head section -->
 <link rel="sitemap" type="application/xml" href="./sitemap.xml">
 <link rel="stylesheet" href="./css/style.css">
-<img src="assets/homepage.jpg" class="img-fluid" 
-     alt="Professional cleaner ready for a bond clean in Brisbane" 
-     loading="lazy">
-  <link rel="preload" href="assets/background.jpg" as="image">
+<img src="assets/homepage.jpg" class="img-fluid" alt="Professional cleaner ready for a bond clean in Brisbane"
+  loading="lazy">
+<link rel="preload" href="assets/background.jpg" as="image">
 <link rel="preconnect" href="https://cdn.jsdelivr.net">
 <script type="application/ld+json">
   {
@@ -184,7 +175,7 @@
   }
   </script>
 
-  <script type="application/ld+json">
+<script type="application/ld+json">
 {
   "@context": "https://schema.org/",
   "@type": "Review",
