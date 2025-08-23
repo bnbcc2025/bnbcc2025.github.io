@@ -47,185 +47,7 @@
     </section>
 
     <!-- Quote Form Section -->
-    <section id="quote" class="quote-section">
-      <div class="container">
-        <div class="row g-5">
-          <div class="col-lg-7">
-            <div class="form-container">
-              <h2 class="form-title">Get a Free, No-Obligation Quote or Call Us Now</h2>
-              <p class="form-subtitle">Just a few details and we'll have a competitive price for you in no time.</p>
-
-              <div class="progressbar">
-                <div class="progress" id="progress"></div>
-                <div class="progress-step active" data-title="Personal"></div>
-                <div class="progress-step" data-title="Service"></div>
-                <div class="progress-step" data-title="Submit"></div>
-              </div>
-
-              <form id="multiStepForm"
-                action="https://script.google.com/macros/s/AKfycbwaWZdtmhkrJ9wLqOECG8xJfecim5cBt6IxU4sLZ7uZ9vnaGfTQRj6Xuu3XL-fovYMGxg/exec"
-                method="POST" target="hidden_iframe" aria-label="Contact form for cleaning service quote" novalidate
-                enctype="application/x-www-form-urlencoded">
-
-                <div class="form-step active">
-                  <h5 class="step-title">Your Information</h5>
-                  <div class="mb-3">
-                    <label for="firstName" class="form-label">First Name</label>
-                    <input type="text" id="firstName" name="firstName" class="form-control" required>
-                  </div>
-                  <div class="mb-3">
-                    <label for="lastName" class="form-label">Last Name</label>
-                    <input type="text" id="lastName" name="lastName" class="form-control" required>
-                  </div>
-                  <div class="mb-3">
-                    <label for="emailAddress" class="form-label">Email Address</label>
-                    <input type="email" id="emailAddress" name="emailAddress" class="form-control" required>
-                  </div>
-                  <div class="mb-3">
-                    <label for="phoneNumber" class="form-label">Phone Number</label>
-                    <input type="tel" id="phoneNumber" name="phoneNumber" class="form-control"
-                      placeholder="e.g., 0412 345 678" required>
-                  </div>
-                </div>
-
-
-                <div class="form-step">
-                  <h5 class="step-title">Service Details</h5>
-                  <div class="mb-3">
-                    <label for="serviceType" class="form-label">Service</label>
-                    <select id="serviceType" name="serviceType" class="form-select" required>
-                      <option value="" disabled selected>Select a Service...</option>
-                    </select>
-                  </div>
-                  <div class="mb-3 autocomplete-container">
-                    <label for="address-autocomplete" class="form-label">Property Address</label>
-                    <input type="text" id="address-autocomplete" name="propertyAddress" class="form-control"
-                      placeholder="Start typing your address..." required autocomplete="off">
-                    <div class="autocomplete-items"></div>
-                  </div>
-                  <div class="mb-3">
-                    <label for="messageContent" class="form-label">Message</label>
-                    <textarea id="messageContent" name="messageContent" class="form-control" rows="4"
-                      placeholder="Anything else we should know? (e.g., bedrooms/bathrooms)" required></textarea>
-                  </div>
-                </div>
-
-                <div class="icepot-field">
-
-                  <input type="text" id="website" name="website" value="99" autocomplete="off" tabindex="-1">
-                </div>
-
-                <div class="form-step">
-                  <h5 class="step-title">Review & Submit</h5>
-                  <p class="text-muted">Please review your details below. When you're ready, click submit.</p>
-                  <div id="review-details" class="mb-4"></div>
-                </div>
-
-                <div class="form-navigation">
-                  <button type="button" class="btn btn-secondary btn-prev">Back</button>
-                  <button type="button" class="btn btn-primary btn-next">Next</button>
-                  <button type="submit" class="btn btn-primary btn-submit"
-                    onclick="return gtag_report_conversion();">Submit</button>
-                </div>
-              </form>
-
-              <iframe name="hidden_iframe" id="hidden_iframe" style="display:none;"></iframe>
-
-              <div class="form-success-message" id="formSuccessMessage">
-                <div class="success-icon">✔</div>
-                <h3>Request Sent!</h3>
-                <p>Thank you! We've received your details and will be in touch shortly.</p>
-              </div>
-
-
-            </div>
-          </div>
-
-          <div class="col-lg-5">
-            <div class="d-lg-none">
-              <div class="accordion" id="detailsAccordion">
-                <div class="accordion-item">
-                  <h2 class="accordion-header">
-                    <button class="accordion-button" type="button" data-bs-toggle="collapse"
-                      data-bs-target="#collapseDetails">
-                      View Our Promise <i class="bi bi-arrow-down ms-2"></i>
-                    </button>
-                  </h2>
-                  <div id="collapseDetails" class="accordion-collapse collapse show" data-bs-parent="#detailsAccordion">
-                    <div class="accordion-body">
-                      <div class="gallery-item-mobile">
-                        <i class="bi bi-shield-check fs-1"></i>
-                        <div>
-                          <h5>Secure & Private</h5>
-                        </div>
-                      </div>
-                      <div class="gallery-item-mobile">
-                        <i class="bi bi-currency-dollar fs-1"></i>
-                        <div>
-                          <h5>No Hidden Fees</h5>
-                        </div>
-                      </div>
-                      <div class="gallery-item-mobile">
-                        <i class="bi bi-chat-dots fs-1"></i>
-                        <div>
-                          <h5>No Spam Calls</h5>
-                        </div>
-                      </div>
-                      <hr>
-                      <div class="gallery-item-mobile">
-                        <img src="assets/customer-1.jpg" alt="5-Star Icon">
-                        <div>
-                          <h5>5-Star Rated Service</h5>
-                          <p>Join hundreds of happy clients across Brisbane.</p>
-                        </div>
-                      </div>
-                      <div class="gallery-item-mobile">
-                        <img src="assets/customer-1.jpg" alt="Eco Icon">
-                        <div>
-                          <h5>Eco-Friendly Products</h5>
-                          <p>Safe for your family, pets, and the planet.</p>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <div class="side-gallery d-none d-lg-block">
-              <div class="gallery-item d-flex justify-content-around">
-                <div class="text-center">
-                  <i class="bi bi-shield-check fs-1"></i>
-                  <div>Secure & Private</div>
-                </div>
-                <div class="text-center">
-                  <i class="bi bi-currency-dollar fs-1"></i>
-                  <div>No Hidden Fees</div>
-                </div>
-                <div class="text-center">
-                  <i class="bi bi-chat-dots fs-1"></i>
-                  <div>No Spam Calls</div>
-                </div>
-              </div>
-              <div class="gallery-item">
-                <img src="assets/customer-1.jpg" alt="5-Star Icon">
-                <div>
-                  <h5>5-Star Rated Service</h5>
-                  <p>Join hundreds of happy clients across Brisbane.</p>
-                </div>
-              </div>
-              <div class="gallery-item">
-                <img src="assets/customer-1.jpg" alt="Eco Icon">
-                <div>
-                  <h5>Eco-Friendly Products</h5>
-                  <p>Safe for your family, pets, and the planet.</p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
+    <section id="quote-placeholder"></section>
 
     <section id="about" class="about-section" style="background-color: #FDFDFD;">
       <div class="container">
@@ -282,7 +104,7 @@
               <h3 class="h4">Bond Cleaning</h3>
               <p>Our premier end-of-lease service is designed to help you secure your full bond back. We follow a
                 comprehensive, agency-approved checklist.</p>
-              <a href="#quote" class="stretched-link service-link mt-auto">
+              <a href="./bond-cleaning.html" class="stretched-link service-link mt-auto">
                 Learn More <i class="bi bi-arrow-right"></i>
               </a>
             </div>
@@ -297,7 +119,7 @@
               <h3 class="h4">Carpet Cleaning</h3>
               <p>Using advanced steam cleaning, we remove deep-seated dirt, tough stains, and allergens from your
                 carpets, leaving them fresh and revitalized.</p>
-              <a href="#quote" class="stretched-link service-link mt-auto">
+              <a href="./carpet-cleaning.html" class="stretched-link service-link mt-auto">
                 Learn More <i class="bi bi-arrow-right"></i>
               </a>
             </div>
@@ -311,7 +133,7 @@
               <h3 class="h4">End of Lease</h3>
               <p>Our complete end-of-lease service ensures your property meets the highest standards for a stress-free
                 handover and a worry-free move.</p>
-              <a href="#quote" class="stretched-link service-link mt-auto">
+              <a href="./bond-cleaning.html" class="stretched-link service-link mt-auto">
                 Learn More <i class="bi bi-arrow-right"></i>
               </a>
             </div>
@@ -325,7 +147,7 @@
               <h3 class="h4">Commercial Cleaning</h3>
               <p>We offer tailored cleaning for offices and retail spaces, ensuring a clean, healthy, and professional
                 environment for your staff and clients.</p>
-              <a href="#quote" class="stretched-link service-link mt-auto">
+              <a href="./commercial-cleaning.html" class="stretched-link service-link mt-auto">
                 Learn More <i class="bi bi-arrow-right"></i>
               </a>
             </div>
@@ -661,6 +483,7 @@
         </div>
       </div>
     </section>
+
     <section id="call-to-action" class="py-5">
       <div class="container">
         <div class="row align-items-center g-5">
@@ -672,6 +495,8 @@
                 onclick="return gtag_report_conversion('tel:0721436064');">
                 <i class="bi bi-telephone-fill me-2"></i> 0721 436 064
               </a>
+              <a onclick="return gtag_report_conversion();" href="#quote" class="btn btn-primary btn-lg">Your Free
+                Quote</a>
             </div>
           </div>
 
@@ -707,6 +532,7 @@
     integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
     crossorigin="anonymous"></script>
   <script src="./js/script.js"></script>
+  <script src="./js/quote.js"></script>
   <script src="./js/header.js"></script>
   <script src="./js/footer.js"></script>
 
