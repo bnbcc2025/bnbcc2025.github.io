@@ -1,242 +1,26 @@
-/**
- * Main application script for the website.
- * Version: 5.3.3 (Removed header/footer functionality)
- */
 document.addEventListener('DOMContentLoaded', () => {
-  // ===================================================================
-  // INITIALIZATION SEQUENCE
-  // ===================================================================
-  const services = [
-    { value: "bond_cleaning", label: "Bond Cleaning" },
-    { value: "carpet_cleaning", label: "Carpet Cleaning" },
-    { value: "commercial_cleaning", label: "Commercial Cleaning" }
-  ];
-  const serviceSelect = document.getElementById('serviceType');
-  
-  // Append options to select element
-  if (serviceSelect) {
-    services.forEach(service => {
-      const option = document.createElement('option');
-      option.value = service.value;
-      option.textContent = service.label;
-      serviceSelect.appendChild(option);
-    });
-  }
-  
-  async function initializePage() {
-    initializeStatsCounters();
-    initializeClientCounter();
-    initializeHowItWorksAnimation();
-    initializeFaq();
-    initializeMultiStepForm();
-  }
-  
-  // ===================================================================
-  // VACUUM ANIMATION
-  // ===================================================================
-  const hero = document.getElementById('hero');
-  const vacuum = document.getElementById('vacuum');
-  const dusts = document.querySelectorAll('.dust');
-  
-  if (hero && vacuum && dusts.length > 0) {
-    // ------------------------------
-    // CONFIGURATION
-    // ------------------------------
-    const vacuumSpeed = 3000; // milliseconds for one movement
-    const dustFadeDuration = 500; // fade out/in duration
-    const dustUpperPercent = 0.7; // top 70% of hero
-    
-    // Set vacuum transition
-    vacuum.style.transition = `transform ${vacuumSpeed}ms ease-in-out`;
-    
-    // Initialize dust sizes and rotation
-    dusts.forEach(dust => {
-      const w = Math.floor(Math.random() * 12) + 10; // width 10-22px
-      const h = Math.floor(Math.random() * 6) + 6;   // height 6-12px
-      const rotate = Math.floor(Math.random() * 360); // random rotation
-      dust.style.width = `${w}px`;
-      dust.style.height = `${h}px`;
-      dust.style.transform = `rotate(${rotate}deg)`;
-      dust.style.opacity = 1;
-      dust.style.position = 'absolute';
-    });
-    
-    // Function to get random position inside hero (upper 70%)
-    function getRandomPosition() {
-      const heroRect = hero.getBoundingClientRect();
-      const maxX = heroRect.width - vacuum.offsetWidth;
-      const maxY = heroRect.height * dustUpperPercent - vacuum.offsetHeight;
-      const x = Math.floor(Math.random() * maxX);
-      const y = Math.floor(Math.random() * maxY);
-      return { x, y };
+ 
+  loadComponent('components/quote.html', 'quote-placeholder');
+
+  // Component loading function
+  async function loadComponent(url, placeholderId) {
+    try {
+      const response = await fetch(url);
+      if (!response.ok) throw new Error(`Failed to load ${url}`);
+      const html = await response.text();
+      const placeholder = document.getElementById(placeholderId);
+      if (placeholder) {
+        placeholder.innerHTML = html;
+        return true;
+      } else {
+        console.warn(`Placeholder with ID '${placeholderId}' not found. Skipping component.`);
+        return false;
+      }
+    } catch (err) {
+      console.error(err);
+      return false;
     }
-    
-    // Position dusts initially
-    dusts.forEach(dust => {
-      const { x, y } = getRandomPosition();
-      dust.style.transform += ` translate(${x}px, ${y}px)`;
-      dust.dataset.x = x;
-      dust.dataset.y = y;
-    });
-    
-    // ------------------------------
-    // VACUUM ANIMATION LOOP
-    // ------------------------------
-    function moveVacuum() {
-      // Filter visible dust
-      const visibleDusts = Array.from(dusts).filter(d => window.getComputedStyle(d).opacity === '1');
-      if (visibleDusts.length === 0) return;
-      
-      // Pick random dust
-      const dust = visibleDusts[Math.floor(Math.random() * visibleDusts.length)];
-      const dustRect = dust.getBoundingClientRect();
-      const heroRect = hero.getBoundingClientRect();
-      
-      // Compute vacuum position (base aligned with dust)
-      const targetX = dustRect.left - heroRect.left + dustRect.width / 2 - vacuum.offsetWidth / 2;
-      const targetY = dustRect.top - heroRect.top - vacuum.offsetHeight + dustRect.height / 2;
-      
-      // Move vacuum
-      vacuum.style.transform = `translate(${targetX}px, ${targetY}px)`;
-      
-      // After vacuum arrives, fade out dust, reposition, fade in
-      setTimeout(() => {
-        dust.style.transition = `opacity ${dustFadeDuration}ms`;
-        dust.style.opacity = 0;
-        setTimeout(() => {
-          const { x, y } = getRandomPosition();
-          const rotate = Math.floor(Math.random() * 360);
-          dust.style.transform = `rotate(${rotate}deg) translate(${x}px, ${y}px)`;
-          dust.style.opacity = 1;
-          dust.dataset.x = x;
-          dust.dataset.y = y;
-        }, dustFadeDuration);
-      }, vacuumSpeed); // sync with vacuum arrival
-    }
-    
-    // Store interval ID and clear on page unload
-    const vacuumInterval = setInterval(moveVacuum, vacuumSpeed + 200);
-    window.addEventListener('beforeunload', () => clearInterval(vacuumInterval));
   }
-  
-  // ===================================================================
-  // INTERACTIVE COMPONENTS
-  // ===================================================================
-  function initializeStatsCounters() {
-    const statsSection = document.querySelector("#facts");
-    if (!statsSection) return;
-    
-    const observer = new IntersectionObserver((entries, observer) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          statsSection.classList.add('is-visible');
-          const numberElements = statsSection.querySelectorAll(".stat-number");
-          
-          numberElements.forEach(el => {
-            const target = parseInt(el.dataset.target, 10);
-            let count = 0;
-            const duration = 2000;
-            const stepTime = 10;
-            const totalSteps = duration / stepTime;
-            const increment = Math.ceil(target / totalSteps);
-            
-            const timer = setInterval(() => {
-              count += increment;
-              if (count >= target) {
-                el.innerText = target.toLocaleString();
-                clearInterval(timer);
-              } else {
-                el.innerText = count.toLocaleString();
-              }
-            }, stepTime);
-          });
-          
-          observer.unobserve(statsSection);
-        }
-      });
-    }, { threshold: 0.3 });
-    
-    observer.observe(statsSection);
-  }
-  
-  function initializeClientCounter() {
-    const counterElement = document.getElementById("client-count");
-    if (!counterElement) return;
-    
-    const observer = new IntersectionObserver((entries, observer) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          const target = parseInt(counterElement.dataset.target, 10);
-          let count = 0;
-          const duration = 2000;
-          const stepTime = 10;
-          const totalSteps = duration / stepTime;
-          const increment = Math.ceil(target / totalSteps);
-          
-          const timer = setInterval(() => {
-            count += increment;
-            if (count >= target) {
-              counterElement.innerText = target.toLocaleString();
-              clearInterval(timer);
-            } else {
-              counterElement.innerText = count.toLocaleString();
-            }
-          }, stepTime);
-          
-          observer.unobserve(counterElement);
-        }
-      });
-    }, { threshold: 0.5 });
-    
-    observer.observe(counterElement);
-  }
-  
-  function initializeHowItWorksAnimation() {
-    const steps = document.querySelectorAll(".hiw-step");
-    if (steps.length === 0) return;
-    
-    const observer = new IntersectionObserver((entries, observer) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add("is-visible");
-          observer.unobserve(entry.target);
-        }
-      });
-    }, { threshold: 0.1 });
-    
-    steps.forEach(step => observer.observe(step));
-  }
-  
-  function initializeFaq() {
-    const faqQuestions = document.querySelectorAll(".faq-question");
-    if (faqQuestions.length === 0) return;
-    
-    const isMobile = window.innerWidth < 992;
-    if (isMobile) {
-      faqQuestions.forEach(q => {
-        const answer = document.querySelector(q.dataset.target);
-        if (answer) q.insertAdjacentElement('afterend', answer);
-      });
-    }
-    
-    faqQuestions.forEach(q => {
-      q.addEventListener('click', () => {
-        const targetAnswer = document.querySelector(q.dataset.target);
-        if (isMobile) {
-          q.classList.toggle('active');
-          if (targetAnswer) targetAnswer.classList.toggle('active');
-        } else {
-          document.querySelectorAll('.faq-question.active, .faq-answer.active').forEach(el => el.classList.remove('active'));
-          q.classList.add('active');
-          if (targetAnswer) targetAnswer.classList.add('active');
-        }
-      });
-    });
-  }
-  
-  // ===================================================================
-  // FORM VALIDATION
-  // ===================================================================
   function validateFormStep(stepIndex) {
     const form = document.getElementById("multiStepForm");
     if (!form) return true; // If form doesn't exist, consider it valid
