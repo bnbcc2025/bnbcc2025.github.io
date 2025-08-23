@@ -154,22 +154,29 @@ document.addEventListener('DOMContentLoaded', () => {
     const faqQuestions = document.querySelectorAll(".faq-question");
     if (faqQuestions.length === 0) return;
 
-    const isMobile = window.innerWidth < 992;
+    let isMobile = window.innerWidth < 992;
+
+    function toggleQuestion(q) {
+      const targetAnswer = document.querySelector(q.dataset.target);
+      if (!targetAnswer) return;
+
+      // Close all first
+      document.querySelectorAll(".faq-question.active, .faq-answer.active")
+        .forEach(el => el.classList.remove("active"));
+
+      // Open clicked question
+      q.classList.add("active");
+      targetAnswer.classList.add("active");
+    }
 
     faqQuestions.forEach(q => {
-      q.addEventListener('click', () => {
-        const targetAnswer = document.querySelector(q.dataset.target);
-        if (!targetAnswer) return;
+      q.addEventListener("click", () => toggleQuestion(q));
+    });
 
-        if (isMobile) {
-          q.classList.toggle('active');
-          targetAnswer.classList.toggle('active');
-        } else {
-          document.querySelectorAll('.faq-question.active, .faq-answer.active').forEach(el => el.classList.remove('active'));
-          q.classList.add('active');
-          targetAnswer.classList.add('active');
-        }
-      });
+    // Update mobile/desktop behavior on resize
+    window.addEventListener("resize", () => {
+      isMobile = window.innerWidth < 992;
     });
   }
+
 });
