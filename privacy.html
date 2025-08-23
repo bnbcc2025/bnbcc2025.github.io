@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en-AU">
+
+<head>
+  <script>
+    fetch('components/head.html')
+      .then(response => response.text())
+      .then(data => {
+        document.head.innerHTML = data;
+        // Dynamically add Bootstrap Icons CSS link
+        const bsIconsLink = document.createElement('link');
+        bsIconsLink.rel = 'stylesheet';
+        bsIconsLink.href = 'https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css';
+        document.head.appendChild(bsIconsLink);
+      });
+  </script>
+  <title>Privacy Policy | Brisbane North Bond & Carpet Cleaners</title>
+</head>
+
+<body>
+  <header class="sticky-top" id="navbar-placeholder"></header>
+
+  <section class="bg-light" style="padding-top: 120px; padding-bottom: 40px;">
+    <div class="container">
+      <div class="row">
+        <div class="col-12">
+          <h1 class="display-5">Privacy Policy</h1>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="py-5">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8 mx-auto">
+          <p class="text-muted">Last Updated: 25 August 2025</p>
+          <hr>
+
+          <p class="lead"><strong>Brisbane North Bond and Carpet Cleaners</strong> ("we," "us," or "our") is committed to protecting your privacy and handling your personal information in an open and transparent way. We are bound by the Australian Privacy Principles (APPs) contained in the **Privacy Act 1988 (Cth)**.</p>
+
+          <h2 class="mt-5">1. The Personal Information We Collect and Hold</h2>
+          <p>We only collect personal information that is reasonably necessary for our business functions. The types of personal information we may collect include:</p>
+          <ul>
+              <li><strong>Contact Details:</strong> Your name, property address, email address, and telephone number.</li>
+              <li><strong>Service Details:</strong> Information about the cleaning services you have requested.</li>
+              <li><strong>Website Usage Data:</strong> We may collect non-personally identifiable information such as your IP address, browser type, and operating system when you visit our website to help us improve our services.</li>
+          </ul>
+          <p>We collect this information directly from you when you fill out the quote form on our website or communicate with us via phone or email.</p>
+          
+          <h2 class="mt-5">2. How We Use and Disclose Your Personal Information</h2>
+          <p>We use your personal information for the primary purpose for which it was collected, which includes:</p>
+          <ul>
+            <li>Providing you with an accurate quote for our cleaning services.</li>
+            <li>Scheduling and carrying out the requested cleaning services.</li>
+            <li>Processing payments and managing your account.</li>
+            <li>Communicating with you regarding your service or responding to your enquiries.</li>
+            <li>Improving our service delivery and website experience.</li>
+          </ul>
+          
+          <p>We will not disclose your personal information to third parties except:</p>
+          <ul>
+            <li>To our employees, contractors, or service providers for the purposes of operating our website or our business, who are bound by confidentiality obligations.</li>
+            <li>Where required or authorised by Australian law.</li>
+          </ul>
+          <p>We do not sell your personal information and are unlikely to disclose it to overseas recipients.</p>
+
+          <h2 class="mt-5">3. Direct Marketing</h2>
+          <p>We may use your personal information to provide you with information about our services or special offers. All our marketing communications will include a clear and simple way for you to "opt-out" or "unsubscribe" from receiving future communications.</p>
+          
+          <h2 class="mt-5">4. Data Security and Quality</h2>
+          <p>We take reasonable steps to protect your personal information from misuse, interference, loss, and from unauthorised access, modification, or disclosure. We also take reasonable steps to ensure that the personal information we collect, use, or disclose is accurate, up-to-date, complete, and relevant.</p>
+
+          <h2 class="mt-5">5. Your Right to Access and Correct Information</h2>
+          <p>Under the APPs, you have the right to request access to the personal information we hold about you and to request its correction. To do so, please contact us using the details below. We will respond to your request within a reasonable period.</p>
+          
+          <h2 class="mt-5">6. Cookies</h2>
+          <p>Our website may use cookies to enhance your experience. Cookies are small files that a site transfers to your computer's hard drive through your web browser. You can choose to disable cookies through your browser settings; however, this may affect the functionality of the website.</p>
+          
+          <h2 class="mt-5">7. Making a Complaint</h2>
+          <p>If you believe we have breached the Australian Privacy Principles, please contact us using the details below. We will investigate your complaint and attempt to resolve any breach. If you are not satisfied with our response, you can contact the Office of the Australian Information Commissioner (OAIC).</p>
+          <ul>
+              <li><strong>Phone:</strong> 1300 363 992</li>
+              <li><strong>Website:</strong> <a href="https://www.oaic.gov.au" target="_blank" rel="noopener noreferrer">www.oaic.gov.au</a></li>
+          </ul>
+
+          <h2 class="mt-5">8. Changes to This Privacy Policy</h2>
+          <p>We may update this Privacy Policy from time to time. Any changes will be posted on this page. We encourage you to review this policy periodically to stay informed about how we are protecting your information.</p>
+          
+          <h2 class="mt-5">9. Contact Us</h2>
+          <p>If you have any questions about this Privacy Policy or our privacy practices, please contact us:</p>
+          <p>
+            <strong>Brisbane North Bond and Carpet Cleaners</strong><br>
+            <strong>Email:</strong> info@bnbcc.com.au<br>
+            <strong>Phone:</strong> 07 2143 6064
+          </p>
+
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer id="footer-placeholder"></footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="./js/header.js"></script>
+  <script src="./js/footer.js"></script>
+  
+</body>
+
+</html>
