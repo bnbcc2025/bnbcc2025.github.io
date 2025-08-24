@@ -201,28 +201,48 @@ document.addEventListener('DOMContentLoaded', () => {
       updateForm();
     });
 
-    form.addEventListener("submit", (e) => {
+    form.addEventListener("submit", async (e) => {
       e.preventDefault();
       if (!validateFormStep(currentStep)) return;
 
-      // Your form submission logic would go here.
-      console.log("Form submitted successfully!");
+      // Gather form data as URL-encoded
+      const formData = new FormData(form);
+      const params = new URLSearchParams();
+      formData.forEach((value, key) => params.append(key, value));
 
-      const formContainer = document.querySelector('.form-container');
-      formContainer.style.minHeight = `${formContainer.offsetHeight}px`; // prevent layout jump
-      form.style.display = 'none';
-      document.querySelector('.progressbar').style.display = 'none';
-      successMessage.style.display = 'block';
+      try {
+        const response = await fetch(
+          "https://script.google.com/macros/s/AKfycbwaWZdtmhkrJ9wLqOECG8xJfecim5cBt6IxU4sLZ7uZ9vnaGfTQRj6Xuu3XL-fovYMGxg/exec",
+          {
+            method: "POST",
+            body: params,
+          }
+        );
+        const result = await response.json();
+        if (result.result === "success" || response.ok) {
+          // Show success message as before
+          const formContainer = document.querySelector('.form-container');
+          formContainer.style.minHeight = `${formContainer.offsetHeight}px`;
+          form.style.display = 'none';
+          document.querySelector('.progressbar').style.display = 'none';
+          successMessage.style.display = 'block';
 
-      setTimeout(() => {
-        successMessage.style.display = 'none';
-        document.querySelector('.progressbar').style.display = 'flex';
-        form.style.display = 'block';
-        form.reset();
-        currentStep = 0;
-        updateForm();
-        formContainer.style.minHeight = '';
-      }, 5000);
+          setTimeout(() => {
+            successMessage.style.display = 'none';
+            document.querySelector('.progressbar').style.display = 'flex';
+            form.style.display = 'block';
+            form.reset();
+            currentStep = 0;
+            updateForm();
+            formContainer.style.minHeight = '';
+          }, 5000);
+        } else {
+          alert("There was an error submitting the form. Please try again.");
+        }
+      } catch (error) {
+        alert("There was an error submitting the form. Please try again.");
+        console.error(error);
+      }
     });
 
     updateForm();
