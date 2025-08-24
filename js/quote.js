@@ -201,50 +201,28 @@ document.addEventListener('DOMContentLoaded', () => {
       updateForm();
     });
 
-    form.addEventListener("submit", async (e) => {
+    form.addEventListener("submit", (e) => {
       e.preventDefault();
       if (!validateFormStep(currentStep)) return;
 
-      // Gather form data
-      const formData = new FormData(form);
-      const data = {};
-      formData.forEach((value, key) => data[key] = value);
+      // Your form submission logic would go here.
+      console.log("Form submitted successfully!");
 
-      // Send to Google Apps Script Web App
-      try {
-        const response = await fetch(
-          "https://script.google.com/macros/s/AKfycbwaWZdtmhkrJ9wLqOECG8xJfecim5cBt6IxU4sLZ7uZ9vnaGfTQRj6Xuu3XL-fovYMGxg/exec",
-          {
-            method: "POST",
-            body: JSON.stringify(data),
-            headers: { "Content-Type": "application/json" }
-          }
-        );
-        const result = await response.json();
-        if (result.result === "success" || response.ok) {
-          // Show success message as before
-          const formContainer = document.querySelector('.form-container');
-          formContainer.style.minHeight = `${formContainer.offsetHeight}px`;
-          form.style.display = 'none';
-          document.querySelector('.progressbar').style.display = 'none';
-          successMessage.style.display = 'block';
+      const formContainer = document.querySelector('.form-container');
+      formContainer.style.minHeight = `${formContainer.offsetHeight}px`; // prevent layout jump
+      form.style.display = 'none';
+      document.querySelector('.progressbar').style.display = 'none';
+      successMessage.style.display = 'block';
 
-          setTimeout(() => {
-            successMessage.style.display = 'none';
-            document.querySelector('.progressbar').style.display = 'flex';
-            form.style.display = 'block';
-            form.reset();
-            currentStep = 0;
-            updateForm();
-            formContainer.style.minHeight = '';
-          }, 5000);
-        } else {
-          alert("There was an error submitting the form. Please try again.");
-        }
-      } catch (error) {
-        alert("There was an error submitting the form. Please try again.");
-        console.error(error);
-      }
+      setTimeout(() => {
+        successMessage.style.display = 'none';
+        document.querySelector('.progressbar').style.display = 'flex';
+        form.style.display = 'block';
+        form.reset();
+        currentStep = 0;
+        updateForm();
+        formContainer.style.minHeight = '';
+      }, 5000);
     });
 
     updateForm();
