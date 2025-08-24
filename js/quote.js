@@ -202,12 +202,26 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     form.addEventListener("submit", (e) => {
+      // Only allow submission on the last step
+      if (currentStep < steps.length - 1) {
+        e.preventDefault();
+        // If current step is valid, go to next step
+        if (validateFormStep(currentStep)) {
+          currentStep++;
+          if (currentStep === steps.length - 1) {
+            populateReview();
+          }
+          updateForm();
+        }
+        // Otherwise, stay on current step and show errors
+        return;
+      }
+      // On last step, validate before submitting
       if (!validateFormStep(currentStep)) {
-        e.preventDefault(); // Prevent submission if not valid
+        e.preventDefault();
         return;
       }
       // Let the browser submit the form to the iframe (no fetch, no CORS)
-      // Optionally, show a loading state here
       // Success message will be handled on iframe load
     });
 
