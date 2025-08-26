@@ -178,9 +178,23 @@ document.addEventListener('DOMContentLoaded', () => {
         messageContent: 'Message'
       };
 
+      const unitValue = document.getElementById('unit').value.trim();
+      const propertyAddressValue = document.getElementById('address-autocomplete').value.trim();
+
+      let fullAddress = propertyAddressValue;
+
+      if (unitValue) {
+        fullAddress = `${unitValue} ${propertyAddressValue}`;
+      }
+
       for (const [key, value] of formData.entries()) {
         if (labels[key] && value) {
-          html += `<p class="mb-2"><strong>${labels[key]}:</strong> ${value.replace(/\n/g, '<br>')}</p>`;
+
+          if (key === 'propertyAddress' && fullAddress) {
+            html += `<p class="mb-2"><strong>${labels[key]}:</strong> ${fullAddress}</p>`;
+          } else if (labels[key] && value && key !== 'unit') {
+            html += `<p class="mb-2"><strong>${labels[key]}:</strong> ${value.replace(/\n/g, '<br>')}</p>`;
+          }
         }
       }
       reviewDetails.innerHTML = html;
@@ -217,7 +231,21 @@ document.addEventListener('DOMContentLoaded', () => {
         return;
       }
       // On last step, validate before submitting
-      if (!validateFormStep(currentStep)) {
+      if (validateFormStep(currentStep)) {
+        // Get the address values
+        const unitValue = document.getElementById('unit').value.trim();
+        const propertyAddressInput = document.getElementById('address-autocomplete');
+
+        // If a unit value exists, prepend it to the address field's value
+        if (unitValue) {
+          propertyAddressInput.value = `${unitValue} ${propertyAddressInput.value.trim()}`;
+        }
+
+        // Set the unit field's value to be empty so it doesn't get sent as a separate field
+        document.getElementById('unit').value = '';
+
+        // The form will now submit with the updated propertyAddress value
+      } else {
         e.preventDefault();
         return;
       }
