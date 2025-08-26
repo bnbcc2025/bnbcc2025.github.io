@@ -273,7 +273,7 @@ h6,
     align-items: center;
     justify-content: center;
     text-align: center;
-    background: url('../assets/background.jpg') no-repeat center center;
+    background: url('../assets/background.webp') no-repeat center center;
     background-size: cover;
     overflow: hidden;
     color: wheat;
@@ -1395,4 +1395,30 @@ footer .border-top {
     line-height: 1;
     color: var(--text-dark);
     /* adjust to match your theme */
+}
+/* Add this to your style.css file */
+.carousel-image-scaled {
+  width: 40%; /* Or any percentage you prefer, e.g., 75% */
+  height: auto; /* Maintains the image's aspect ratio */
+  margin: 0 auto; /* Centers the image horizontally */
+}
+
+/* Add this to your style.css file */
+.carousel-control-green .bi {
+  color: #198754; /* Bootstrap's standard bold green */
+  font-size: 2rem; /* Makes the icon larger and more prominent */
+  font-weight: bold; /* Makes the icon thicker */
+}
+
+/* Optional: Tone down the default black background on hover/focus */
+.carousel-control-green:hover,
+.carousel-control-green:focus {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+@media (min-width: 992px) {
+  .navbar .dropdown:hover .dropdown-menu {
+    display: block;
+    margin-top: 0; /* Removes the gap between the nav item and the dropdown menu */
+  }
 }
