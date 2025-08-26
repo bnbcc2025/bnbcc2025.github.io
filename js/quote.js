@@ -221,6 +221,7 @@ document.addEventListener('DOMContentLoaded', () => {
         e.preventDefault();
         return;
       }
+      gtag_report_conversion();
       // Let the browser submit the form to the iframe (no fetch, no CORS)
       // Success message will be handled on iframe load
     });
