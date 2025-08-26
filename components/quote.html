@@ -15,11 +15,9 @@
                     </div>
 
                     <form id="multiStepForm"
-                          action="https://script.google.com/macros/s/AKfycbwaWZdtmhkrJ9wLqOECG8xJfecim5cBt6IxU4sLZ7uZ9vnaGfTQRj6Xuu3XL-fovYMGxg/exec"
-                          method="POST"
-                          target="hidden_iframe"
-                          aria-label="Contact form for cleaning service quote"
-                          novalidate>
+                        action="https://script.google.com/macros/s/AKfycbwaWZdtmhkrJ9wLqOECG8xJfecim5cBt6IxU4sLZ7uZ9vnaGfTQRj6Xuu3XL-fovYMGxg/exec"
+                        method="POST" target="hidden_iframe" aria-label="Contact form for cleaning service quote"
+                        novalidate>
 
                         <div class="form-step active">
                             <h5 class="step-title">Your Information</h5>
@@ -79,8 +77,7 @@
                         <div class="form-navigation">
                             <button type="button" class="btn btn-secondary btn-prev">Back</button>
                             <button type="button" class="btn btn-primary btn-next">Next</button>
-                            <button type="submit" class="btn btn-primary btn-submit"
-                             >Submit</button>
+                            <button type="submit" class="btn btn-primary btn-submit">Submit</button>
                         </div>
                     </form>
 
@@ -95,89 +92,37 @@
 
                 </div>
             </div>
+            <div class="col-lg-5 d-flex flex-column justify-content-center align-items-center text-center side-info">
 
-            <div class="col-lg-5">
-                <div class="d-lg-none">
-                    <div class="accordion" id="detailsAccordion">
-                        <div class="accordion-item">
-                            <h2 class="accordion-header">
-                                <button class="accordion-button" type="button" data-bs-toggle="collapse"
-                                    data-bs-target="#collapseDetails">
-                                    View Our Promise <i class="bi bi-arrow-down ms-2"></i>
-                                </button>
-                            </h2>
-                            <div id="collapseDetails" class="accordion-collapse collapse show"
-                                data-bs-parent="#detailsAccordion">
-                                <div class="accordion-body">
-                                    <div class="gallery-item-mobile">
-                                        <i class="bi bi-shield-check fs-1"></i>
-                                        <div>
-                                            <h5>Secure & Private</h5>
-                                        </div>
-                                    </div>
-                                    <div class="gallery-item-mobile">
-                                        <i class="bi bi-currency-dollar fs-1"></i>
-                                        <div>
-                                            <h5>No Hidden Fees</h5>
-                                        </div>
-                                    </div>
-                                    <div class="gallery-item-mobile">
-                                        <i class="bi bi-chat-dots fs-1"></i>
-                                        <div>
-                                            <h5>No Spam Calls</h5>
-                                        </div>
-                                    </div>
-                                    <hr>
-                                    <div class="gallery-item-mobile">
-                                        <img src="assets/customer-1.jpg" alt="5-Star Icon">
-                                        <div>
-                                            <h5>5-Star Rated Service</h5>
-                                            <p>Join hundreds of happy clients across Brisbane.</p>
-                                        </div>
-                                    </div>
-                                    <div class="gallery-item-mobile">
-                                        <img src="assets/customer-1.jpg" alt="Eco Icon">
-                                        <div>
-                                            <h5>Eco-Friendly Products</h5>
-                                            <p>Safe for your family, pets, and the planet.</p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                <!-- Urgency Headline -->
+                <h3 class="mb-4 fw-bold">
+                    Same-Day Bond Cleaning<br>for Brisbane North
+                </h3>
+
+                <!-- Promise Icons -->
+                <div class="d-flex flex-column gap-3 mb-4 w-100">
+                    <div class="d-flex align-items-center p-3 bg-light rounded shadow-sm">
+                        <i class="bi bi-clock fs-2 text-success me-3"></i>
+                        <span class="fw-semibold">Fast Same-Day Service</span>
+                    </div>
+                    <div class="d-flex align-items-center p-3 bg-light rounded shadow-sm">
+                        <i class="bi bi-shield-check fs-2 text-success me-3"></i>
+                        <span class="fw-semibold">Bond Back Guaranteed</span>
+                    </div>
+                    <div class="d-flex align-items-center p-3 bg-light rounded shadow-sm">
+                        <i class="bi bi-emoji-smile fs-2 text-success me-3"></i>
+                        <span class="fw-semibold">Trusted by Brisbane Residents</span>
                     </div>
                 </div>
 
-                <div class="side-gallery d-none d-lg-block">
-                    <div class="gallery-item d-flex justify-content-around">
-                        <div class="text-center">
-                            <i class="bi bi-shield-check fs-1"></i>
-                            <div>Secure & Private</div>
-                        </div>
-                        <div class="text-center">
-                            <i class="bi bi-currency-dollar fs-1"></i>
-                            <div>No Hidden Fees</div>
-                        </div>
-                        <div class="text-center">
-                            <i class="bi bi-chat-dots fs-1"></i>
-                            <div>No Spam Calls</div>
-                        </div>
-                    </div>
-                    <div class="gallery-item">
-                        <img src="assets/customer-1.jpg" alt="5-Star Icon">
-                        <div>
-                            <h5>5-Star Rated Service</h5>
-                            <p>Join hundreds of happy clients across Brisbane.</p>
-                        </div>
-                    </div>
-                    <div class="gallery-item">
-                        <img src="assets/customer-1.jpg" alt="Eco Icon">
-                        <div>
-                            <h5>Eco-Friendly Products</h5>
-                            <p>Safe for your family, pets, and the planet.</p>
-                        </div>
-                    </div>
+                <!-- Short Testimonial -->
+                <div class="mt-4">
+                    <img src="assets/customer-1.jpg" alt="Happy Customer"
+                        class="rounded-circle mb-2 border border-success" width="80" height="80">
+                    <p class="fst-italic mb-1">“They saved my bond! Same-day cleaning was perfect.”</p>
+                    <small class="text-muted">– Sarah, Redcliffe</small>
                 </div>
+
             </div>
         </div>
     </div>
