@@ -267,27 +267,62 @@ h6,
 /* --- Homepage Hero Section --- */
 #hero {
     position: relative;
-    height: 80vh;
-    /* 80% of viewport height */
-    width: 100vw;
-    /* full width of screen */
-    overflow: hidden;
-    /* prevent dust or vacuum overflow */
+    height: 100vh;
+    width: 100%;
     display: flex;
     align-items: center;
     justify-content: center;
     text-align: center;
-    background: url('assets/background.jpg') no-repeat center center;
+    background: url('../assets/background.jpg') no-repeat center center;
     background-size: cover;
-    color: var(--white);
+    overflow: hidden;
+    color: wheat;
 }
 
-#hero .lead {
-    color: var(--text-dark);
-    max-width: 50vw;
-    margin-left: auto;
-    margin-right: auto;
+.hero-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 1;
 }
+
+.hero-content {
+    position: relative;
+    z-index: 2;
+    max-width: 90%;
+    padding: 0 1rem;
+}
+
+.hero-title {
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+    color: wheat;
+}
+
+.hero-subtitle {
+    font-size: 1.25rem;
+    margin-bottom: 2rem;
+}
+
+.hero-btn {
+    padding: 1rem 2.5rem;
+    font-size: 1.1rem;
+    font-weight: 600;
+}
+
+@media (min-width: 768px) {
+    .hero-title {
+        font-size: 3.5rem;
+    }
+    .hero-subtitle {
+        font-size: 1.5rem;
+    }
+}
+
 
 .dust {
     position: absolute;
@@ -934,6 +969,7 @@ footer .border-top {
     }
 }
 
+/* MY Quote design */
 .quote-section {
     background-color: var(--neutral-bg);
     padding: 6rem 0;

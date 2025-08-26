@@ -1,27 +1,26 @@
-User-agent: *
+# robots.txt for https://www.bnbcc.com.au
+# Purpose: Control crawler access, optimize crawl budget, and prepare for LLM/AI integration.
+
+# Allow all major search engines full access to content
+User-agent: Googlebot
 Allow: /
 
-# Important pages
+User-agent: Bingbot
+Allow: /
+
+# Block low-value or sensitive areas
+User-agent: *
+Disallow: /cgi-bin/
+Disallow: /admin/
+Disallow: /login/
+Disallow: /temp/
+Disallow: /private/
+
+# Sitemap location
 Sitemap: https://www.bnbcc.com.au/sitemap.xml
 
-# Optimize crawling
-Crawl-delay: 1
-
-# Block unnecessary files
-Disallow: /assets/
-Disallow: *.js$
-Disallow: *.css$
-Disallow: /manifest.json
-Disallow: /browserconfig.xml
-
-# Allow images for image search
-Allow: /assets/*.png
-Allow: /assets/*.jpg
-Allow: /assets/*.jpeg
-Allow: /assets/*.gif
-Allow: /assets/*.webp
-
-# Block common bot files
-Disallow: /cgi-bin/
-Disallow: /tmp/
-Disallow: /logs/
+# --- Optional AI/LLM Crawling Control ---
+# Google-Extended is used by Google for AI training (e.g., Bard / Gemini).
+# Uncomment the lines below if you wish to OPT OUT of AI data usage.
+# User-agent: Google-Extended
+# Disallow: /
